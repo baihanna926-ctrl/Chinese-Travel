@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>合肥 · 从抖音真实数据整理出的攻略</title>
+<style>
+  :root{
+    --ink:#17251c; --ink-2:#3d4f42; --moss:#1f3d2b; --bamboo:#4a7c59;
+    --mint:#dfe9e0; --rice:#f7f5ef; --paper:#fffefb; --cinnabar:#b5432f;
+    --gold:#a8823c; --line:rgba(23,37,28,.12);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0; background:var(--rice); color:var(--ink);
+    font-family:"Songti SC","Noto Serif SC","Source Han Serif SC","Noto Serif CJK SC","SimSun","STSong",Georgia,"Microsoft YaHei",serif;
+    font-size:16px; line-height:1.85; -webkit-font-smoothing:antialiased;
+  }
+  .cover{
+    position:relative; padding:96px 24px 72px;
+    background:
+      radial-gradient(1200px 500px at 15% -10%, rgba(74,124,89,.22), transparent 60%),
+      radial-gradient(900px 420px at 90% 0%, rgba(168,130,60,.16), transparent 55%),
+      linear-gradient(180deg,#12241a 0%, #1b3527 58%, #23412f 100%);
+    color:#f2efe6; overflow:hidden;
+  }
+  .cover::after{
+    content:""; position:absolute; inset:0;
+    background-image:radial-gradient(rgba(255,255,255,.06) 1px, transparent 1px);
+    background-size:3px 3px; opacity:.5; pointer-events:none;
+  }
+  .cover-inner{max-width:900px;margin:0 auto;position:relative;z-index:1;}
+  .kicker{font-size:13px;letter-spacing:.32em;text-transform:uppercase;color:rgba(242,239,230,.62);margin:0 0 22px;}
+  h1{font-size:clamp(38px,6.4vw,74px);line-height:1.12;margin:0 0 8px;font-weight:700;letter-spacing:.01em;}
+  h1 .accent{color:#cfe3c8;}
+  .sub{font-size:clamp(15px,2vw,19px);color:rgba(242,239,230,.76);max-width:44em;margin:18px 0 0;line-height:1.9;}
+  .stats{display:flex;flex-wrap:wrap;gap:36px;margin-top:44px;padding-top:26px;border-top:1px solid rgba(242,239,230,.18);}
+  .stat .n{font-size:28px;font-weight:700;color:#e7f0e3;line-height:1.2;}
+  .stat .l{font-size:12.5px;letter-spacing:.12em;color:rgba(242,239,230,.55);margin-top:4px;}
+  .wrap{max-width:900px;margin:0 auto;padding:0 24px;}
+  section{padding:64px 0 8px;}
+  section + section{border-top:1px solid var(--line);}
+  h2{font-size:clamp(24px,3.4vw,32px);margin:0 0 6px;font-weight:700;letter-spacing:.01em;display:flex;align-items:baseline;gap:14px;}
+  h2 .no{font-size:12px;letter-spacing:.2em;color:var(--cinnabar);font-family:"PingFang SC",system-ui,sans-serif;font-weight:600;}
+  .lede{color:var(--ink-2);margin:6px 0 30px;max-width:46em;}
+  h3{font-size:19px;margin:34px 0 10px;font-weight:700;}
+  p{margin:0 0 14px;}
+  .grid{display:grid;gap:16px;}
+  .g3{grid-template-columns:repeat(auto-fit,minmax(230px,1fr));}
+  .g2{grid-template-columns:repeat(auto-fit,minmax(300px,1fr));}
+  .card{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:22px 22px 18px;}
+  .card h4{margin:0 0 8px;font-size:16.5px;}
+  .card p{font-size:14.5px;color:var(--ink-2);margin:0;line-height:1.8;}
+  .card .tag{display:inline-block;font-size:11.5px;letter-spacing:.08em;color:var(--bamboo);background:var(--mint);padding:2px 9px;border-radius:999px;margin-bottom:10px;font-family:"PingFang SC",system-ui,sans-serif;}
+  .day{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:26px 26px 12px;margin-bottom:20px;}
+  .day-head{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:6px;}
+  .day-no{font-family:"PingFang SC",system-ui,sans-serif;font-size:12px;letter-spacing:.18em;color:#fff;background:var(--moss);padding:3px 10px;border-radius:6px;}
+  .day-title{font-size:20px;font-weight:700;}
+  .day-meta{font-size:13px;color:var(--ink-2);font-family:"PingFang SC",system-ui,sans-serif;}
+  ol.stops{list-style:none;margin:18px 0 0;padding:0;}
+  ol.stops li{position:relative;padding:0 0 20px 30px;border-left:1px solid var(--line);margin-left:7px;}
+  ol.stops li:last-child{border-left-color:transparent;padding-bottom:6px;}
+  ol.stops li::before{content:"";position:absolute;left:-4.5px;top:9px;width:8px;height:8px;border-radius:50%;background:var(--bamboo);box-shadow:0 0 0 3px var(--paper);}
+  .stop-h{font-weight:700;font-size:15.5px;}
+  .stop-t{font-family:"PingFang SC",system-ui,sans-serif;font-size:12px;color:var(--cinnabar);letter-spacing:.06em;margin-left:8px;}
+  .stop-d{font-size:14.5px;color:var(--ink-2);margin-top:2px;}
+  .tbl-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:14px;background:var(--paper);}
+  table{border-collapse:collapse;width:100%;min-width:620px;font-size:14.5px;}
+  th,td{text-align:left;padding:13px 16px;border-bottom:1px solid var(--line);vertical-align:top;}
+  th{font-family:"PingFang SC",system-ui,sans-serif;font-size:12px;letter-spacing:.1em;color:var(--ink-2);background:rgba(74,124,89,.07);font-weight:600;white-space:nowrap;}
+  tr:last-child td{border-bottom:none;}
+  td b{color:var(--ink);}
+  .muted{color:var(--ink-2);font-size:13.5px;}
+  .rank{counter-reset:r;list-style:none;padding:0;margin:0;}
+  .rank li{counter-increment:r;position:relative;padding:13px 0 13px 46px;border-bottom:1px dashed var(--line);font-size:15px;}
+  .rank li:last-child{border-bottom:none;}
+  .rank li::before{content:counter(r);position:absolute;left:0;top:12px;width:26px;height:26px;border-radius:50%;display:grid;place-items:center;background:var(--mint);color:var(--moss);font-family:"PingFang SC",system-ui,sans-serif;font-size:12.5px;font-weight:700;}
+  .rank .why{display:block;font-size:13.5px;color:var(--ink-2);margin-top:2px;}
+  .note{border-left:3px solid var(--cinnabar);background:linear-gradient(90deg, rgba(181,67,47,.06), transparent 70%);padding:16px 20px;border-radius:0 10px 10px 0;margin:22px 0;font-size:14.5px;}
+  .note b{color:var(--cinnabar);}
+  .tip{border-left:3px solid var(--gold);background:linear-gradient(90deg, rgba(168,130,60,.09), transparent 70%);padding:16px 20px;border-radius:0 10px 10px 0;margin:22px 0;font-size:14.5px;}
+  .tip b{color:var(--gold);}
+  .bars{margin:8px 0 0;}
+  .bar{display:grid;grid-template-columns:110px 1fr 54px;gap:12px;align-items:center;margin-bottom:11px;font-size:14px;}
+  .bar .bl{color:var(--ink-2);}
+  .bar .bt{background:rgba(74,124,89,.12);border-radius:999px;height:9px;overflow:hidden;}
+  .bar .bf{height:100%;background:linear-gradient(90deg,var(--bamboo),#7fa889);border-radius:999px;}
+  .bar .bn{text-align:right;color:var(--ink-2);font-size:13px;font-family:"PingFang SC",system-ui,sans-serif;}
+  .src{font-size:12.5px;color:var(--ink-2);font-family:"PingFang SC",system-ui,sans-serif;}
+  footer{margin-top:40px;padding:44px 0 64px;border-top:1px solid var(--line);color:var(--ink-2);font-size:13px;}
+  footer p{max-width:62em;}
+  @media (max-width:600px){
+    .cover{padding:64px 20px 52px;}
+    section{padding:48px 0 8px;}
+    .stats{gap:24px;}
+    .day{padding:20px 18px 6px;}
+    .bar{grid-template-columns:88px 1fr 46px;gap:8px;font-size:13px;}
+  }
+  @media print{
+    .cover{background:#fff;color:#000;}
+    body{background:#fff;}
+    section{page-break-inside:avoid;}
+  }
+</style>
+</head>
+<body>
+
+<header class="cover">
+  <div class="cover-inner">
+    <p class="kicker">ANHUI · HEFEI · 2 天</p>
+    <h1>合肥<span class="accent">，</span><br>被叫旅游荒漠，其实适合反向旅游</h1>
+    <p class="sub">合肥常年被吐槽「没什么好玩的」，但数据不太同意：28 条视频里，美食占 54%、景点占 29%，比例比多数省会都均衡。收藏第二高的那条是「合肥最值得去的 20 个免费景点」——免费，是这座城市对游客最大的诚意。</p>
+    <div class="stats">
+      <div class="stat"><div class="n">28</div><div class="l">条抖音视频</div></div>
+      <div class="stat"><div class="n">29.6万</div><div class="l">累计点赞</div></div>
+      <div class="stat"><div class="n">54%</div><div class="l">美食内容占比</div></div>
+      <div class="stat"><div class="n">5.6万</div><div class="l">单条最高点赞</div></div>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+<section id="s1">
+  <h2><span class="no">01</span> 数据说了什么</h2>
+  <p class="lede">合肥的问题不是没东西看，是没有那种「不来等于白来」的地标。它的玩法是散的：一个公园、一条街、一顿夜宵，串起来才成立。</p>
+  <h3>内容构成</h3>
+  <div class="bars">
+    <div class="bar"><span class="bl">美食探店</span><span class="bt"><span class="bf" style="width:54%"></span></span><span class="bn">54%</span></div>
+    <div class="bar"><span class="bl">景点盘点</span><span class="bt"><span class="bf" style="width:29%"></span></span><span class="bn">29%</span></div>
+    <div class="bar"><span class="bl">城市 Vlog</span><span class="bt"><span class="bf" style="width:14%"></span></span><span class="bn">14%</span></div>
+    <div class="bar"><span class="bl">亲子乐园</span><span class="bt"><span class="bf" style="width:4%"></span></span><span class="bn">4%</span></div>
+  </div>
+
+  <h3>收藏最高的三条</h3>
+  <ul class="rank">
+    <li>情侣在合肥爽吃25家！这座省会城市还是太低调了 #情侣旅行#合肥美食#她研社深藏blue<span class="why">收藏 2.7万 · 点赞 5.6万</span></li>
+    <li>合肥最值得去的20个免费景点，看看你去过几个？ #合肥 #合肥旅游 #安徽旅游 #自驾游 #旅行推荐官<span class="why">收藏 1.4万 · 点赞 1.2万</span></li>
+    <li>“想去合肥的心情达到了顶峰 可以看看你们手机里合肥的样子吗...”#合肥好玩的地方 #我的国庆旅行第一站<span class="why">收藏 1万 · 点赞 2.5万</span></li>
+  </ul>
+
+  <div class="note">
+    <b>① 免费景点是硬通货。</b>「20 个免费景点」拿到 1.39 万收藏，说明来合肥的人预算敏感、也不想被门票绑架。<br>
+    <b>② 吃的比玩的多。</b>美食内容 54%，且「爽吃 25 家」这种极限探店最受欢迎——合肥是那种需要靠吃来建立好感的地方。<br>
+    <b>③ 罍街被单独打上标签。</b>在 28 条里它是唯一被反复点名的街区，合肥的夜生活基本围着它转。<br>
+  </div>
+
+  <div class="grid g3" style="margin-top:26px;">
+    <div class="card">
+      <span class="tag">几天够</span>
+      <h4>2 天，刚好</h4>
+      <p>一天市区（包公园—逍遥津—淮河路—罍街），一天往外走（三河古镇或环巢湖）。硬塞第三天会开始重复。</p>
+    </div>
+    <div class="card">
+      <span class="tag">住哪儿</span>
+      <h4>淮河路 / 三孝口</h4>
+      <p>老城中心，步行到逍遥津、淮河路，去罍街打车十分钟。地铁 1、2 号线交汇，去哪儿都顺。</p>
+    </div>
+    <div class="card">
+      <span class="tag">什么时候来</span>
+      <h4>3–5 月 / 9–11 月</h4>
+      <p>合肥春秋短，夏天湿热到黏，冬天湿冷。三四月樱花和海棠开的时候最好看。</p>
+    </div>
+  </div>
+</section>
+
+<section id="s2">
+  <h2><span class="no">02</span> 行程</h2>
+  <p class="lede">市区一条线走完，第二天二选一：想看古镇去三河，想看城市面貌去滨湖。</p>
+
+  <div class="day">
+    <div class="day-head">
+      <span class="day-no">DAY 1</span>
+      <span class="day-title">老城一圈：从包公祠到罍街</span>
+      <span class="day-meta">步行＋地铁 · 全天 · 门票 0–50 元</span>
+    </div>
+    <ol class="stops">
+      <li>
+        <div class="stop-h">包公园<span class="stop-t">09:00</span></div>
+        <div class="stop-d">包公祠、清风阁、浮庄连成一片，是合肥最有分量的历史景点。包公祠门票 50 元上下，其余区域免费，绕湖走一圈很舒服。</div>
+      </li>
+      <li>
+        <div class="stop-h">逍遥津公园<span class="stop-t">11:30</span></div>
+        <div class="stop-d">免费。三国张辽威震逍遥津就在这儿，现在是市民公园。湖心岛和石桥出片，中午树荫多，适合歇脚。</div>
+      </li>
+      <li>
+        <div class="stop-h">淮河路步行街<span class="stop-t">14:00</span></div>
+        <div class="stop-d">合肥最老的商业街，李鸿章故居就在街边（免费，需预约）。逛街不是重点，重点是周边的老巷子——那才是本地人吃饭的地方。</div>
+      </li>
+      <li>
+        <div class="stop-h">安徽博物院（新馆）<span class="stop-t">16:00</span></div>
+        <div class="stop-d">免费，周一闭馆。看徽州古建筑展厅和青铜器，是理解「安徽」最快的一站。</div>
+      </li>
+      <li>
+        <div class="stop-h">罍街<span class="stop-t">18:30</span></div>
+        <div class="stop-d">合肥的夜宵主场，也是数据里唯一被单独打标签的街区。小吃为主，龙虾、烧烤、下塘烧饼都有，越晚越热闹。</div>
+      </li>
+    </ol>
+  </div>
+
+  <div class="day">
+    <div class="day-head">
+      <span class="day-no">DAY 2</span>
+      <span class="day-title">二选一：三河古镇 or 环巢湖</span>
+      <span class="day-meta">半天到一天 · 自驾/公交</span>
+    </div>
+    <ol class="stops">
+      <li>
+        <div class="stop-h">选项 A：三河古镇<span class="stop-t">08:30</span></div>
+        <div class="stop-d">距市区约 40 公里，2500 年历史的水乡古镇，免费进镇，个别宅院单独收费。米饺、酥鸭是本地招牌。早上人少，中午后就挤了。</div>
+      </li>
+      <li>
+        <div class="stop-h">选项 B：滨湖 + 骆岗公园<span class="stop-t">09:30</span></div>
+        <div class="stop-d">骆岗公园由老机场改造，是国内最大的城市公园之一，免费。配上渡江战役纪念馆、安徽名人馆，一天能走完，适合带孩子。</div>
+      </li>
+      <li>
+        <div class="stop-h">回程：天鹅湖<span class="stop-t">17:00</span></div>
+        <div class="stop-d">合肥的 CBD 湖景，傍晚有音乐喷泉（周末场次多）。看完直接在地铁 1 号线沿线吃饭。</div>
+      </li>
+    </ol>
+  </div>
+
+  <div class="tip"><b>合肥的正确期待：</b>别把它当旅游城市，当「一个吃得好、住得便宜、交通方便的落脚点」。它到黄山、芜湖、南京都是高铁一小时圈，当中转站其实很划算。</div>
+</section>
+
+<section id="s3">
+  <h2><span class="no">03</span> 吃什么</h2>
+  <p class="lede">合肥菜是徽菜和淮扬之间的过渡带，重油重色但不极端。真正值得吃的是街头那几样，不是餐厅里的大菜。</p>
+
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>吃什么</th><th>去哪找</th><th>怎么点</th><th>人均</th></tr></thead>
+      <tbody>
+        <tr><td><b>庐州烤鸭</b><br><span class="muted"></span></td><td>老字号连锁，市区多处</td><td>皮脆肉嫩，配薄饼和甜面酱；半只够两人</td><td>40–60</td></tr>
+        <tr><td><b>吴山贡鹅</b><br><span class="muted"></span></td><td>长丰吴山镇最正，市区有店</td><td>卤味冷切，鹅肉紧实；买半只带走也行</td><td>30–50</td></tr>
+        <tr><td><b>三河米饺</b><br><span class="muted"></span></td><td>三河古镇街上现炸的</td><td>外皮是米粉做的，脆中带糯；趁热吃</td><td>5–10</td></tr>
+        <tr><td><b>下塘烧饼</b><br><span class="muted"></span></td><td>下塘镇老铺，市区也有摊</td><td>炭火烤的，芝麻多；夹油条或直接吃</td><td>5–8</td></tr>
+        <tr><td><b>小龙虾</b><br><span class="muted"></span></td><td>罍街、宁国路一带</td><td>合肥人夏天的主食，蒜蓉和十三香各来一份</td><td>60–100</td></tr>
+        <tr><td><b>包公鱼 / 李鸿章大杂烩</b><br><span class="muted"></span></td><td>老字号徽菜馆</td><td>两道都是「有故事」的菜，尝个意思就行</td><td>60–90</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="note"><b>合肥吃饭的时间感：</b>夜市是重头，罍街晚上七点后才真正开张；早餐反而朴素，本地人一碗sa汤（撒汤）配锅贴就解决。别在中午去罍街，那时候它还没醒。</div>
+</section>
+
+<section id="s4">
+  <h2><span class="no">04</span> 实用与避坑</h2>
+  <div class="grid g2" style="margin-top:10px;">
+    <div class="card"><h4>怎么到</h4><p>高铁到合肥南站（离市区近）或合肥站；机场是新桥机场，坐机场大巴或地铁 S1 线进城。市内地铁覆盖主要景点，比打车快。</p></div>
+    <div class="card"><h4>免费景点清单</h4><p>包公园外围、逍遥津、李鸿章故居、安徽博物院、渡江战役纪念馆、骆岗公园、天鹅湖、大蜀山——全部免费，合肥的性价比全在这。</p></div>
+    <div class="card"><h4>夏天别硬扛</h4><p>七八月合肥湿热，体感常年 38℃+。要来的话把行程切成「早上＋傍晚」两段，中午躲进博物馆或商场。</p></div>
+    <div class="card"><h4>别只待在市区</h4><p>合肥周边一小时圈里有三河古镇、巢湖中庙、紫蓬山。只逛市区会觉得「就这？」，加上周边才完整。</p></div>
+  </div>
+</section>
+
+<footer>
+<p><b>数据说明。</b>本页基于抖音真实采集数据：关键词「合肥旅游」「合肥美食」，去重后 <b>28 条视频</b>，累计点赞 <b>29.6万</b>、收藏 <b>11.5万</b>，单条最高点赞 5.6万、最高收藏 2.7万。内容构成按视频标题归类统计。</p>
+  <p>门票、交通等硬信息按公开资料核对，价格与开放时间以景区当日公示为准；餐饮只写到「品类＋去哪找」，不写死门牌——老店变动比攻略更新快。</p>
+  <p class="src">采集时间 2026-10-24 · 工具 MediaCrawler（非商业学习许可）· 本页仅供个人出行参考</p>
+</footer>
+
+</div>
+</body>
+</html>

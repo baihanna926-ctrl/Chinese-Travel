@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>肇庆 · 从抖音真实数据整理出的攻略</title>
+<style>
+  :root{
+    --ink:#17251c; --ink-2:#3d4f42; --moss:#1f3d2b; --bamboo:#4a7c59;
+    --mint:#dfe9e0; --rice:#f7f5ef; --paper:#fffefb; --cinnabar:#b5432f;
+    --gold:#a8823c; --line:rgba(23,37,28,.12);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0; background:var(--rice); color:var(--ink);
+    font-family:"Songti SC","Noto Serif SC","Source Han Serif SC","Noto Serif CJK SC","SimSun","STSong",Georgia,"Microsoft YaHei",serif;
+    font-size:16px; line-height:1.85; -webkit-font-smoothing:antialiased;
+  }
+  .cover{
+    position:relative; padding:96px 24px 72px;
+    background:
+      radial-gradient(1200px 500px at 15% -10%, rgba(74,124,89,.22), transparent 60%),
+      radial-gradient(900px 420px at 90% 0%, rgba(168,130,60,.16), transparent 55%),
+      linear-gradient(180deg,#12241a 0%, #1b3527 58%, #23412f 100%);
+    color:#f2efe6; overflow:hidden;
+  }
+  .cover::after{
+    content:""; position:absolute; inset:0;
+    background-image:radial-gradient(rgba(255,255,255,.06) 1px, transparent 1px);
+    background-size:3px 3px; opacity:.5; pointer-events:none;
+  }
+  .cover-inner{max-width:900px;margin:0 auto;position:relative;z-index:1;}
+  .kicker{font-size:13px;letter-spacing:.32em;text-transform:uppercase;color:rgba(242,239,230,.62);margin:0 0 22px;}
+  h1{font-size:clamp(38px,6.4vw,74px);line-height:1.12;margin:0 0 8px;font-weight:700;letter-spacing:.01em;}
+  h1 .accent{color:#cfe3c8;}
+  .sub{font-size:clamp(15px,2vw,19px);color:rgba(242,239,230,.76);max-width:44em;margin:18px 0 0;line-height:1.9;}
+  .stats{display:flex;flex-wrap:wrap;gap:36px;margin-top:44px;padding-top:26px;border-top:1px solid rgba(242,239,230,.18);}
+  .stat .n{font-size:28px;font-weight:700;color:#e7f0e3;line-height:1.2;}
+  .stat .l{font-size:12.5px;letter-spacing:.12em;color:rgba(242,239,230,.55);margin-top:4px;}
+  .wrap{max-width:900px;margin:0 auto;padding:0 24px;}
+  section{padding:64px 0 8px;}
+  section + section{border-top:1px solid var(--line);}
+  h2{font-size:clamp(24px,3.4vw,32px);margin:0 0 6px;font-weight:700;letter-spacing:.01em;display:flex;align-items:baseline;gap:14px;}
+  h2 .no{font-size:12px;letter-spacing:.2em;color:var(--cinnabar);font-family:"PingFang SC",system-ui,sans-serif;font-weight:600;}
+  .lede{color:var(--ink-2);margin:6px 0 30px;max-width:46em;}
+  h3{font-size:19px;margin:34px 0 10px;font-weight:700;}
+  p{margin:0 0 14px;}
+  .grid{display:grid;gap:16px;}
+  .g3{grid-template-columns:repeat(auto-fit,minmax(230px,1fr));}
+  .g2{grid-template-columns:repeat(auto-fit,minmax(300px,1fr));}
+  .card{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:22px 22px 18px;}
+  .card h4{margin:0 0 8px;font-size:16.5px;}
+  .card p{font-size:14.5px;color:var(--ink-2);margin:0;line-height:1.8;}
+  .card .tag{display:inline-block;font-size:11.5px;letter-spacing:.08em;color:var(--bamboo);background:var(--mint);padding:2px 9px;border-radius:999px;margin-bottom:10px;font-family:"PingFang SC",system-ui,sans-serif;}
+  .day{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:26px 26px 12px;margin-bottom:20px;}
+  .day-head{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:6px;}
+  .day-no{font-family:"PingFang SC",system-ui,sans-serif;font-size:12px;letter-spacing:.18em;color:#fff;background:var(--moss);padding:3px 10px;border-radius:6px;}
+  .day-title{font-size:20px;font-weight:700;}
+  .day-meta{font-size:13px;color:var(--ink-2);font-family:"PingFang SC",system-ui,sans-serif;}
+  ol.stops{list-style:none;margin:18px 0 0;padding:0;}
+  ol.stops li{position:relative;padding:0 0 20px 30px;border-left:1px solid var(--line);margin-left:7px;}
+  ol.stops li:last-child{border-left-color:transparent;padding-bottom:6px;}
+  ol.stops li::before{content:"";position:absolute;left:-4.5px;top:9px;width:8px;height:8px;border-radius:50%;background:var(--bamboo);box-shadow:0 0 0 3px var(--paper);}
+  .stop-h{font-weight:700;font-size:15.5px;}
+  .stop-t{font-family:"PingFang SC",system-ui,sans-serif;font-size:12px;color:var(--cinnabar);letter-spacing:.06em;margin-left:8px;}
+  .stop-d{font-size:14.5px;color:var(--ink-2);margin-top:2px;}
+  .tbl-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:14px;background:var(--paper);}
+  table{border-collapse:collapse;width:100%;min-width:620px;font-size:14.5px;}
+  th,td{text-align:left;padding:13px 16px;border-bottom:1px solid var(--line);vertical-align:top;}
+  th{font-family:"PingFang SC",system-ui,sans-serif;font-size:12px;letter-spacing:.1em;color:var(--ink-2);background:rgba(74,124,89,.07);font-weight:600;white-space:nowrap;}
+  tr:last-child td{border-bottom:none;}
+  td b{color:var(--ink);}
+  .muted{color:var(--ink-2);font-size:13.5px;}
+  .rank{counter-reset:r;list-style:none;padding:0;margin:0;}
+  .rank li{counter-increment:r;position:relative;padding:13px 0 13px 46px;border-bottom:1px dashed var(--line);font-size:15px;}
+  .rank li:last-child{border-bottom:none;}
+  .rank li::before{content:counter(r);position:absolute;left:0;top:12px;width:26px;height:26px;border-radius:50%;display:grid;place-items:center;background:var(--mint);color:var(--moss);font-family:"PingFang SC",system-ui,sans-serif;font-size:12.5px;font-weight:700;}
+  .rank .why{display:block;font-size:13.5px;color:var(--ink-2);margin-top:2px;}
+  .note{border-left:3px solid var(--cinnabar);background:linear-gradient(90deg, rgba(181,67,47,.06), transparent 70%);padding:16px 20px;border-radius:0 10px 10px 0;margin:22px 0;font-size:14.5px;}
+  .note b{color:var(--cinnabar);}
+  .tip{border-left:3px solid var(--gold);background:linear-gradient(90deg, rgba(168,130,60,.09), transparent 70%);padding:16px 20px;border-radius:0 10px 10px 0;margin:22px 0;font-size:14.5px;}
+  .tip b{color:var(--gold);}
+  .bars{margin:8px 0 0;}
+  .bar{display:grid;grid-template-columns:110px 1fr 54px;gap:12px;align-items:center;margin-bottom:11px;font-size:14px;}
+  .bar .bl{color:var(--ink-2);}
+  .bar .bt{background:rgba(74,124,89,.12);border-radius:999px;height:9px;overflow:hidden;}
+  .bar .bf{height:100%;background:linear-gradient(90deg,var(--bamboo),#7fa889);border-radius:999px;}
+  .bar .bn{text-align:right;color:var(--ink-2);font-size:13px;font-family:"PingFang SC",system-ui,sans-serif;}
+  .src{font-size:12.5px;color:var(--ink-2);font-family:"PingFang SC",system-ui,sans-serif;}
+  footer{margin-top:40px;padding:44px 0 64px;border-top:1px solid var(--line);color:var(--ink-2);font-size:13px;}
+  footer p{max-width:62em;}
+  @media (max-width:600px){
+    .cover{padding:64px 20px 52px;}
+    section{padding:48px 0 8px;}
+    .stats{gap:24px;}
+    .day{padding:20px 18px 6px;}
+    .bar{grid-template-columns:88px 1fr 46px;gap:8px;font-size:13px;}
+  }
+  @media print{
+    .cover{background:#fff;color:#000;}
+    body{background:#fff;}
+    section{page-break-inside:avoid;}
+  }
+</style>
+</head>
+<body>
+
+<header class="cover">
+  <div class="cover-inner">
+    <p class="kicker">GUANGDONG · ZHAOQING · 2 天</p>
+    <h1>肇庆<span class="accent">，</span><br>七星岩，和一座慢城</h1>
+    <p class="sub">27 条视频、17.5 万赞。肇庆的数据构成很特别：城市 Vlog 占 30%、景点 15%、美食 56%。肇庆在抖音上的形象是「慢城」——它的景点（七星岩、鼎湖山）不算顶级，但生活节奏很吸引人。</p>
+    <div class="stats">
+      <div class="stat"><div class="n">27</div><div class="l">条抖音视频</div></div>
+      <div class="stat"><div class="n">17.5万</div><div class="l">累计点赞</div></div>
+      <div class="stat"><div class="n">56%</div><div class="l">美食内容占比</div></div>
+      <div class="stat"><div class="n">2.8万</div><div class="l">单条最高点赞</div></div>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+<section id="s1">
+  <h2><span class="no">01</span> 数据说了什么</h2>
+  <p class="lede">肇庆是广东最安静的地级市之一。它有七星岩（喀斯特湖山）、鼎湖山（联合国生物圈保护区），还有端州老城和西江。肇庆的节奏很慢，适合周末来徒步和发呆。</p>
+  <h3>内容构成</h3>
+  <div class="bars">
+    <div class="bar"><span class="bl">美食探店</span><span class="bt"><span class="bf" style="width:56%"></span></span><span class="bn">56%</span></div>
+    <div class="bar"><span class="bl">景点盘点</span><span class="bt"><span class="bf" style="width:15%"></span></span><span class="bn">15%</span></div>
+    <div class="bar"><span class="bl">城市 Vlog</span><span class="bt"><span class="bf" style="width:30%"></span></span><span class="bn">30%</span></div>
+  </div>
+
+  <h3>收藏最高的三条</h3>
+  <ul class="rank">
+    <li>广州周末游｜人均200+解锁广东版小九寨 #广东旅游  #肇庆美食  #广州周边游<span class="why">收藏 1.3万 · 点赞 2.4万</span></li>
+    <li>肇庆美食攻略之大集合收藏版，藏在街头巷尾的美食 #跟着本地人吃美食 #肇庆美食#藏在巷子里的美食盘点 #老店小吃 #肇庆旅游打卡<span class="why">收藏 9364 · 点赞 2.3万</span></li>
+    <li>肇庆——最适合打工人的周末旅行城市 #打开肇片发现宝藏 #看见肇庆一眼入心 #旅游攻略  #肇庆美食 #广东旅行推荐官 @西江网<span class="why">收藏 3397 · 点赞 1.1万</span></li>
+  </ul>
+
+  <div class="note">
+    <b>① 城市 Vlog 占 30%，广东最高之一。</b>说明肇庆的「慢生活」是它的旅游特色。<br>
+    <b>② 景点 15% 不高，但七星岩是王牌。</b>广东少有的喀斯特湖山，和桂林类似但更近。<br>
+    <b>③ 美食 56% 不低。</b>肇庆的吃不少，但缺乏像汕头那样的单一爆点。<br>
+  </div>
+
+  <div class="grid g3" style="margin-top:26px;">
+    <div class="card">
+      <span class="tag">几天够</span>
+      <h4>2 天</h4>
+      <p>一天七星岩+鼎湖山，第二天端州老城或星湖。</p>
+    </div>
+    <div class="card">
+      <span class="tag">住哪儿</span>
+      <h4>端州区</h4>
+      <p>市中心，七星岩和鼎湖山都在附近。肇庆不大，住哪都不远。</p>
+    </div>
+    <div class="card">
+      <span class="tag">什么时候来</span>
+      <h4>10–12 月</h4>
+      <p>肇庆春秋短，夏天热。鼎湖山夏天避暑好。</p>
+    </div>
+  </div>
+</section>
+
+<section id="s2">
+  <h2><span class="no">02</span> 行程</h2>
+  <p class="lede">肇庆的核心是七星岩和鼎湖山，都在市区附近。端州老城是消食用的。</p>
+
+  <div class="day">
+    <div class="day-head">
+      <span class="day-no">DAY 1</span>
+      <span class="day-title">七星岩与鼎湖山</span>
+      <span class="day-meta">步行＋电瓶车 · 全天 · 门票 0–80 元</span>
+    </div>
+    <ol class="stops">
+      <li>
+        <div class="stop-h">七星岩<span class="stop-t">09:00</span></div>
+        <div class="stop-d">门票 70 元左右。喀斯特湖山，七座岩峰倒映湖中。环湖步道，看摩崖石刻。</div>
+      </li>
+      <li>
+        <div class="stop-h">鼎湖山<span class="stop-t">13:00</span></div>
+        <div class="stop-d">门票 60 元左右。联合国生物圈保护区，森林覆盖率高。飞水潭、庆云寺。</div>
+      </li>
+      <li>
+        <div class="stop-h">午餐：肇庆菜<span class="stop-t">12:00</span></div>
+        <div class="stop-d">肇庆菜是广府菜分支，烧鹅、白切鸡、裹蒸粽。</div>
+      </li>
+      <li>
+        <div class="stop-h">庆云寺<span class="stop-t">15:00</span></div>
+        <div class="stop-d">鼎湖山内。岭南名刹，看寺庙建筑和素食。</div>
+      </li>
+      <li>
+        <div class="stop-h">晚餐：端州夜宵<span class="stop-t">18:00</span></div>
+        <div class="stop-d">肇庆的夜宵摊不少，裹蒸粽、烧腊、粥品。</div>
+      </li>
+    </ol>
+  </div>
+
+  <div class="day">
+    <div class="day-head">
+      <span class="day-no">DAY 2</span>
+      <span class="day-title">端州老城 or 星湖</span>
+      <span class="day-meta">全天</span>
+    </div>
+    <ol class="stops">
+      <li>
+        <div class="stop-h">选项 A：端州老城<span class="stop-t">09:00</span></div>
+        <div class="stop-d">免费。肇庆的老城，骑楼和老街。看端砚文化。</div>
+      </li>
+      <li>
+        <div class="stop-h">选项 B：星湖<span class="stop-t">09:00</span></div>
+        <div class="stop-d">免费。市区的湖，和七星岩类似但免费。环湖散步。</div>
+      </li>
+      <li>
+        <div class="stop-h">午餐：肇庆裹蒸粽<span class="stop-t">12:00</span></div>
+        <div class="stop-d">肇庆招牌。大肉粽，料足。认老字号。</div>
+      </li>
+      <li>
+        <div class="stop-h">回程：晚餐<span class="stop-t">18:00</span></div>
+        <div class="stop-d">肇庆菜或端州夜宵。</div>
+      </li>
+    </ol>
+  </div>
+
+  <div class="tip"><b>肇庆的正确打开方式：</b>七星岩和鼎湖山是必去的，都在市区附近。肇庆的节奏很慢，适合周末徒步和发呆，不适合赶景点。</div>
+</section>
+
+<section id="s3">
+  <h2><span class="no">03</span> 吃什么</h2>
+  <p class="lede">肇庆菜是广府菜的分支，清淡鲜。裹蒸粽是招牌，烧鹅和端砚文房四宝是另外两样特产。</p>
+
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>吃什么</th><th>去哪找</th><th>怎么点</th><th>人均</th></tr></thead>
+      <tbody>
+        <tr><td><b>肇庆裹蒸粽</b><br><span class="muted"></span></td><td>老字号裹蒸粽店</td><td>大肉粽，料足；肇庆招牌</td><td>10–20</td></tr>
+        <tr><td><b>肇庆烧鹅</b><br><span class="muted"></span></td><td>烧腊店</td><td>皮脆肉嫩，配酸甜酱</td><td>40–70</td></tr>
+        <tr><td><b>白切鸡</b><br><span class="muted"></span></td><td>广府菜馆</td><td>皮黄肉嫩，配姜葱油</td><td>50–80</td></tr>
+        <tr><td><b>生滚粥</b><br><span class="muted"></span></td><td>早餐老铺</td><td>及第粥、皮蛋瘦肉粥</td><td>10–20</td></tr>
+        <tr><td><b>端砚</b><br><span class="muted"></span></td><td>端州老城砚店</td><td>文房四宝，看工艺；能带走（贵）</td><td>按价</td></tr>
+        <tr><td><b>鼎湖上素</b><br><span class="muted"></span></td><td>庆云寺素菜馆</td><td>素食，山珍做的；尝个意思</td><td>50–80</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="note"><b>肇庆裹蒸粽：</b>肇庆的招牌，和普通粽子不同——更大、料更多，有绿豆、猪肉、咸蛋黄。认老字号，真空包装能带走。</div>
+</section>
+
+<section id="s4">
+  <h2><span class="no">04</span> 实用与避坑</h2>
+  <div class="grid g2" style="margin-top:10px;">
+    <div class="card"><h4>怎么到</h4><p>高铁到肇庆东站。广州机场过来约 1.5 小时。</p></div>
+    <div class="card"><h4>七星岩</h4><p>门票 70 元左右，环湖步道约 3 小时。</p></div>
+    <div class="card"><h4>鼎湖山</h4><p>门票 60 元左右，飞水潭是亮点。夏天避暑好。</p></div>
+    <div class="card"><h4>带什么走</h4><p>裹蒸粽（真空）、端砚小件、肇庆烧鹅（真空）。</p></div>
+  </div>
+</section>
+
+<footer>
+<p><b>数据说明。</b>本页基于抖音真实采集数据：关键词「肇庆旅游」「肇庆美食」，去重后 <b>27 条视频</b>，累计点赞 <b>17.5万</b>、收藏 <b>3.9万</b>，单条最高点赞 2.8万、最高收藏 1.3万。内容构成按视频标题归类统计。</p>
+  <p>门票、交通等硬信息按公开资料核对，价格与开放时间以景区当日公示为准；餐饮只写到「品类＋去哪找」，不写死门牌——老店变动比攻略更新快。</p>
+  <p class="src">采集时间 2026-10-25 · 工具 MediaCrawler（非商业学习许可）· 本页仅供个人出行参考</p>
+</footer>
+
+</div>
+</body>
+</html>

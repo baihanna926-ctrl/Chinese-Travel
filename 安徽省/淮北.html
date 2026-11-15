@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>淮北 · 从抖音真实数据整理出的攻略</title>
+<style>
+  :root{
+    --ink:#17251c; --ink-2:#3d4f42; --moss:#1f3d2b; --bamboo:#4a7c59;
+    --mint:#dfe9e0; --rice:#f7f5ef; --paper:#fffefb; --cinnabar:#b5432f;
+    --gold:#a8823c; --line:rgba(23,37,28,.12);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0; background:var(--rice); color:var(--ink);
+    font-family:"Songti SC","Noto Serif SC","Source Han Serif SC","Noto Serif CJK SC","SimSun","STSong",Georgia,"Microsoft YaHei",serif;
+    font-size:16px; line-height:1.85; -webkit-font-smoothing:antialiased;
+  }
+  .cover{
+    position:relative; padding:96px 24px 72px;
+    background:
+      radial-gradient(1200px 500px at 15% -10%, rgba(74,124,89,.22), transparent 60%),
+      radial-gradient(900px 420px at 90% 0%, rgba(168,130,60,.16), transparent 55%),
+      linear-gradient(180deg,#12241a 0%, #1b3527 58%, #23412f 100%);
+    color:#f2efe6; overflow:hidden;
+  }
+  .cover::after{
+    content:""; position:absolute; inset:0;
+    background-image:radial-gradient(rgba(255,255,255,.06) 1px, transparent 1px);
+    background-size:3px 3px; opacity:.5; pointer-events:none;
+  }
+  .cover-inner{max-width:900px;margin:0 auto;position:relative;z-index:1;}
+  .kicker{font-size:13px;letter-spacing:.32em;text-transform:uppercase;color:rgba(242,239,230,.62);margin:0 0 22px;}
+  h1{font-size:clamp(38px,6.4vw,74px);line-height:1.12;margin:0 0 8px;font-weight:700;letter-spacing:.01em;}
+  h1 .accent{color:#cfe3c8;}
+  .sub{font-size:clamp(15px,2vw,19px);color:rgba(242,239,230,.76);max-width:44em;margin:18px 0 0;line-height:1.9;}
+  .stats{display:flex;flex-wrap:wrap;gap:36px;margin-top:44px;padding-top:26px;border-top:1px solid rgba(242,239,230,.18);}
+  .stat .n{font-size:28px;font-weight:700;color:#e7f0e3;line-height:1.2;}
+  .stat .l{font-size:12.5px;letter-spacing:.12em;color:rgba(242,239,230,.55);margin-top:4px;}
+  .wrap{max-width:900px;margin:0 auto;padding:0 24px;}
+  section{padding:64px 0 8px;}
+  section + section{border-top:1px solid var(--line);}
+  h2{font-size:clamp(24px,3.4vw,32px);margin:0 0 6px;font-weight:700;letter-spacing:.01em;display:flex;align-items:baseline;gap:14px;}
+  h2 .no{font-size:12px;letter-spacing:.2em;color:var(--cinnabar);font-family:"PingFang SC",system-ui,sans-serif;font-weight:600;}
+  .lede{color:var(--ink-2);margin:6px 0 30px;max-width:46em;}
+  h3{font-size:19px;margin:34px 0 10px;font-weight:700;}
+  p{margin:0 0 14px;}
+  .grid{display:grid;gap:16px;}
+  .g3{grid-template-columns:repeat(auto-fit,minmax(230px,1fr));}
+  .g2{grid-template-columns:repeat(auto-fit,minmax(300px,1fr));}
+  .card{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:22px 22px 18px;}
+  .card h4{margin:0 0 8px;font-size:16.5px;}
+  .card p{font-size:14.5px;color:var(--ink-2);margin:0;line-height:1.8;}
+  .card .tag{display:inline-block;font-size:11.5px;letter-spacing:.08em;color:var(--bamboo);background:var(--mint);padding:2px 9px;border-radius:999px;margin-bottom:10px;font-family:"PingFang SC",system-ui,sans-serif;}
+  .day{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:26px 26px 12px;margin-bottom:20px;}
+  .day-head{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:6px;}
+  .day-no{font-family:"PingFang SC",system-ui,sans-serif;font-size:12px;letter-spacing:.18em;color:#fff;background:var(--moss);padding:3px 10px;border-radius:6px;}
+  .day-title{font-size:20px;font-weight:700;}
+  .day-meta{font-size:13px;color:var(--ink-2);font-family:"PingFang SC",system-ui,sans-serif;}
+  ol.stops{list-style:none;margin:18px 0 0;padding:0;}
+  ol.stops li{position:relative;padding:0 0 20px 30px;border-left:1px solid var(--line);margin-left:7px;}
+  ol.stops li:last-child{border-left-color:transparent;padding-bottom:6px;}
+  ol.stops li::before{content:"";position:absolute;left:-4.5px;top:9px;width:8px;height:8px;border-radius:50%;background:var(--bamboo);box-shadow:0 0 0 3px var(--paper);}
+  .stop-h{font-weight:700;font-size:15.5px;}
+  .stop-t{font-family:"PingFang SC",system-ui,sans-serif;font-size:12px;color:var(--cinnabar);letter-spacing:.06em;margin-left:8px;}
+  .stop-d{font-size:14.5px;color:var(--ink-2);margin-top:2px;}
+  .tbl-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:14px;background:var(--paper);}
+  table{border-collapse:collapse;width:100%;min-width:620px;font-size:14.5px;}
+  th,td{text-align:left;padding:13px 16px;border-bottom:1px solid var(--line);vertical-align:top;}
+  th{font-family:"PingFang SC",system-ui,sans-serif;font-size:12px;letter-spacing:.1em;color:var(--ink-2);background:rgba(74,124,89,.07);font-weight:600;white-space:nowrap;}
+  tr:last-child td{border-bottom:none;}
+  td b{color:var(--ink);}
+  .muted{color:var(--ink-2);font-size:13.5px;}
+  .rank{counter-reset:r;list-style:none;padding:0;margin:0;}
+  .rank li{counter-increment:r;position:relative;padding:13px 0 13px 46px;border-bottom:1px dashed var(--line);font-size:15px;}
+  .rank li:last-child{border-bottom:none;}
+  .rank li::before{content:counter(r);position:absolute;left:0;top:12px;width:26px;height:26px;border-radius:50%;display:grid;place-items:center;background:var(--mint);color:var(--moss);font-family:"PingFang SC",system-ui,sans-serif;font-size:12.5px;font-weight:700;}
+  .rank .why{display:block;font-size:13.5px;color:var(--ink-2);margin-top:2px;}
+  .note{border-left:3px solid var(--cinnabar);background:linear-gradient(90deg, rgba(181,67,47,.06), transparent 70%);padding:16px 20px;border-radius:0 10px 10px 0;margin:22px 0;font-size:14.5px;}
+  .note b{color:var(--cinnabar);}
+  .tip{border-left:3px solid var(--gold);background:linear-gradient(90deg, rgba(168,130,60,.09), transparent 70%);padding:16px 20px;border-radius:0 10px 10px 0;margin:22px 0;font-size:14.5px;}
+  .tip b{color:var(--gold);}
+  .bars{margin:8px 0 0;}
+  .bar{display:grid;grid-template-columns:110px 1fr 54px;gap:12px;align-items:center;margin-bottom:11px;font-size:14px;}
+  .bar .bl{color:var(--ink-2);}
+  .bar .bt{background:rgba(74,124,89,.12);border-radius:999px;height:9px;overflow:hidden;}
+  .bar .bf{height:100%;background:linear-gradient(90deg,var(--bamboo),#7fa889);border-radius:999px;}
+  .bar .bn{text-align:right;color:var(--ink-2);font-size:13px;font-family:"PingFang SC",system-ui,sans-serif;}
+  .src{font-size:12.5px;color:var(--ink-2);font-family:"PingFang SC",system-ui,sans-serif;}
+  footer{margin-top:40px;padding:44px 0 64px;border-top:1px solid var(--line);color:var(--ink-2);font-size:13px;}
+  footer p{max-width:62em;}
+  @media (max-width:600px){
+    .cover{padding:64px 20px 52px;}
+    section{padding:48px 0 8px;}
+    .stats{gap:24px;}
+    .day{padding:20px 18px 6px;}
+    .bar{grid-template-columns:88px 1fr 46px;gap:8px;font-size:13px;}
+  }
+  @media print{
+    .cover{background:#fff;color:#000;}
+    body{background:#fff;}
+    section{page-break-inside:avoid;}
+  }
+</style>
+</head>
+<body>
+
+<header class="cover">
+  <div class="cover-inner">
+    <p class="kicker">ANHUI · HUAIBEI · 1–2 天</p>
+    <h1>淮北<span class="accent">，</span><br>皖北的煤城，和一碗烫面</h1>
+    <p class="sub">27 条视频、32.8 万点赞，美食占 74%。「淮北烫面」被提及 3 次，点赞最高那条喊它「皖北最热情的城市、被低估的宝藏小城」，3.3 万赞。数据里还有一个关键词：烈山——那是它的山水牌。</p>
+    <div class="stats">
+      <div class="stat"><div class="n">27</div><div class="l">条抖音视频</div></div>
+      <div class="stat"><div class="n">32.8万</div><div class="l">累计点赞</div></div>
+      <div class="stat"><div class="n">74%</div><div class="l">美食内容占比</div></div>
+      <div class="stat"><div class="n">7.3万</div><div class="l">单条最高点赞</div></div>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+<section id="s1">
+  <h2><span class="no">01</span> 数据说了什么</h2>
+  <p class="lede">淮北是资源型城市转型的样本。煤挖完了，留下了塌陷区改成的湖、一座相山，和一套很实在的吃法。它的旅游还没被完全开发，这既是缺点也是优点。</p>
+  <h3>内容构成</h3>
+  <div class="bars">
+    <div class="bar"><span class="bl">美食探店</span><span class="bt"><span class="bf" style="width:74%"></span></span><span class="bn">74%</span></div>
+    <div class="bar"><span class="bl">景点盘点</span><span class="bt"><span class="bf" style="width:15%"></span></span><span class="bn">15%</span></div>
+    <div class="bar"><span class="bl">城市 Vlog</span><span class="bt"><span class="bf" style="width:7%"></span></span><span class="bn">7%</span></div>
+    <div class="bar"><span class="bl">亲子乐园</span><span class="bt"><span class="bf" style="width:4%"></span></span><span class="bn">4%</span></div>
+  </div>
+
+  <h3>收藏最高的三条</h3>
+  <ul class="rank">
+    <li>安徽淮北必吃榜 #安徽 #安徽美食 #淮北 #淮北美食 #安徽dou知道 @安徽文旅 @淮北文旅体 @兴创视觉<span class="why">收藏 8272 · 点赞 1.4万</span></li>
+    <li>每周24小时美食之旅：安徽淮北 #淮北 #淮北美食 #淮北旅游攻略 #抖音美食推荐官 #柴火鸡<span class="why">收藏 5552 · 点赞 1.8万</span></li>
+    <li>淮北！皖北最热情的城市！被低估的一座宝藏小城！好吃到爆！太爱了！超长33分钟，盲盒吃遍淮北，一秒都舍不得再剪掉！#交换世<span class="why">收藏 4322 · 点赞 3.3万</span></li>
+  </ul>
+
+  <div class="note">
+    <b>① 美食 74%，烫面是符号。</b>淮北烫面和别处的面不一样，是「烫」出来的，汤宽、料足。<br>
+    <b>② 「被低估」是高频词。</b>这类标题在数据里出现多次，说明来的人普遍有「超出预期」的体验。<br>
+    <b>③ 景点只占 15%。</b>相山、隋唐大运河、临涣古镇都有，但社媒声量小——适合不想挤的人。<br>
+  </div>
+
+  <div class="grid g3" style="margin-top:26px;">
+    <div class="card">
+      <span class="tag">几天够</span>
+      <h4>1 天够，2 天舒服</h4>
+      <p>一天市区（相山＋吃），两天加临涣古镇和烈山。</p>
+    </div>
+    <div class="card">
+      <span class="tag">住哪儿</span>
+      <h4>相山区</h4>
+      <p>市中心，相山公园步行可达，吃饭方便。</p>
+    </div>
+    <div class="card">
+      <span class="tag">什么时候来</span>
+      <h4>4–5 月 / 9–10 月</h4>
+      <p>皖北春秋短但舒服。夏天热，冬天干冷。</p>
+    </div>
+  </div>
+</section>
+
+<section id="s2">
+  <h2><span class="no">02</span> 行程</h2>
+  <p class="lede">淮北的节奏很慢，别排太满。一天两个点，剩下时间留给吃和喝茶。</p>
+
+  <div class="day">
+    <div class="day-head">
+      <span class="day-no">DAY 1</span>
+      <span class="day-title">相山与老城</span>
+      <span class="day-meta">步行＋打车 · 一天 · 门票 0–30 元</span>
+    </div>
+    <ol class="stops">
+      <li>
+        <div class="stop-h">相山公园<span class="stop-t">09:00</span></div>
+        <div class="stop-d">免费。城中森林公园，显通寺在山腰，香火很旺。登顶能看淮北全景，山不高，一小时来回。</div>
+      </li>
+      <li>
+        <div class="stop-h">淮北市博物馆<span class="stop-t">11:00</span></div>
+        <div class="stop-d">免费，周一闭馆。看隋唐大运河柳孜遗址出土的瓷器——那是淮北最有分量的一段历史。</div>
+      </li>
+      <li>
+        <div class="stop-h">午餐：淮北烫面<span class="stop-t">12:30</span></div>
+        <div class="stop-d">淮北的招牌。宽面在滚汤里烫熟，浇羊肉或牛肉臊子，汤宽面滑。和板面、格拉条都不同。</div>
+      </li>
+      <li>
+        <div class="stop-h">隋唐大运河柳孜遗址<span class="stop-t">14:30</span></div>
+        <div class="stop-d">在濉溪县，免费或低价。运河故道的考古现场，能看到宋代码头遗迹。对历史感兴趣值得跑一趟。</div>
+      </li>
+      <li>
+        <div class="stop-h">晚餐：地锅鸡 / 柴火鸡<span class="stop-t">18:00</span></div>
+        <div class="stop-d">皖北通行做法，锅边贴饼。淮北的柴火鸡在数据里被提到过，值得一试。</div>
+      </li>
+    </ol>
+  </div>
+
+  <div class="day">
+    <div class="day-head">
+      <span class="day-no">DAY 2</span>
+      <span class="day-title">临涣：一座还在喝茶的古镇</span>
+      <span class="day-meta">自驾/班车 40 km · 半天</span>
+    </div>
+    <ol class="stops">
+      <li>
+        <div class="stop-h">临涣古镇<span class="stop-t">09:00</span></div>
+        <div class="stop-d">免费。明清老街不长，核心是茶馆——棒棒茶（一种粗茶梗）用大壶泡，一块钱能坐一上午。</div>
+      </li>
+      <li>
+        <div class="stop-h">临涣茶馆<span class="stop-t">10:00</span></div>
+        <div class="stop-d">十几家老茶馆，本地老人天天来。点一壶茶、一碟花生，坐半小时，比任何景点都更能理解皖北。</div>
+      </li>
+      <li>
+        <div class="stop-h">文昌宫 / 淮海战役总前委旧址<span class="stop-t">11:30</span></div>
+        <div class="stop-d">在临涣镇上，免费。1948 年淮海战役的指挥所之一。</div>
+      </li>
+      <li>
+        <div class="stop-h">回程：烈山<span class="stop-t">15:00</span></div>
+        <div class="stop-d">采煤塌陷区改成的湿地公园，免费。水面开阔，芦苇多，傍晚光线好。</div>
+      </li>
+    </ol>
+  </div>
+
+  <div class="tip"><b>临涣茶馆是淮北的隐藏王牌。</b>它不在任何「必去榜单」上，但如果你只去一个地方，去这。一块钱的茶、一下午的闲，是皖北生活最真实的切片。</div>
+</section>
+
+<section id="s3">
+  <h2><span class="no">03</span> 吃什么</h2>
+  <p class="lede">淮北的口味是皖北的底子：重油、重盐、面食为主。烫面是它的独门，别处吃不到。</p>
+
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>吃什么</th><th>去哪找</th><th>怎么点</th><th>人均</th></tr></thead>
+      <tbody>
+        <tr><td><b>淮北烫面</b><br><span class="muted"></span></td><td>市区老面馆，早上和中午</td><td>宽面滚汤烫熟，浇羊肉/牛肉臊子；汤要宽</td><td>12–18</td></tr>
+        <tr><td><b>柴火鸡 / 地锅鸡</b><br><span class="muted"></span></td><td>近郊农家乐</td><td>土灶柴火烧，锅边贴饼；人多才点</td><td>50–80</td></tr>
+        <tr><td><b>临涣棒棒茶</b><br><span class="muted"></span></td><td>临涣古镇茶馆</td><td>粗茶梗大壶泡，配花生瓜子；一块钱坐半天</td><td>1–5</td></tr>
+        <tr><td><b>油茶</b><br><span class="muted"></span></td><td>早点摊</td><td>咸口糊状，配油条或烧饼；早上喝暖胃</td><td>5–8</td></tr>
+        <tr><td><b>sa汤（撒汤）</b><br><span class="muted"></span></td><td>早餐铺</td><td>鸡蛋冲开的咸汤，皖北通用早饭</td><td>5–8</td></tr>
+        <tr><td><b>濉溪口子酒</b><br><span class="muted"></span></td><td>本地酒厂门市</td><td>口子窖是淮北的名片；不喝酒也可以看看酒文化</td><td>按瓶</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="note"><b>淮北的吃饭节奏：</b>早餐摊六点到九点，烫面中午还有，晚上主要是馆子和夜市。茶馆是全天候的，和吃饭无关。</div>
+</section>
+
+<section id="s4">
+  <h2><span class="no">04</span> 实用与避坑</h2>
+  <div class="grid g2" style="margin-top:10px;">
+    <div class="card"><h4>怎么到</h4><p>高铁到淮北站或淮北北站。市区不大，打车基本二十块以内。</p></div>
+    <div class="card"><h4>临涣怎么去</h4><p>市区到临涣约 40 公里，班车和打车都行。古镇不大，两小时够，重点在茶馆坐着。</p></div>
+    <div class="card"><h4>别期待「景区感」</h4><p>淮北的景点大多免费、朴素、没有商业包装。喜欢这种质感的人会很享受，想找「打卡点」的会失望。</p></div>
+    <div class="card"><h4>带什么走</h4><p>口子酒、临涣的粗茶。都是本地人自己会买的东西。</p></div>
+  </div>
+</section>
+
+<footer>
+<p><b>数据说明。</b>本页基于抖音真实采集数据：关键词「淮北旅游」「淮北美食」，去重后 <b>27 条视频</b>，累计点赞 <b>32.8万</b>、收藏 <b>4.8万</b>，单条最高点赞 7.3万、最高收藏 8272。内容构成按视频标题归类统计。</p>
+  <p>门票、交通等硬信息按公开资料核对，价格与开放时间以景区当日公示为准；餐饮只写到「品类＋去哪找」，不写死门牌——老店变动比攻略更新快。</p>
+  <p class="src">采集时间 2026-10-24 · 工具 MediaCrawler（非商业学习许可）· 本页仅供个人出行参考</p>
+</footer>
+
+</div>
+</body>
+</html>

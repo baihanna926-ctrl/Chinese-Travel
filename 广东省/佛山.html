@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>佛山 · 从抖音真实数据整理出的攻略</title>
+<style>
+  :root{
+    --ink:#17251c; --ink-2:#3d4f42; --moss:#1f3d2b; --bamboo:#4a7c59;
+    --mint:#dfe9e0; --rice:#f7f5ef; --paper:#fffefb; --cinnabar:#b5432f;
+    --gold:#a8823c; --line:rgba(23,37,28,.12);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0; background:var(--rice); color:var(--ink);
+    font-family:"Songti SC","Noto Serif SC","Source Han Serif SC","Noto Serif CJK SC","SimSun","STSong",Georgia,"Microsoft YaHei",serif;
+    font-size:16px; line-height:1.85; -webkit-font-smoothing:antialiased;
+  }
+  .cover{
+    position:relative; padding:96px 24px 72px;
+    background:
+      radial-gradient(1200px 500px at 15% -10%, rgba(74,124,89,.22), transparent 60%),
+      radial-gradient(900px 420px at 90% 0%, rgba(168,130,60,.16), transparent 55%),
+      linear-gradient(180deg,#12241a 0%, #1b3527 58%, #23412f 100%);
+    color:#f2efe6; overflow:hidden;
+  }
+  .cover::after{
+    content:""; position:absolute; inset:0;
+    background-image:radial-gradient(rgba(255,255,255,.06) 1px, transparent 1px);
+    background-size:3px 3px; opacity:.5; pointer-events:none;
+  }
+  .cover-inner{max-width:900px;margin:0 auto;position:relative;z-index:1;}
+  .kicker{font-size:13px;letter-spacing:.32em;text-transform:uppercase;color:rgba(242,239,230,.62);margin:0 0 22px;}
+  h1{font-size:clamp(38px,6.4vw,74px);line-height:1.12;margin:0 0 8px;font-weight:700;letter-spacing:.01em;}
+  h1 .accent{color:#cfe3c8;}
+  .sub{font-size:clamp(15px,2vw,19px);color:rgba(242,239,230,.76);max-width:44em;margin:18px 0 0;line-height:1.9;}
+  .stats{display:flex;flex-wrap:wrap;gap:36px;margin-top:44px;padding-top:26px;border-top:1px solid rgba(242,239,230,.18);}
+  .stat .n{font-size:28px;font-weight:700;color:#e7f0e3;line-height:1.2;}
+  .stat .l{font-size:12.5px;letter-spacing:.12em;color:rgba(242,239,230,.55);margin-top:4px;}
+  .wrap{max-width:900px;margin:0 auto;padding:0 24px;}
+  section{padding:64px 0 8px;}
+  section + section{border-top:1px solid var(--line);}
+  h2{font-size:clamp(24px,3.4vw,32px);margin:0 0 6px;font-weight:700;letter-spacing:.01em;display:flex;align-items:baseline;gap:14px;}
+  h2 .no{font-size:12px;letter-spacing:.2em;color:var(--cinnabar);font-family:"PingFang SC",system-ui,sans-serif;font-weight:600;}
+  .lede{color:var(--ink-2);margin:6px 0 30px;max-width:46em;}
+  h3{font-size:19px;margin:34px 0 10px;font-weight:700;}
+  p{margin:0 0 14px;}
+  .grid{display:grid;gap:16px;}
+  .g3{grid-template-columns:repeat(auto-fit,minmax(230px,1fr));}
+  .g2{grid-template-columns:repeat(auto-fit,minmax(300px,1fr));}
+  .card{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:22px 22px 18px;}
+  .card h4{margin:0 0 8px;font-size:16.5px;}
+  .card p{font-size:14.5px;color:var(--ink-2);margin:0;line-height:1.8;}
+  .card .tag{display:inline-block;font-size:11.5px;letter-spacing:.08em;color:var(--bamboo);background:var(--mint);padding:2px 9px;border-radius:999px;margin-bottom:10px;font-family:"PingFang SC",system-ui,sans-serif;}
+  .day{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:26px 26px 12px;margin-bottom:20px;}
+  .day-head{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:6px;}
+  .day-no{font-family:"PingFang SC",system-ui,sans-serif;font-size:12px;letter-spacing:.18em;color:#fff;background:var(--moss);padding:3px 10px;border-radius:6px;}
+  .day-title{font-size:20px;font-weight:700;}
+  .day-meta{font-size:13px;color:var(--ink-2);font-family:"PingFang SC",system-ui,sans-serif;}
+  ol.stops{list-style:none;margin:18px 0 0;padding:0;}
+  ol.stops li{position:relative;padding:0 0 20px 30px;border-left:1px solid var(--line);margin-left:7px;}
+  ol.stops li:last-child{border-left-color:transparent;padding-bottom:6px;}
+  ol.stops li::before{content:"";position:absolute;left:-4.5px;top:9px;width:8px;height:8px;border-radius:50%;background:var(--bamboo);box-shadow:0 0 0 3px var(--paper);}
+  .stop-h{font-weight:700;font-size:15.5px;}
+  .stop-t{font-family:"PingFang SC",system-ui,sans-serif;font-size:12px;color:var(--cinnabar);letter-spacing:.06em;margin-left:8px;}
+  .stop-d{font-size:14.5px;color:var(--ink-2);margin-top:2px;}
+  .tbl-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:14px;background:var(--paper);}
+  table{border-collapse:collapse;width:100%;min-width:620px;font-size:14.5px;}
+  th,td{text-align:left;padding:13px 16px;border-bottom:1px solid var(--line);vertical-align:top;}
+  th{font-family:"PingFang SC",system-ui,sans-serif;font-size:12px;letter-spacing:.1em;color:var(--ink-2);background:rgba(74,124,89,.07);font-weight:600;white-space:nowrap;}
+  tr:last-child td{border-bottom:none;}
+  td b{color:var(--ink);}
+  .muted{color:var(--ink-2);font-size:13.5px;}
+  .rank{counter-reset:r;list-style:none;padding:0;margin:0;}
+  .rank li{counter-increment:r;position:relative;padding:13px 0 13px 46px;border-bottom:1px dashed var(--line);font-size:15px;}
+  .rank li:last-child{border-bottom:none;}
+  .rank li::before{content:counter(r);position:absolute;left:0;top:12px;width:26px;height:26px;border-radius:50%;display:grid;place-items:center;background:var(--mint);color:var(--moss);font-family:"PingFang SC",system-ui,sans-serif;font-size:12.5px;font-weight:700;}
+  .rank .why{display:block;font-size:13.5px;color:var(--ink-2);margin-top:2px;}
+  .note{border-left:3px solid var(--cinnabar);background:linear-gradient(90deg, rgba(181,67,47,.06), transparent 70%);padding:16px 20px;border-radius:0 10px 10px 0;margin:22px 0;font-size:14.5px;}
+  .note b{color:var(--cinnabar);}
+  .tip{border-left:3px solid var(--gold);background:linear-gradient(90deg, rgba(168,130,60,.09), transparent 70%);padding:16px 20px;border-radius:0 10px 10px 0;margin:22px 0;font-size:14.5px;}
+  .tip b{color:var(--gold);}
+  .bars{margin:8px 0 0;}
+  .bar{display:grid;grid-template-columns:110px 1fr 54px;gap:12px;align-items:center;margin-bottom:11px;font-size:14px;}
+  .bar .bl{color:var(--ink-2);}
+  .bar .bt{background:rgba(74,124,89,.12);border-radius:999px;height:9px;overflow:hidden;}
+  .bar .bf{height:100%;background:linear-gradient(90deg,var(--bamboo),#7fa889);border-radius:999px;}
+  .bar .bn{text-align:right;color:var(--ink-2);font-size:13px;font-family:"PingFang SC",system-ui,sans-serif;}
+  .src{font-size:12.5px;color:var(--ink-2);font-family:"PingFang SC",system-ui,sans-serif;}
+  footer{margin-top:40px;padding:44px 0 64px;border-top:1px solid var(--line);color:var(--ink-2);font-size:13px;}
+  footer p{max-width:62em;}
+  @media (max-width:600px){
+    .cover{padding:64px 20px 52px;}
+    section{padding:48px 0 8px;}
+    .stats{gap:24px;}
+    .day{padding:20px 18px 6px;}
+    .bar{grid-template-columns:88px 1fr 46px;gap:8px;font-size:13px;}
+  }
+  @media print{
+    .cover{background:#fff;color:#000;}
+    body{background:#fff;}
+    section{page-break-inside:avoid;}
+  }
+</style>
+</head>
+<body>
+
+<header class="cover">
+  <div class="cover-inner">
+    <p class="kicker">GUANGDONG · FOSHAN · 2 天</p>
+    <h1>佛山<span class="accent">，</span><br>醒狮、武术，和一锅炖了三百年的汤</h1>
+    <p class="sub">27 条视频、190.7 万赞、78.5 万收藏。佛山的内容构成很健康：美食 70%、景点 19%。最高赞那条 113.3 万，拍的是<b>醒狮</b>——佛山的两张名片（武术和醒狮）在抖音上一直有稳定的流量。</p>
+    <div class="stats">
+      <div class="stat"><div class="n">27</div><div class="l">条抖音视频</div></div>
+      <div class="stat"><div class="n">190.7万</div><div class="l">累计点赞</div></div>
+      <div class="stat"><div class="n">70%</div><div class="l">美食内容占比</div></div>
+      <div class="stat"><div class="n">113.3万</div><div class="l">单条最高点赞</div></div>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+<section id="s1">
+  <h2><span class="no">01</span> 数据说了什么</h2>
+  <p class="lede">佛山是广东的「文化重地」。它不像广州深圳那样靠城市感吸引人，靠的是「老」：祖庙的醒狮、西樵山的武术、岭南天地的老骑楼。加上顺德这个美食黑洞，佛山是个需要慢慢逛的城市。</p>
+  <h3>内容构成</h3>
+  <div class="bars">
+    <div class="bar"><span class="bl">美食探店</span><span class="bt"><span class="bf" style="width:70%"></span></span><span class="bn">70%</span></div>
+    <div class="bar"><span class="bl">景点盘点</span><span class="bt"><span class="bf" style="width:19%"></span></span><span class="bn">19%</span></div>
+    <div class="bar"><span class="bl">城市 Vlog</span><span class="bt"><span class="bf" style="width:7%"></span></span><span class="bn">7%</span></div>
+    <div class="bar"><span class="bl">亲子乐园</span><span class="bt"><span class="bf" style="width:4%"></span></span><span class="bn">4%</span></div>
+  </div>
+
+  <h3>收藏最高的三条</h3>
+  <ul class="rank">
+    <li>极限48小时挑战逛吃顺德，两天炫了13家店填满我的广东胃，下一站香港！！#顺德攻略  #开灶吧年轻人 #顺德美食   #生活服务热点中心 #<span class="why">收藏 39.1万 · 点赞 113.3万</span></li>
+    <li>家人们 顺德2tb的胃也不够啊！3天爽吃22顿 #顺德美食 #佛山美食攻略 #抖音美食创作人<span class="why">收藏 9.8万 · 点赞 16万</span></li>
+    <li>最全佛山“4天3夜”美食攻略来啦！整整20家地道老店～#美食攻略 #人间烟火 #地方特色美食 #广东美食 #合集<span class="why">收藏 6万 · 点赞 8.9万</span></li>
+  </ul>
+
+  <div class="note">
+    <b>① 醒狮是流量密码。</b>最高赞 113.3 万那条拍的就是醒狮，广东非省会城市里少见的破百万内容。<br>
+    <b>② 顺德把美食拉满了。</b>美食占 70%，且「顺德」被反复提及——它已经是中国美食旅游的必去地标。<br>
+    <b>③ 收藏 78.5 万，是广州的 1.1 倍。</b>说明来佛山的人更爱「存下来」慢慢看，城市气质偏安静。<br>
+  </div>
+
+  <div class="grid g3" style="margin-top:26px;">
+    <div class="card">
+      <span class="tag">几天够</span>
+      <h4>2 天，顺德单独加一天</h4>
+      <p>市区（祖庙—岭南天地）一天，顺德一天。想深度走西樵山再+1 天。</p>
+    </div>
+    <div class="card">
+      <span class="tag">住哪儿</span>
+      <h4>禅城区 / 顺德大良</h4>
+      <p>禅城区靠祖庙，交通方便；顺德大良是美食中心，住这吃遍顺德。</p>
+    </div>
+    <div class="card">
+      <span class="tag">什么时候来</span>
+      <h4>10–12 月</h4>
+      <p>春秋最舒服。夏天闷热，但顺德的夜市夏天最旺。</p>
+    </div>
+  </div>
+</section>
+
+<section id="s2">
+  <h2><span class="no">02</span> 行程</h2>
+  <p class="lede">佛山分两块：市区看老城和文化，顺德吃和逛。两块之间地铁 20 分钟，但节奏完全不同。</p>
+
+  <div class="day">
+    <div class="day-head">
+      <span class="day-no">DAY 1</span>
+      <span class="day-title">老城：醒狮与骑楼</span>
+      <span class="day-meta">步行＋地铁 · 全天 · 门票 0–20 元</span>
+    </div>
+    <ol class="stops">
+      <li>
+        <div class="stop-h">祖庙<span class="stop-t">09:00</span></div>
+        <div class="stop-d">门票 20 元。岭南文化的核心，醒狮表演每天有场次（看时间表）。叶问堂、孔庙都在这。</div>
+      </li>
+      <li>
+        <div class="stop-h">岭南天地<span class="stop-t">11:00</span></div>
+        <div class="stop-d">免费。祖庙旁边的骑楼街区，改造得很精致，适合拍照。中午在这吃。</div>
+      </li>
+      <li>
+        <div class="stop-h">南风古灶<span class="stop-t">14:00</span></div>
+        <div class="stop-d">免费。500 年窑火未断的古窑，石湾陶瓷的发源地。看陶器制作，安静。</div>
+      </li>
+      <li>
+        <div class="stop-h">通济桥 / 季华园<span class="stop-t">16:00</span></div>
+        <div class="stop-d">免费。通济桥是佛山的地标古桥，季华园是城市公园，散步消食。</div>
+      </li>
+      <li>
+        <div class="stop-h">晚餐：禅城老馆子<span class="stop-t">18:00</span></div>
+        <div class="stop-d">扎蹄、柱侯鸡、盲公饼。禅城的老字号比顺德少，但够吃。</div>
+      </li>
+    </ol>
+  </div>
+
+  <div class="day">
+    <div class="day-head">
+      <span class="day-no">DAY 2</span>
+      <span class="day-title">顺德：从早吃到晚</span>
+      <span class="day-meta">全天 · 门票 0 元（主要是吃）</span>
+    </div>
+    <ol class="stops">
+      <li>
+        <div class="stop-h">早餐：顺德早茶<span class="stop-t">07:30</span></div>
+        <div class="stop-d">顺德早茶是天花板。虾饺、烧卖、肠粉、伦教糕。认老字号，本地人七点就在排队了。</div>
+      </li>
+      <li>
+        <div class="stop-h">清晖园<span class="stop-t">10:00</span></div>
+        <div class="stop-d">门票 15 元。广东四大名园之一，比苏州园林更紧凑，草木和水系都精致。</div>
+      </li>
+      <li>
+        <div class="stop-h">午餐：双皮奶/姜撞奶<span class="stop-t">12:00</span></div>
+        <div class="stop-d">顺德甜品。双皮奶、姜撞奶、水牛奶。找本地人排队的小店。</div>
+      </li>
+      <li>
+        <div class="stop-h">顺德渔人码头 / 欢乐海岸<span class="stop-t">15:00</span></div>
+        <div class="stop-d">免费。渔人码头是江边文创区，欢乐海岸是商圈。傍晚看日落。</div>
+      </li>
+      <li>
+        <div class="stop-h">晚餐：顺德菜<span class="stop-t">18:00</span></div>
+        <div class="stop-d">桑拿鸡、毋米粥、烧鹅。顺德的正餐在晚上，别吃饱了早茶就来。</div>
+      </li>
+    </ol>
+  </div>
+
+  <div class="tip"><b>顺德的正确打开方式：</b>别在顺德赶景点，赶着吃。早茶、甜品、桑拿鸡、毋米粥，分四顿吃，中间穿插清晖园和渔人码头消食。顺德的精华在「吃」不在「逛」。</div>
+</section>
+
+<section id="s3">
+  <h2><span class="no">03</span> 吃什么</h2>
+  <p class="lede">顺德是粤菜的灵魂。它的特点是「鲜」——食材新鲜、火候精准、调味极简。来顺德不是吃「特色」，是吃「标准」。</p>
+
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>吃什么</th><th>去哪找</th><th>怎么点</th><th>人均</th></tr></thead>
+      <tbody>
+        <tr><td><b>早茶（顺德版）</b><br><span class="muted"></span></td><td>大良老字号，七点开</td><td>虾饺、烧卖、肠粉、伦教糕；比广州更地道</td><td>50–80</td></tr>
+        <tr><td><b>双皮奶 / 姜撞奶</b><br><span class="muted"></span></td><td>大良甜品店</td><td>水牛奶做的双皮奶，姜撞奶要现做；必吃</td><td>10–20</td></tr>
+        <tr><td><b>桑拿鸡</b><br><span class="muted"></span></td><td>顺德菜馆，大良</td><td>蒸笼蒸的走地鸡，皮滑肉嫩；桑拿鱼同源</td><td>80–120</td></tr>
+        <tr><td><b>毋米粥</b><br><span class="muted"></span></td><td>顺德火锅店</td><td>用米汤做火锅底，涮鱼片、牛肉；喝粥是结尾</td><td>80–120</td></tr>
+        <tr><td><b>烧鹅 / 烧排骨</b><br><span class="muted"></span></td><td>大良烧腊店</td><td>皮脆肉嫩，配酸甜酱；半只或一份</td><td>50–80</td></tr>
+        <tr><td><b>陈村粉</b><br><span class="muted"></span></td><td>陈村老铺</td><td>薄而韧的米粉，蒸或炒；顺德特产</td><td>10–15</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="note"><b>顺德的节奏：</b>早茶要早（七点），午餐别太饱（留着吃甜品），晚餐是重头（桑拿鸡+毋米粥）。一天吃四顿是顺德的正常操作，但别贪多，会撑。</div>
+</section>
+
+<section id="s4">
+  <h2><span class="no">04</span> 实用与避坑</h2>
+  <div class="grid g2" style="margin-top:10px;">
+    <div class="card"><h4>怎么到</h4><p>高铁到佛山西站或广州南站（地铁 20 分钟到佛山）。广州机场过来约 1 小时。</p></div>
+    <div class="card"><h4>醒狮表演</h4><p>祖庙每天有醒狮表演，时间表在景区门口。想看好的位置提前半小时到。</p></div>
+    <div class="card"><h4>顺德交通</h4><p>大良是顺德中心，公交和打车都方便。从禅城到大良地铁 20 分钟。</p></div>
+    <div class="card"><h4>带什么走</h4><p>双皮奶（真空）、陈村粉、石湾陶器小件、扎蹄。</p></div>
+  </div>
+</section>
+
+<footer>
+<p><b>数据说明。</b>本页基于抖音真实采集数据：关键词「佛山旅游」「佛山美食」，去重后 <b>27 条视频</b>，累计点赞 <b>190.7万</b>、收藏 <b>78.5万</b>，单条最高点赞 113.3万、最高收藏 39.1万。内容构成按视频标题归类统计。</p>
+  <p>门票、交通等硬信息按公开资料核对，价格与开放时间以景区当日公示为准；餐饮只写到「品类＋去哪找」，不写死门牌——老店变动比攻略更新快。</p>
+  <p class="src">采集时间 2026-10-25 · 工具 MediaCrawler（非商业学习许可）· 本页仅供个人出行参考</p>
+</footer>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>杭州 · 从抖音真实数据整理出的攻略</title>
+<style>
+  :root{
+    --ink:#17251c; --ink-2:#3d4f42; --moss:#1f3d2b; --bamboo:#4a7c59;
+    --mint:#dfe9e0; --rice:#f7f5ef; --paper:#fffefb; --cinnabar:#b5432f;
+    --gold:#a8823c; --line:rgba(23,37,28,.12);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0; background:var(--rice); color:var(--ink);
+    font-family:"Songti SC","Noto Serif SC","Source Han Serif SC","Noto Serif CJK SC","SimSun","STSong",Georgia,"Microsoft YaHei",serif;
+    font-size:16px; line-height:1.85; -webkit-font-smoothing:antialiased;
+  }
+  .cover{
+    position:relative; padding:96px 24px 72px;
+    background:
+      radial-gradient(1200px 500px at 15% -10%, rgba(74,124,89,.22), transparent 60%),
+      radial-gradient(900px 420px at 90% 0%, rgba(168,130,60,.16), transparent 55%),
+      linear-gradient(180deg,#12241a 0%, #1b3527 58%, #23412f 100%);
+    color:#f2efe6; overflow:hidden;
+  }
+  .cover::after{
+    content:""; position:absolute; inset:0;
+    background-image:radial-gradient(rgba(255,255,255,.06) 1px, transparent 1px);
+    background-size:3px 3px; opacity:.5; pointer-events:none;
+  }
+  .cover-inner{max-width:900px;margin:0 auto;position:relative;z-index:1;}
+  .kicker{font-size:13px;letter-spacing:.32em;text-transform:uppercase;color:rgba(242,239,230,.62);margin:0 0 22px;}
+  h1{font-size:clamp(38px,6.4vw,74px);line-height:1.12;margin:0 0 8px;font-weight:700;letter-spacing:.01em;}
+  h1 .accent{color:#cfe3c8;}
+  .sub{font-size:clamp(15px,2vw,19px);color:rgba(242,239,230,.76);max-width:44em;margin:18px 0 0;line-height:1.9;}
+  .stats{display:flex;flex-wrap:wrap;gap:36px;margin-top:44px;padding-top:26px;border-top:1px solid rgba(242,239,230,.18);}
+  .stat .n{font-size:28px;font-weight:700;color:#e7f0e3;line-height:1.2;}
+  .stat .l{font-size:12.5px;letter-spacing:.12em;color:rgba(242,239,230,.55);margin-top:4px;}
+  .wrap{max-width:900px;margin:0 auto;padding:0 24px;}
+  section{padding:64px 0 8px;}
+  section + section{border-top:1px solid var(--line);}
+  h2{font-size:clamp(24px,3.4vw,32px);margin:0 0 6px;font-weight:700;letter-spacing:.01em;display:flex;align-items:baseline;gap:14px;}
+  h2 .no{font-size:12px;letter-spacing:.2em;color:var(--cinnabar);font-family:"PingFang SC",system-ui,sans-serif;font-weight:600;}
+  .lede{color:var(--ink-2);margin:6px 0 30px;max-width:46em;}
+  h3{font-size:19px;margin:34px 0 10px;font-weight:700;}
+  p{margin:0 0 14px;}
+  .grid{display:grid;gap:16px;}
+  .g3{grid-template-columns:repeat(auto-fit,minmax(230px,1fr));}
+  .g2{grid-template-columns:repeat(auto-fit,minmax(300px,1fr));}
+  .card{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:22px 22px 18px;}
+  .card h4{margin:0 0 8px;font-size:16.5px;}
+  .card p{font-size:14.5px;color:var(--ink-2);margin:0;line-height:1.8;}
+  .card .tag{display:inline-block;font-size:11.5px;letter-spacing:.08em;color:var(--bamboo);background:var(--mint);padding:2px 9px;border-radius:999px;margin-bottom:10px;font-family:"PingFang SC",system-ui,sans-serif;}
+  .day{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:26px 26px 12px;margin-bottom:20px;}
+  .day-head{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:6px;}
+  .day-no{font-family:"PingFang SC",system-ui,sans-serif;font-size:12px;letter-spacing:.18em;color:#fff;background:var(--moss);padding:3px 10px;border-radius:6px;}
+  .day-title{font-size:20px;font-weight:700;}
+  .day-meta{font-size:13px;color:var(--ink-2);font-family:"PingFang SC",system-ui,sans-serif;}
+  ol.stops{list-style:none;margin:18px 0 0;padding:0;}
+  ol.stops li{position:relative;padding:0 0 20px 30px;border-left:1px solid var(--line);margin-left:7px;}
+  ol.stops li:last-child{border-left-color:transparent;padding-bottom:6px;}
+  ol.stops li::before{content:"";position:absolute;left:-4.5px;top:9px;width:8px;height:8px;border-radius:50%;background:var(--bamboo);box-shadow:0 0 0 3px var(--paper);}
+  .stop-h{font-weight:700;font-size:15.5px;}
+  .stop-t{font-family:"PingFang SC",system-ui,sans-serif;font-size:12px;color:var(--cinnabar);letter-spacing:.06em;margin-left:8px;}
+  .stop-d{font-size:14.5px;color:var(--ink-2);margin-top:2px;}
+  .tbl-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:14px;background:var(--paper);}
+  table{border-collapse:collapse;width:100%;min-width:620px;font-size:14.5px;}
+  th,td{text-align:left;padding:13px 16px;border-bottom:1px solid var(--line);vertical-align:top;}
+  th{font-family:"PingFang SC",system-ui,sans-serif;font-size:12px;letter-spacing:.1em;color:var(--ink-2);background:rgba(74,124,89,.07);font-weight:600;white-space:nowrap;}
+  tr:last-child td{border-bottom:none;}
+  td b{color:var(--ink);}
+  .muted{color:var(--ink-2);font-size:13.5px;}
+  .rank{counter-reset:r;list-style:none;padding:0;margin:0;}
+  .rank li{counter-increment:r;position:relative;padding:13px 0 13px 46px;border-bottom:1px dashed var(--line);font-size:15px;}
+  .rank li:last-child{border-bottom:none;}
+  .rank li::before{content:counter(r);position:absolute;left:0;top:12px;width:26px;height:26px;border-radius:50%;display:grid;place-items:center;background:var(--mint);color:var(--moss);font-family:"PingFang SC",system-ui,sans-serif;font-size:12.5px;font-weight:700;}
+  .rank .why{display:block;font-size:13.5px;color:var(--ink-2);margin-top:2px;}
+  .note{border-left:3px solid var(--cinnabar);background:linear-gradient(90deg, rgba(181,67,47,.06), transparent 70%);padding:16px 20px;border-radius:0 10px 10px 0;margin:22px 0;font-size:14.5px;}
+  .note b{color:var(--cinnabar);}
+  .tip{border-left:3px solid var(--gold);background:linear-gradient(90deg, rgba(168,130,60,.09), transparent 70%);padding:16px 20px;border-radius:0 10px 10px 0;margin:22px 0;font-size:14.5px;}
+  .tip b{color:var(--gold);}
+  .bars{margin:8px 0 0;}
+  .bar{display:grid;grid-template-columns:110px 1fr 54px;gap:12px;align-items:center;margin-bottom:11px;font-size:14px;}
+  .bar .bl{color:var(--ink-2);}
+  .bar .bt{background:rgba(74,124,89,.12);border-radius:999px;height:9px;overflow:hidden;}
+  .bar .bf{height:100%;background:linear-gradient(90deg,var(--bamboo),#7fa889);border-radius:999px;}
+  .bar .bn{text-align:right;color:var(--ink-2);font-size:13px;font-family:"PingFang SC",system-ui,sans-serif;}
+  .src{font-size:12.5px;color:var(--ink-2);font-family:"PingFang SC",system-ui,sans-serif;}
+  footer{margin-top:40px;padding:44px 0 64px;border-top:1px solid var(--line);color:var(--ink-2);font-size:13px;}
+  footer p{max-width:62em;}
+  @media (max-width:600px){
+    .cover{padding:64px 20px 52px;}
+    section{padding:48px 0 8px;}
+    .stats{gap:24px;}
+    .day{padding:20px 18px 6px;}
+    .bar{grid-template-columns:88px 1fr 46px;gap:8px;font-size:13px;}
+  }
+  @media print{
+    .cover{background:#fff;color:#000;}
+    body{background:#fff;}
+    section{page-break-inside:avoid;}
+  }
+</style>
+</head>
+<body>
+
+<header class="cover">
+  <div class="cover-inner">
+    <p class="kicker">ZHEJIANG · HANGZHOU · 3 天</p>
+    <h1>杭州<span class="accent">，</span><br>慢一点才对</h1>
+    <p class="sub">28 条视频、202.8 万点赞、49.3 万收藏。收藏最高的两条都是<b>路线规划类</b>：11 万收藏的「两日游避开人流不走回头路」、10.7 万收藏的「西湖圈内和西湖圈外」。杭州的痛点从来不是没得玩，是<b>怎么走</b>。</p>
+    <div class="stats">
+      <div class="stat"><div class="n">28</div><div class="l">条抖音视频</div></div>
+      <div class="stat"><div class="n">202.8万</div><div class="l">累计点赞</div></div>
+      <div class="stat"><div class="n">71%</div><div class="l">美食内容占比</div></div>
+      <div class="stat"><div class="n">130.7万</div><div class="l">单条最高点赞</div></div>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+<section id="s1">
+  <h2><span class="no">01</span> 数据说了什么</h2>
+  <p class="lede">杭州的坑不在景点，在节奏。西湖一圈 15 公里，硬走必废；灵隐和法喜寺挨着，但很少有人告诉你中间有 10 元接驳车。数据里最受欢迎的内容，全是「怎么排路线」。</p>
+  <h3>内容构成</h3>
+  <div class="bars">
+    <div class="bar"><span class="bl">美食探店</span><span class="bt"><span class="bf" style="width:71%"></span></span><span class="bn">71%</span></div>
+    <div class="bar"><span class="bl">景点盘点</span><span class="bt"><span class="bf" style="width:25%"></span></span><span class="bn">25%</span></div>
+    <div class="bar"><span class="bl">城市 Vlog</span><span class="bt"><span class="bf" style="width:4%"></span></span><span class="bn">4%</span></div>
+  </div>
+
+  <h3>收藏最高的三条</h3>
+  <ul class="rank">
+    <li>📍杭州两日游攻略|避开人流不走回头路！ day1 📍第一站：断桥残雪+苏堤 📍第二站：平湖秋月+孤山路+西泠印社 +西湖最美转角 📍第三站：<span class="why">收藏 11.1万 · 点赞 15.2万</span></li>
+    <li>来杭州怎么玩，一句话就能概括！无非就是西湖圈内和西湖圈外。 又是一期兔老师耗时三天三夜总结的杭州景点课件，第一次来杭州的同学们抓紧看！#杭州<span class="why">收藏 10.7万 · 点赞 15.9万</span></li>
+    <li>📍杭州一日游攻略|杭州就是一个巨大的绿色能量场！ 🚗交通：动车到达杭州东站 📍第一站：法喜寺 地铁黄龙洞b口出站后搭乘103路公交直达 📍第<span class="why">收藏 6万 · 点赞 8.7万</span></li>
+  </ul>
+
+  <div class="note">
+    <b>① 收藏前二都是路线攻略。</b>11 万和 10.7 万，说明来杭州的人最缺的不是清单，是顺序。<br>
+    <b>② 西湖被单独提 5 次、灵隐寺 2 次。</b>这两个是绝对核心，其余景点声量断崖式下跌。<br>
+    <b>③ 美食 71%，但「美食荒漠」的说法也在流传。</b>真相是：别在景区正门吃，往旁边走两条巷子就行。<br>
+  </div>
+
+  <div class="grid g3" style="margin-top:26px;">
+    <div class="card">
+      <span class="tag">几天够</span>
+      <h4>3 天 2 晚</h4>
+      <p>1 天只够西湖，2 天能加灵隐，3 天才轮得到运河和老城。</p>
+    </div>
+    <div class="card">
+      <span class="tag">住哪儿</span>
+      <h4>湖滨 / 龙翔桥</h4>
+      <p>步行到西湖核心，地铁 1、2 号线交汇。次选河坊街或武林广场。</p>
+    </div>
+    <div class="card">
+      <span class="tag">什么时候来</span>
+      <h4>10 月底–12 月初</h4>
+      <p>杭州「战国以后就没有春秋了」，秋天短但极美。3 月多阴雨。</p>
+    </div>
+  </div>
+</section>
+
+<section id="s2">
+  <h2><span class="no">02</span> 行程</h2>
+  <p class="lede">杭州的路线要按「圈」来排：西湖圈内一天，西湖圈外（灵隐）一天，运河老城一天。</p>
+
+  <div class="day">
+    <div class="day-head">
+      <span class="day-no">DAY 1</span>
+      <span class="day-title">西湖：从北山骑到南山</span>
+      <span class="day-meta">骑行 8–10 km · 全天 · 门票 0–55 元</span>
+    </div>
+    <ol class="stops">
+      <li>
+        <div class="stop-h">断桥残雪 → 白堤 → 孤山<span class="stop-t">09:00</span></div>
+        <div class="stop-d">从断桥起步往西走，白堤一路湖面开阔。孤山上有西泠印社，人少树密，适合躲太阳。</div>
+      </li>
+      <li>
+        <div class="stop-h">曲院风荷<span class="stop-t">11:00</span></div>
+        <div class="stop-d">「梦核金鱼」的机位在莲遇花园餐厅附近，水杉倒影那一带。夏天荷花，秋天残荷。</div>
+      </li>
+      <li>
+        <div class="stop-h">三潭印月（坐船）<span class="stop-t">13:00</span></div>
+        <div class="stop-d">花港码头坐船，岛上转一圈 40 分钟。大船 55 元/人；想清静就包小船 150 元/小时。</div>
+      </li>
+      <li>
+        <div class="stop-h">花港观鱼 → 柳浪闻莺<span class="stop-t">15:00</span></div>
+        <div class="stop-d">柳浪闻莺的经典桥洞机位在新横河桥，周末要排队。仰拍拱桥＋柳枝，是出现频率最高的一张西湖。</div>
+      </li>
+      <li>
+        <div class="stop-h">雷峰塔看日落 → 河坊街<span class="stop-t">17:30</span></div>
+        <div class="stop-d">雷峰塔登顶能俯瞰全湖，但日落在湖边看更舒服。晚上走到河坊街吃饭。</div>
+      </li>
+    </ol>
+  </div>
+
+  <div class="day">
+    <div class="day-head">
+      <span class="day-no">DAY 2</span>
+      <span class="day-title">灵隐与禅意半日</span>
+      <span class="day-meta">公交＋步行 · 半天 · 门票 105 元</span>
+    </div>
+    <ol class="stops">
+      <li>
+        <div class="stop-h">法喜寺<span class="stop-t">08:00</span></div>
+        <div class="stop-d">先到法喜寺再去灵隐，能错开人流。地铁 3 号线黄龙洞 B 口出站，换 103 路直达。</div>
+      </li>
+      <li>
+        <div class="stop-h">灵隐寺 / 飞来峰<span class="stop-t">10:00</span></div>
+        <div class="stop-d">法喜寺到灵隐有 10 元接驳观光车，别硬走。飞来峰石刻在进寺之前，门票分开买：飞来峰 45＋香花券 30。</div>
+      </li>
+      <li>
+        <div class="stop-h">杭州植物园<span class="stop-t">13:00</span></div>
+        <div class="stop-d">步行 13 分钟，或 103 路直达。园子里比外面低两三度，夏天是救命的地方。</div>
+      </li>
+      <li>
+        <div class="stop-h">「杭州最美转角」→ 骑行回城<span class="stop-t">15:30</span></div>
+        <div class="stop-d">植物园南门出来骑 5 分钟就到。之后一路下坡骑回西湖边。</div>
+      </li>
+    </ol>
+  </div>
+
+  <div class="day">
+    <div class="day-head">
+      <span class="day-no">DAY 3</span>
+      <span class="day-title">运河与老城</span>
+      <span class="day-meta">步行 6 km · 全天 · 门票 0–20 元</span>
+    </div>
+    <ol class="stops">
+      <li>
+        <div class="stop-h">富义仓<span class="stop-t">09:30</span></div>
+        <div class="stop-d">140 多年的「天下粮仓」，免费。古建筑改的园区，人很少。</div>
+      </li>
+      <li>
+        <div class="stop-h">香积寺<span class="stop-t">10:30</span></div>
+        <div class="stop-d">门票 20 元。市中心的寺庙，素斋很有名，中午就在这吃。</div>
+      </li>
+      <li>
+        <div class="stop-h">大兜路 → 小河直街<span class="stop-t">13:00</span></div>
+        <div class="stop-d">大兜路在香积寺旁边；小河直街是粉墙黛瓦的江南水乡实景，整条线最出片。</div>
+      </li>
+      <li>
+        <div class="stop-h">拱宸桥 → 武林夜市<span class="stop-t">15:30</span></div>
+        <div class="stop-d">拱宸桥是京杭大运河地标，桥上看货船过闸。回程可以坐水上巴士，比打车值。</div>
+      </li>
+    </ol>
+  </div>
+
+  <div class="tip"><b>灵隐寺实操清单：</b>① 提前 2 天公众号预约，带身份证，预约码和证件缺一不可；② 飞来峰 45＋香花券 30 分开买；③ 别打车，周末堵到怀疑人生；④ 进门右手边免费领三炷香，外面买的带不进去；⑤ 十八籽 46 元，必须在寺内请。</div>
+</section>
+
+<section id="s3">
+  <h2><span class="no">03</span> 吃什么</h2>
+  <p class="lede">杭帮菜是「清淡鲜嫩」，但景区里的餐厅多半是游客价。往巷子里走两条，人均 60 就能吃到开了二三十年的老馆子。</p>
+
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>吃什么</th><th>去哪找</th><th>怎么点</th><th>人均</th></tr></thead>
+      <tbody>
+        <tr><td><b>片儿川</b><br><span class="muted"></span></td><td>老面馆，早上最正</td><td>雪菜、笋片、瘦肉的面；杭州人的日常</td><td>15–25</td></tr>
+        <tr><td><b>东坡肉 / 叫花鸡</b><br><span class="muted"></span></td><td>老字号杭帮菜馆</td><td>浓油赤酱；叫花鸡要现拆荷叶的才香</td><td>60–100</td></tr>
+        <tr><td><b>龙井虾仁</b><br><span class="muted"></span></td><td>杭帮菜馆</td><td>吃的是仪式感，茶香要清；虾仁不 Q 的是冻货</td><td>60–90</td></tr>
+        <tr><td><b>葱包桧</b><br><span class="muted"></span></td><td>街头小吃摊</td><td>压得薄脆，甜面酱＋辣酱各半</td><td>5–8</td></tr>
+        <tr><td><b>定胜糕</b><br><span class="muted"></span></td><td>河坊街一带</td><td>米粉蒸的，趁热吃；挑排队的那家</td><td>5–10</td></tr>
+        <tr><td><b>西湖醋鱼</b><br><span class="muted"></span></td><td>杭帮菜馆</td><td>争议最大的一道，怕酸的人一口就够</td><td>60–90</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="note"><b>买茶避坑：</b>龙井去解放路茶叶市场买。景区流动摊贩售假茶是被提到最多的坑，尤其「现炒龙井」的表演摊。</div>
+</section>
+
+<section id="s4">
+  <h2><span class="no">04</span> 实用与避坑</h2>
+  <div class="grid g2" style="margin-top:10px;">
+    <div class="card"><h4>怎么到</h4><p>高铁到杭州东站（地铁 1/4/6 号线）；机场坐 19 号线转市区。</p></div>
+    <div class="card"><h4>别打车</h4><p>西湖周边堵得比走路慢。跨区用地铁，环湖用共享单车。</p></div>
+    <div class="card"><h4>人流</h4><p>节假日的 In77 和龙翔桥站会限流。备选从凤起路站走过去，多走 8 分钟，少排 20 分钟。</p></div>
+    <div class="card"><h4>雨天</h4><p>西湖「晴不如雨」，雨天湖面反而最好看。下大了就转室内：浙博孤山馆、杭州博物馆、湿地博物馆。</p></div>
+  </div>
+</section>
+
+<footer>
+<p><b>数据说明。</b>本页基于抖音真实采集数据：关键词「杭州旅游」「杭州美食」，去重后 <b>28 条视频</b>，累计点赞 <b>202.8万</b>、收藏 <b>49.3万</b>，单条最高点赞 130.7万、最高收藏 11.1万。内容构成按视频标题归类统计。</p>
+  <p>门票、交通等硬信息按公开资料核对，价格与开放时间以景区当日公示为准；餐饮只写到「品类＋去哪找」，不写死门牌——老店变动比攻略更新快。</p>
+  <p class="src">采集时间 2026-10-25 · 工具 MediaCrawler（非商业学习许可）· 本页仅供个人出行参考</p>
+</footer>
+
+</div>
+</body>
+</html>

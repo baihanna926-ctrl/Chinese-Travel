@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>淮南 · 从抖音真实数据整理出的攻略</title>
+<style>
+  :root{
+    --ink:#17251c; --ink-2:#3d4f42; --moss:#1f3d2b; --bamboo:#4a7c59;
+    --mint:#dfe9e0; --rice:#f7f5ef; --paper:#fffefb; --cinnabar:#b5432f;
+    --gold:#a8823c; --line:rgba(23,37,28,.12);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0; background:var(--rice); color:var(--ink);
+    font-family:"Songti SC","Noto Serif SC","Source Han Serif SC","Noto Serif CJK SC","SimSun","STSong",Georgia,"Microsoft YaHei",serif;
+    font-size:16px; line-height:1.85; -webkit-font-smoothing:antialiased;
+  }
+  .cover{
+    position:relative; padding:96px 24px 72px;
+    background:
+      radial-gradient(1200px 500px at 15% -10%, rgba(74,124,89,.22), transparent 60%),
+      radial-gradient(900px 420px at 90% 0%, rgba(168,130,60,.16), transparent 55%),
+      linear-gradient(180deg,#12241a 0%, #1b3527 58%, #23412f 100%);
+    color:#f2efe6; overflow:hidden;
+  }
+  .cover::after{
+    content:""; position:absolute; inset:0;
+    background-image:radial-gradient(rgba(255,255,255,.06) 1px, transparent 1px);
+    background-size:3px 3px; opacity:.5; pointer-events:none;
+  }
+  .cover-inner{max-width:900px;margin:0 auto;position:relative;z-index:1;}
+  .kicker{font-size:13px;letter-spacing:.32em;text-transform:uppercase;color:rgba(242,239,230,.62);margin:0 0 22px;}
+  h1{font-size:clamp(38px,6.4vw,74px);line-height:1.12;margin:0 0 8px;font-weight:700;letter-spacing:.01em;}
+  h1 .accent{color:#cfe3c8;}
+  .sub{font-size:clamp(15px,2vw,19px);color:rgba(242,239,230,.76);max-width:44em;margin:18px 0 0;line-height:1.9;}
+  .stats{display:flex;flex-wrap:wrap;gap:36px;margin-top:44px;padding-top:26px;border-top:1px solid rgba(242,239,230,.18);}
+  .stat .n{font-size:28px;font-weight:700;color:#e7f0e3;line-height:1.2;}
+  .stat .l{font-size:12.5px;letter-spacing:.12em;color:rgba(242,239,230,.55);margin-top:4px;}
+  .wrap{max-width:900px;margin:0 auto;padding:0 24px;}
+  section{padding:64px 0 8px;}
+  section + section{border-top:1px solid var(--line);}
+  h2{font-size:clamp(24px,3.4vw,32px);margin:0 0 6px;font-weight:700;letter-spacing:.01em;display:flex;align-items:baseline;gap:14px;}
+  h2 .no{font-size:12px;letter-spacing:.2em;color:var(--cinnabar);font-family:"PingFang SC",system-ui,sans-serif;font-weight:600;}
+  .lede{color:var(--ink-2);margin:6px 0 30px;max-width:46em;}
+  h3{font-size:19px;margin:34px 0 10px;font-weight:700;}
+  p{margin:0 0 14px;}
+  .grid{display:grid;gap:16px;}
+  .g3{grid-template-columns:repeat(auto-fit,minmax(230px,1fr));}
+  .g2{grid-template-columns:repeat(auto-fit,minmax(300px,1fr));}
+  .card{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:22px 22px 18px;}
+  .card h4{margin:0 0 8px;font-size:16.5px;}
+  .card p{font-size:14.5px;color:var(--ink-2);margin:0;line-height:1.8;}
+  .card .tag{display:inline-block;font-size:11.5px;letter-spacing:.08em;color:var(--bamboo);background:var(--mint);padding:2px 9px;border-radius:999px;margin-bottom:10px;font-family:"PingFang SC",system-ui,sans-serif;}
+  .day{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:26px 26px 12px;margin-bottom:20px;}
+  .day-head{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:6px;}
+  .day-no{font-family:"PingFang SC",system-ui,sans-serif;font-size:12px;letter-spacing:.18em;color:#fff;background:var(--moss);padding:3px 10px;border-radius:6px;}
+  .day-title{font-size:20px;font-weight:700;}
+  .day-meta{font-size:13px;color:var(--ink-2);font-family:"PingFang SC",system-ui,sans-serif;}
+  ol.stops{list-style:none;margin:18px 0 0;padding:0;}
+  ol.stops li{position:relative;padding:0 0 20px 30px;border-left:1px solid var(--line);margin-left:7px;}
+  ol.stops li:last-child{border-left-color:transparent;padding-bottom:6px;}
+  ol.stops li::before{content:"";position:absolute;left:-4.5px;top:9px;width:8px;height:8px;border-radius:50%;background:var(--bamboo);box-shadow:0 0 0 3px var(--paper);}
+  .stop-h{font-weight:700;font-size:15.5px;}
+  .stop-t{font-family:"PingFang SC",system-ui,sans-serif;font-size:12px;color:var(--cinnabar);letter-spacing:.06em;margin-left:8px;}
+  .stop-d{font-size:14.5px;color:var(--ink-2);margin-top:2px;}
+  .tbl-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:14px;background:var(--paper);}
+  table{border-collapse:collapse;width:100%;min-width:620px;font-size:14.5px;}
+  th,td{text-align:left;padding:13px 16px;border-bottom:1px solid var(--line);vertical-align:top;}
+  th{font-family:"PingFang SC",system-ui,sans-serif;font-size:12px;letter-spacing:.1em;color:var(--ink-2);background:rgba(74,124,89,.07);font-weight:600;white-space:nowrap;}
+  tr:last-child td{border-bottom:none;}
+  td b{color:var(--ink);}
+  .muted{color:var(--ink-2);font-size:13.5px;}
+  .rank{counter-reset:r;list-style:none;padding:0;margin:0;}
+  .rank li{counter-increment:r;position:relative;padding:13px 0 13px 46px;border-bottom:1px dashed var(--line);font-size:15px;}
+  .rank li:last-child{border-bottom:none;}
+  .rank li::before{content:counter(r);position:absolute;left:0;top:12px;width:26px;height:26px;border-radius:50%;display:grid;place-items:center;background:var(--mint);color:var(--moss);font-family:"PingFang SC",system-ui,sans-serif;font-size:12.5px;font-weight:700;}
+  .rank .why{display:block;font-size:13.5px;color:var(--ink-2);margin-top:2px;}
+  .note{border-left:3px solid var(--cinnabar);background:linear-gradient(90deg, rgba(181,67,47,.06), transparent 70%);padding:16px 20px;border-radius:0 10px 10px 0;margin:22px 0;font-size:14.5px;}
+  .note b{color:var(--cinnabar);}
+  .tip{border-left:3px solid var(--gold);background:linear-gradient(90deg, rgba(168,130,60,.09), transparent 70%);padding:16px 20px;border-radius:0 10px 10px 0;margin:22px 0;font-size:14.5px;}
+  .tip b{color:var(--gold);}
+  .bars{margin:8px 0 0;}
+  .bar{display:grid;grid-template-columns:110px 1fr 54px;gap:12px;align-items:center;margin-bottom:11px;font-size:14px;}
+  .bar .bl{color:var(--ink-2);}
+  .bar .bt{background:rgba(74,124,89,.12);border-radius:999px;height:9px;overflow:hidden;}
+  .bar .bf{height:100%;background:linear-gradient(90deg,var(--bamboo),#7fa889);border-radius:999px;}
+  .bar .bn{text-align:right;color:var(--ink-2);font-size:13px;font-family:"PingFang SC",system-ui,sans-serif;}
+  .src{font-size:12.5px;color:var(--ink-2);font-family:"PingFang SC",system-ui,sans-serif;}
+  footer{margin-top:40px;padding:44px 0 64px;border-top:1px solid var(--line);color:var(--ink-2);font-size:13px;}
+  footer p{max-width:62em;}
+  @media (max-width:600px){
+    .cover{padding:64px 20px 52px;}
+    section{padding:48px 0 8px;}
+    .stats{gap:24px;}
+    .day{padding:20px 18px 6px;}
+    .bar{grid-template-columns:88px 1fr 46px;gap:8px;font-size:13px;}
+  }
+  @media print{
+    .cover{background:#fff;color:#000;}
+    body{background:#fff;}
+    section{page-break-inside:avoid;}
+  }
+</style>
+</head>
+<body>
+
+<header class="cover">
+  <div class="cover-inner">
+    <p class="kicker">ANHUI · HUAINAN · 2 天</p>
+    <h1>淮南<span class="accent">，</span><br>一碗牛肉汤，和一座楚国旧都</h1>
+    <p class="sub">26 条视频拿下 83.8 万点赞、20 万收藏，是安徽各市里互动效率最高的之一。美食内容 85%，「淮南牛肉汤」被单独提及 9 次；点赞最高那条讲的是「7 元 35 个蒸饺、15 元满满一层肉的柴火牛肉汤」——29.8 万赞。</p>
+    <div class="stats">
+      <div class="stat"><div class="n">26</div><div class="l">条抖音视频</div></div>
+      <div class="stat"><div class="n">83.8万</div><div class="l">累计点赞</div></div>
+      <div class="stat"><div class="n">85%</div><div class="l">美食内容占比</div></div>
+      <div class="stat"><div class="n">29.8万</div><div class="l">单条最高点赞</div></div>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+<section id="s1">
+  <h2><span class="no">01</span> 数据说了什么</h2>
+  <p class="lede">淮南的两张牌，一张是牛肉汤，一张是寿县古城。前者让它在抖音上封神，后者是真正有分量的历史——楚国最后的都城就在这。</p>
+  <h3>内容构成</h3>
+  <div class="bars">
+    <div class="bar"><span class="bl">美食探店</span><span class="bt"><span class="bf" style="width:85%"></span></span><span class="bn">85%</span></div>
+    <div class="bar"><span class="bl">景点盘点</span><span class="bt"><span class="bf" style="width:12%"></span></span><span class="bn">12%</span></div>
+    <div class="bar"><span class="bl">城市 Vlog</span><span class="bt"><span class="bf" style="width:4%"></span></span><span class="bn">4%</span></div>
+  </div>
+
+  <h3>收藏最高的三条</h3>
+  <ul class="rank">
+    <li>一个人逛吃淮南美食！非常惊艳的一次旅程！！好好吃🤤 #淮南 #淮南牛肉汤 #淮南美食 #谁懂这一口的好吃程度 #太好吃了<span class="why">收藏 6.4万 · 点赞 16.6万</span></li>
+    <li>淮南7元35个蒸饺 7元22个包子 15元满满一层的肉柴火牛肉汤 敢问这样的早餐哪里还有？？#淮南美食#淮南牛肉汤#早餐<span class="why">收藏 4.8万 · 点赞 29.8万</span></li>
+    <li>00后情侣挑战每周末去一座城市旅行！ 第九站：安徽淮南#淮南美食 #情侣vlog #vlog日常 #vlog十亿流量扶持<span class="why">收藏 1.6万 · 点赞 3万</span></li>
+  </ul>
+
+  <div class="note">
+    <b>① 牛肉汤是绝对主角，提及 9 次。</b>而且火的不是名店，是「7 元 35 个蒸饺」这种价格冲击——淮南的杀伤力在性价比。<br>
+    <b>② 寿县被反复提及（古城 2 次、寿县 3 次）。</b>说明懂行的人来淮南，不只喝汤，还会往寿县跑。<br>
+    <b>③ 单条最高 29.8 万赞、6.4 万收藏</b>，收藏/点赞比高达 21%，远高于娱乐类内容——这是「我真的会去」的信号。<br>
+  </div>
+
+  <div class="grid g3" style="margin-top:26px;">
+    <div class="card">
+      <span class="tag">几天够</span>
+      <h4>2 天</h4>
+      <p>一天市区喝汤逛八公山，一天寿县古城。寿县值得单独一天，别压缩。</p>
+    </div>
+    <div class="card">
+      <span class="tag">住哪儿</span>
+      <h4>田家庵区</h4>
+      <p>市区中心，牛肉汤店密集，去寿县有直达班车。</p>
+    </div>
+    <div class="card">
+      <span class="tag">什么时候来</span>
+      <h4>10 月–次年 4 月</h4>
+      <p>牛肉汤是热汤，天冷喝才对味。夏天喝一碗会很难受，但也有人就好这口。</p>
+    </div>
+  </div>
+</section>
+
+<section id="s2">
+  <h2><span class="no">02</span> 行程</h2>
+  <p class="lede">淮南市区和寿县是两个方向，分两天走。市区那天重点是「早上一碗汤」，别睡过头。</p>
+
+  <div class="day">
+    <div class="day-head">
+      <span class="day-no">DAY 1</span>
+      <span class="day-title">市区：一碗汤撑起一天</span>
+      <span class="day-meta">步行＋打车 · 全天 · 门票 0–40 元</span>
+    </div>
+    <ol class="stops">
+      <li>
+        <div class="stop-h">早餐：牛肉汤<span class="stop-t">07:00</span></div>
+        <div class="stop-d">淮南人的一天从这开始。清汤、牛肉片、粉丝、千张，配烧饼或蒸饺。汤要滚烫，辣椒油自己加。别去网红店，找本地人排队的。</div>
+      </li>
+      <li>
+        <div class="stop-h">八公山<span class="stop-t">10:00</span></div>
+        <div class="stop-d">免费。豆腐的发源地，淮南王刘安在这炼丹炼出了豆腐。山不高，有汉淮南王墓、白塔寺，秋天银杏好看。</div>
+      </li>
+      <li>
+        <div class="stop-h">淮南市博物馆<span class="stop-t">14:00</span></div>
+        <div class="stop-d">免费，周一闭馆。看楚文化相关的出土器物，为第二天去寿县做铺垫。</div>
+      </li>
+      <li>
+        <div class="stop-h">龙湖公园 / 洞山<span class="stop-t">16:30</span></div>
+        <div class="stop-d">市区免费公园，本地人傍晚散步的地方。逛完就近吃晚饭，地锅鸡或豆腐宴。</div>
+      </li>
+    </ol>
+  </div>
+
+  <div class="day">
+    <div class="day-head">
+      <span class="day-no">DAY 2</span>
+      <span class="day-title">寿县：楚国最后的都城</span>
+      <span class="day-meta">班车/自驾 30 km · 全天 · 门票 0–60 元</span>
+    </div>
+    <ol class="stops">
+      <li>
+        <div class="stop-h">寿县古城墙<span class="stop-t">09:00</span></div>
+        <div class="stop-d">免费。国内保存最完整的宋代城墙之一，周长 7 公里，可以上墙走一段。城墙外就是护城河，视野开阔。</div>
+      </li>
+      <li>
+        <div class="stop-h">寿县博物馆（楚文化博物馆）<span class="stop-t">11:00</span></div>
+        <div class="stop-d">免费。楚幽王墓出土的器物在这，包括著名的楚大鼎。一个县城博物馆有这个量级，很少见。</div>
+      </li>
+      <li>
+        <div class="stop-h">报恩寺 / 清真寺<span class="stop-t">14:00</span></div>
+        <div class="stop-d">报恩寺是宋代寺庙，香火还在；清真寺是元代建筑，木构保存得好。都在古城内，步行可达。</div>
+      </li>
+      <li>
+        <div class="stop-h">安丰塘<span class="stop-t">16:00</span></div>
+        <div class="stop-d">免费。2600 年的水利工程，和都江堰齐名，现在还在灌溉。傍晚水面平静，是寿县最安静的一角。</div>
+      </li>
+    </ol>
+  </div>
+
+  <div class="tip"><b>寿县的正确打开方式：</b>它不是一个「打卡型」古城，没有满街商铺。真正的看点是城墙、博物馆和安丰塘这三样，都需要慢慢看。留足一天，别当天来回。</div>
+</section>
+
+<section id="s3">
+  <h2><span class="no">03</span> 吃什么</h2>
+  <p class="lede">淮南的吃围绕两样：牛肉汤和豆腐。前者是日常，后者是传承——豆腐在这里被发明，做法比别处讲究。</p>
+
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>吃什么</th><th>去哪找</th><th>怎么点</th><th>人均</th></tr></thead>
+      <tbody>
+        <tr><td><b>淮南牛肉汤</b><br><span class="muted"></span></td><td>街边老店，早上六点到十点最旺</td><td>清汤＋牛肉片＋粉丝千张，辣椒油自己加；配烧饼</td><td>12–20</td></tr>
+        <tr><td><b>蒸饺 / 小笼</b><br><span class="muted"></span></td><td>牛肉汤店配套</td><td>皮薄馅大，价格便宜到不真实；一笼十个起</td><td>5–10</td></tr>
+        <tr><td><b>豆腐宴</b><br><span class="muted"></span></td><td>八公山一带的餐馆</td><td>豆腐能做出二十几道菜，从凉拌到红烧；人多才点得动</td><td>50–80</td></tr>
+        <tr><td><b>火烧 / 烧饼</b><br><span class="muted"></span></td><td>汤店、早点摊</td><td>芝麻多、层次多，掰开泡汤最香</td><td>2–4</td></tr>
+        <tr><td><b>地锅鸡</b><br><span class="muted"></span></td><td>家常馆子</td><td>锅边贴饼吸汤，皖北通行的做法</td><td>40–60</td></tr>
+        <tr><td><b>大救驾</b><br><span class="muted"></span></td><td>寿县老字号点心铺</td><td>油酥点心，传说是赵匡胤吃过的；甜口，能带走</td><td>按盒</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="note"><b>喝汤的规矩：</b>牛肉汤店基本只做早市，中午就收。汤要趁滚烫喝，凉了腥。辣椒油、香菜、蒜都是自己加，第一次别一次加太多。</div>
+</section>
+
+<section id="s4">
+  <h2><span class="no">04</span> 实用与避坑</h2>
+  <div class="grid g2" style="margin-top:10px;">
+    <div class="card"><h4>怎么到</h4><p>高铁到淮南南站（市区）或寿县站（离古城更近）。两个站别搞混，去寿县直接买寿县站。</p></div>
+    <div class="card"><h4>寿县交通</h4><p>市区到寿县约 30 公里，班车和打车都方便。古城内步行即可，城墙一圈 7 公里可以骑车。</p></div>
+    <div class="card"><h4>别只喝一家汤</h4><p>淮南牛肉汤各家风格不同：有的汤清、有的汤浓。本地人通常有固定的一家，可以问酒店前台。</p></div>
+    <div class="card"><h4>季节</h4><p>冬天来最对——一碗滚烫的汤下肚，才明白这城市为什么离不开它。</p></div>
+  </div>
+</section>
+
+<footer>
+<p><b>数据说明。</b>本页基于抖音真实采集数据：关键词「淮南旅游」「淮南美食」，去重后 <b>26 条视频</b>，累计点赞 <b>83.8万</b>、收藏 <b>20万</b>，单条最高点赞 29.8万、最高收藏 6.4万。内容构成按视频标题归类统计。</p>
+  <p>门票、交通等硬信息按公开资料核对，价格与开放时间以景区当日公示为准；餐饮只写到「品类＋去哪找」，不写死门牌——老店变动比攻略更新快。</p>
+  <p class="src">采集时间 2026-10-24 · 工具 MediaCrawler（非商业学习许可）· 本页仅供个人出行参考</p>
+</footer>
+
+</div>
+</body>
+</html>

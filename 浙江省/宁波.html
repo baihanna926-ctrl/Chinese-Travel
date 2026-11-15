@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>宁波 · 从抖音真实数据整理出的攻略</title>
+<style>
+  :root{
+    --ink:#17251c; --ink-2:#3d4f42; --moss:#1f3d2b; --bamboo:#4a7c59;
+    --mint:#dfe9e0; --rice:#f7f5ef; --paper:#fffefb; --cinnabar:#b5432f;
+    --gold:#a8823c; --line:rgba(23,37,28,.12);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0; background:var(--rice); color:var(--ink);
+    font-family:"Songti SC","Noto Serif SC","Source Han Serif SC","Noto Serif CJK SC","SimSun","STSong",Georgia,"Microsoft YaHei",serif;
+    font-size:16px; line-height:1.85; -webkit-font-smoothing:antialiased;
+  }
+  .cover{
+    position:relative; padding:96px 24px 72px;
+    background:
+      radial-gradient(1200px 500px at 15% -10%, rgba(74,124,89,.22), transparent 60%),
+      radial-gradient(900px 420px at 90% 0%, rgba(168,130,60,.16), transparent 55%),
+      linear-gradient(180deg,#12241a 0%, #1b3527 58%, #23412f 100%);
+    color:#f2efe6; overflow:hidden;
+  }
+  .cover::after{
+    content:""; position:absolute; inset:0;
+    background-image:radial-gradient(rgba(255,255,255,.06) 1px, transparent 1px);
+    background-size:3px 3px; opacity:.5; pointer-events:none;
+  }
+  .cover-inner{max-width:900px;margin:0 auto;position:relative;z-index:1;}
+  .kicker{font-size:13px;letter-spacing:.32em;text-transform:uppercase;color:rgba(242,239,230,.62);margin:0 0 22px;}
+  h1{font-size:clamp(38px,6.4vw,74px);line-height:1.12;margin:0 0 8px;font-weight:700;letter-spacing:.01em;}
+  h1 .accent{color:#cfe3c8;}
+  .sub{font-size:clamp(15px,2vw,19px);color:rgba(242,239,230,.76);max-width:44em;margin:18px 0 0;line-height:1.9;}
+  .stats{display:flex;flex-wrap:wrap;gap:36px;margin-top:44px;padding-top:26px;border-top:1px solid rgba(242,239,230,.18);}
+  .stat .n{font-size:28px;font-weight:700;color:#e7f0e3;line-height:1.2;}
+  .stat .l{font-size:12.5px;letter-spacing:.12em;color:rgba(242,239,230,.55);margin-top:4px;}
+  .wrap{max-width:900px;margin:0 auto;padding:0 24px;}
+  section{padding:64px 0 8px;}
+  section + section{border-top:1px solid var(--line);}
+  h2{font-size:clamp(24px,3.4vw,32px);margin:0 0 6px;font-weight:700;letter-spacing:.01em;display:flex;align-items:baseline;gap:14px;}
+  h2 .no{font-size:12px;letter-spacing:.2em;color:var(--cinnabar);font-family:"PingFang SC",system-ui,sans-serif;font-weight:600;}
+  .lede{color:var(--ink-2);margin:6px 0 30px;max-width:46em;}
+  h3{font-size:19px;margin:34px 0 10px;font-weight:700;}
+  p{margin:0 0 14px;}
+  .grid{display:grid;gap:16px;}
+  .g3{grid-template-columns:repeat(auto-fit,minmax(230px,1fr));}
+  .g2{grid-template-columns:repeat(auto-fit,minmax(300px,1fr));}
+  .card{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:22px 22px 18px;}
+  .card h4{margin:0 0 8px;font-size:16.5px;}
+  .card p{font-size:14.5px;color:var(--ink-2);margin:0;line-height:1.8;}
+  .card .tag{display:inline-block;font-size:11.5px;letter-spacing:.08em;color:var(--bamboo);background:var(--mint);padding:2px 9px;border-radius:999px;margin-bottom:10px;font-family:"PingFang SC",system-ui,sans-serif;}
+  .day{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:26px 26px 12px;margin-bottom:20px;}
+  .day-head{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:6px;}
+  .day-no{font-family:"PingFang SC",system-ui,sans-serif;font-size:12px;letter-spacing:.18em;color:#fff;background:var(--moss);padding:3px 10px;border-radius:6px;}
+  .day-title{font-size:20px;font-weight:700;}
+  .day-meta{font-size:13px;color:var(--ink-2);font-family:"PingFang SC",system-ui,sans-serif;}
+  ol.stops{list-style:none;margin:18px 0 0;padding:0;}
+  ol.stops li{position:relative;padding:0 0 20px 30px;border-left:1px solid var(--line);margin-left:7px;}
+  ol.stops li:last-child{border-left-color:transparent;padding-bottom:6px;}
+  ol.stops li::before{content:"";position:absolute;left:-4.5px;top:9px;width:8px;height:8px;border-radius:50%;background:var(--bamboo);box-shadow:0 0 0 3px var(--paper);}
+  .stop-h{font-weight:700;font-size:15.5px;}
+  .stop-t{font-family:"PingFang SC",system-ui,sans-serif;font-size:12px;color:var(--cinnabar);letter-spacing:.06em;margin-left:8px;}
+  .stop-d{font-size:14.5px;color:var(--ink-2);margin-top:2px;}
+  .tbl-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:14px;background:var(--paper);}
+  table{border-collapse:collapse;width:100%;min-width:620px;font-size:14.5px;}
+  th,td{text-align:left;padding:13px 16px;border-bottom:1px solid var(--line);vertical-align:top;}
+  th{font-family:"PingFang SC",system-ui,sans-serif;font-size:12px;letter-spacing:.1em;color:var(--ink-2);background:rgba(74,124,89,.07);font-weight:600;white-space:nowrap;}
+  tr:last-child td{border-bottom:none;}
+  td b{color:var(--ink);}
+  .muted{color:var(--ink-2);font-size:13.5px;}
+  .rank{counter-reset:r;list-style:none;padding:0;margin:0;}
+  .rank li{counter-increment:r;position:relative;padding:13px 0 13px 46px;border-bottom:1px dashed var(--line);font-size:15px;}
+  .rank li:last-child{border-bottom:none;}
+  .rank li::before{content:counter(r);position:absolute;left:0;top:12px;width:26px;height:26px;border-radius:50%;display:grid;place-items:center;background:var(--mint);color:var(--moss);font-family:"PingFang SC",system-ui,sans-serif;font-size:12.5px;font-weight:700;}
+  .rank .why{display:block;font-size:13.5px;color:var(--ink-2);margin-top:2px;}
+  .note{border-left:3px solid var(--cinnabar);background:linear-gradient(90deg, rgba(181,67,47,.06), transparent 70%);padding:16px 20px;border-radius:0 10px 10px 0;margin:22px 0;font-size:14.5px;}
+  .note b{color:var(--cinnabar);}
+  .tip{border-left:3px solid var(--gold);background:linear-gradient(90deg, rgba(168,130,60,.09), transparent 70%);padding:16px 20px;border-radius:0 10px 10px 0;margin:22px 0;font-size:14.5px;}
+  .tip b{color:var(--gold);}
+  .bars{margin:8px 0 0;}
+  .bar{display:grid;grid-template-columns:110px 1fr 54px;gap:12px;align-items:center;margin-bottom:11px;font-size:14px;}
+  .bar .bl{color:var(--ink-2);}
+  .bar .bt{background:rgba(74,124,89,.12);border-radius:999px;height:9px;overflow:hidden;}
+  .bar .bf{height:100%;background:linear-gradient(90deg,var(--bamboo),#7fa889);border-radius:999px;}
+  .bar .bn{text-align:right;color:var(--ink-2);font-size:13px;font-family:"PingFang SC",system-ui,sans-serif;}
+  .src{font-size:12.5px;color:var(--ink-2);font-family:"PingFang SC",system-ui,sans-serif;}
+  footer{margin-top:40px;padding:44px 0 64px;border-top:1px solid var(--line);color:var(--ink-2);font-size:13px;}
+  footer p{max-width:62em;}
+  @media (max-width:600px){
+    .cover{padding:64px 20px 52px;}
+    section{padding:48px 0 8px;}
+    .stats{gap:24px;}
+    .day{padding:20px 18px 6px;}
+    .bar{grid-template-columns:88px 1fr 46px;gap:8px;font-size:13px;}
+  }
+  @media print{
+    .cover{background:#fff;color:#000;}
+    body{background:#fff;}
+    section{page-break-inside:avoid;}
+  }
+</style>
+</head>
+<body>
+
+<header class="cover">
+  <div class="cover-inner">
+    <p class="kicker">ZHEJIANG · NINGBO · 2 天</p>
+    <h1>宁波<span class="accent">，</span><br>书藏古今，港通天下</h1>
+    <p class="sub">28 条视频、25.3 万点赞，但收藏 14.7 万——<b>收藏/点赞比 58%</b>，在浙江各市里最高。这意味着看的人不多，但看的人真的在计划去。收藏第一那条是「一日游遍市区＋东钱湖 13 景」，3.25 万收藏。</p>
+    <div class="stats">
+      <div class="stat"><div class="n">28</div><div class="l">条抖音视频</div></div>
+      <div class="stat"><div class="n">25.3万</div><div class="l">累计点赞</div></div>
+      <div class="stat"><div class="n">68%</div><div class="l">美食内容占比</div></div>
+      <div class="stat"><div class="n">4.5万</div><div class="l">单条最高点赞</div></div>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+<section id="s1">
+  <h2><span class="no">01</span> 数据说了什么</h2>
+  <p class="lede">宁波是那种「低调到不像副省级城市」的地方。天一阁是中国最老的私家藏书楼，老外滩比上海外滩还早，东钱湖比西湖大四倍——但它从不吆喝。</p>
+  <h3>内容构成</h3>
+  <div class="bars">
+    <div class="bar"><span class="bl">美食探店</span><span class="bt"><span class="bf" style="width:68%"></span></span><span class="bn">68%</span></div>
+    <div class="bar"><span class="bl">景点盘点</span><span class="bt"><span class="bf" style="width:18%"></span></span><span class="bn">18%</span></div>
+    <div class="bar"><span class="bl">城市 Vlog</span><span class="bt"><span class="bf" style="width:11%"></span></span><span class="bn">11%</span></div>
+    <div class="bar"><span class="bl">亲子乐园</span><span class="bt"><span class="bf" style="width:4%"></span></span><span class="bn">4%</span></div>
+  </div>
+
+  <h3>收藏最高的三条</h3>
+  <ul class="rank">
+    <li>📍宁波攻略|怎样一日游遍市区+东钱湖13景？ 📍宁波一日游13景攻略|可分两日 住宿🏠：宁波站周边就很方便 9:00：天一阁博物院（🎫30）<span class="why">收藏 3.3万 · 点赞 4.5万</span></li>
+    <li>不用去大理，我在江浙沪发现了一个自己的“洱海” #宁波文旅 #宁波有点XIAN #宁波来了就欢喜 #交换100个旅途故事 #交换世界计划<span class="why">收藏 1.9万 · 点赞 2.7万</span></li>
+    <li>300块低成本2日游，却让我看到了这座城市鲜活的另一面！ #宁波文旅#宁波有点XIAN #宁波来了就欢喜#喜欢的东西会反复心动<span class="why">收藏 1.8万 · 点赞 4.1万</span></li>
+  </ul>
+
+  <div class="note">
+    <b>① 收藏率全省最高（58%）。</b>看的人少，但转化率高——来宁波的是「想清楚了才来」的人。<br>
+    <b>② 东钱湖被单独提 2 次。</b>它被称为「江浙沪自己的洱海」，是宁波最出片的自然景观。<br>
+    <b>③ 美食 68%，海鲜是底子。</b>宁波菜咸鲜，红膏炝蟹、咸蟹是硬核口味。<br>
+  </div>
+
+  <div class="grid g3" style="margin-top:26px;">
+    <div class="card">
+      <span class="tag">几天够</span>
+      <h4>2 天</h4>
+      <p>一天市区（天一阁＋月湖＋老外滩），一天东钱湖或雪窦山。</p>
+    </div>
+    <div class="card">
+      <span class="tag">住哪儿</span>
+      <h4>天一广场 / 老外滩</h4>
+      <p>市中心，晚上老外滩有酒吧街，白天逛景点也方便。</p>
+    </div>
+    <div class="card">
+      <span class="tag">什么时候来</span>
+      <h4>4–5 月 / 9–11 月</h4>
+      <p>春秋最好。夏天靠海凉快些，冬天海风冷。</p>
+    </div>
+  </div>
+</section>
+
+<section id="s2">
+  <h2><span class="no">02</span> 行程</h2>
+  <p class="lede">宁波市区很紧凑，天一阁到老外滩步行可串。第二天往东钱湖或奉化雪窦山。</p>
+
+  <div class="day">
+    <div class="day-head">
+      <span class="day-no">DAY 1</span>
+      <span class="day-title">书阁与老外滩</span>
+      <span class="day-meta">步行 · 全天 · 门票 60 元内</span>
+    </div>
+    <ol class="stops">
+      <li>
+        <div class="stop-h">天一阁<span class="stop-t">09:00</span></div>
+        <div class="stop-d">门票 30 元。中国现存最古老的私家藏书楼，范钦建于明代。园林和藏书楼连在一起，两小时够。</div>
+      </li>
+      <li>
+        <div class="stop-h">月湖公园<span class="stop-t">11:00</span></div>
+        <div class="stop-d">免费。天一阁旁边，一圈都是老宅和祠堂，人少清静。</div>
+      </li>
+      <li>
+        <div class="stop-h">鼓楼 / 南塘老街<span class="stop-t">14:00</span></div>
+        <div class="stop-d">免费。鼓楼是宁波老城的地标；南塘老街吃小吃，油赞子、汤圆都有。</div>
+      </li>
+      <li>
+        <div class="stop-h">老外滩<span class="stop-t">17:00</span></div>
+        <div class="stop-d">免费。比上海外滩早 20 年，现在是酒吧和餐厅聚集地。晚上灯亮起来最好看。</div>
+      </li>
+    </ol>
+  </div>
+
+  <div class="day">
+    <div class="day-head">
+      <span class="day-no">DAY 2</span>
+      <span class="day-title">东钱湖 or 雪窦山</span>
+      <span class="day-meta">自驾/公交 · 全天 · 门票 90 元内</span>
+    </div>
+    <ol class="stops">
+      <li>
+        <div class="stop-h">选项 A：东钱湖<span class="stop-t">09:00</span></div>
+        <div class="stop-d">免费进湖区。浙江最大的淡水湖，环湖有南宋石刻公园、小普陀。租车骑行一圈约 3 小时。</div>
+      </li>
+      <li>
+        <div class="stop-h">选项 B：雪窦山（奉化）<span class="stop-t">08:30</span></div>
+        <div class="stop-d">门票 90 元左右。弥勒道场，雪窦寺和千丈岩瀑布。山上还有蒋氏故居（另收门票）。</div>
+      </li>
+      <li>
+        <div class="stop-h">回程：吃海鲜<span class="stop-t">18:00</span></div>
+        <div class="stop-d">宁波的海鲜大排档集中在江东、江北一带。红膏炝蟹、咸蟹、黄鱼。</div>
+      </li>
+    </ol>
+  </div>
+
+  <div class="tip"><b>宁波的口味预警：</b>宁波菜「咸鲜」到有点冲——咸蟹、炝蟹是生的腌蟹，外地人第一次可能接受不了。可以先从黄鱼、汤圆这类温和的入手。</div>
+</section>
+
+<section id="s3">
+  <h2><span class="no">03</span> 吃什么</h2>
+  <p class="lede">宁波菜是「咸鲜」体系，和杭帮菜的清淡不同。海鲜是主角，小吃是补充。</p>
+
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>吃什么</th><th>去哪找</th><th>怎么点</th><th>人均</th></tr></thead>
+      <tbody>
+        <tr><td><b>宁波汤圆</b><br><span class="muted"></span></td><td>老字号（缸鸭狗）</td><td>黑芝麻猪油馅，皮糯汤甜；趁热吃</td><td>15–25</td></tr>
+        <tr><td><b>红膏炝蟹</b><br><span class="muted"></span></td><td>海鲜馆、老字号</td><td>生腌梭子蟹，膏红味鲜；配黄酒</td><td>80–150</td></tr>
+        <tr><td><b>咸蟹 / 蟹糊</b><br><span class="muted"></span></td><td>海鲜馆</td><td>更咸更冲的版本；本地人下饭神器</td><td>60–120</td></tr>
+        <tr><td><b>黄鱼面</b><br><span class="muted"></span></td><td>老面馆</td><td>小黄鱼熬汤，鲜；宁波人的日常</td><td>20–35</td></tr>
+        <tr><td><b>油赞子</b><br><span class="muted"></span></td><td>南塘老街、街头摊</td><td>麻花类小吃，咸甜都有；刚炸的最香</td><td>10–15</td></tr>
+        <tr><td><b>宁波年糕</b><br><span class="muted"></span></td><td>家常馆子</td><td>水磨年糕，炒或煮汤；口感比别处细腻</td><td>20–35</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="note"><b>生腌要谨慎：</b>红膏炝蟹是生的，肠胃弱的人少吃。认正规餐馆，别在路边摊尝试。</div>
+</section>
+
+<section id="s4">
+  <h2><span class="no">04</span> 实用与避坑</h2>
+  <div class="grid g2" style="margin-top:10px;">
+    <div class="card"><h4>怎么到</h4><p>高铁到宁波站（市中心）；机场是栎社机场，地铁 2 号线进城。</p></div>
+    <div class="card"><h4>东钱湖交通</h4><p>地铁 4 号线到东钱湖站，再换公交或租车。环湖一圈 30 公里，别想着走。</p></div>
+    <div class="card"><h4>雪窦山</h4><p>在奉化，市区过去约 1 小时。门票含景交，山上要走不少路。</p></div>
+    <div class="card"><h4>带什么走</h4><p>宁波汤圆（速冻）、海鲜干货、慈溪杨梅（6 月）。</p></div>
+  </div>
+</section>
+
+<footer>
+<p><b>数据说明。</b>本页基于抖音真实采集数据：关键词「宁波旅游」「宁波美食」，去重后 <b>28 条视频</b>，累计点赞 <b>25.3万</b>、收藏 <b>14.7万</b>，单条最高点赞 4.5万、最高收藏 3.3万。内容构成按视频标题归类统计。</p>
+  <p>门票、交通等硬信息按公开资料核对，价格与开放时间以景区当日公示为准；餐饮只写到「品类＋去哪找」，不写死门牌——老店变动比攻略更新快。</p>
+  <p class="src">采集时间 2026-10-25 · 工具 MediaCrawler（非商业学习许可）· 本页仅供个人出行参考</p>
+</footer>
+
+</div>
+</body>
+</html>

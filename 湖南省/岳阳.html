@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>岳阳 · 从抖音真实数据整理出的攻略</title>
+<style>
+  :root{
+    --ink:#17251c; --ink-2:#3d4f42; --moss:#1f3d2b; --bamboo:#4a7c59;
+    --mint:#dfe9e0; --rice:#f7f5ef; --paper:#fffefb; --cinnabar:#b5432f;
+    --gold:#a8823c; --line:rgba(23,37,28,.12);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0; background:var(--rice); color:var(--ink);
+    font-family:"Songti SC","Noto Serif SC","Source Han Serif SC","Noto Serif CJK SC","SimSun","STSong",Georgia,"Microsoft YaHei",serif;
+    font-size:16px; line-height:1.85; -webkit-font-smoothing:antialiased;
+  }
+  .cover{
+    position:relative; padding:96px 24px 72px;
+    background:
+      radial-gradient(1200px 500px at 15% -10%, rgba(74,124,89,.22), transparent 60%),
+      radial-gradient(900px 420px at 90% 0%, rgba(168,130,60,.16), transparent 55%),
+      linear-gradient(180deg,#12241a 0%, #1b3527 58%, #23412f 100%);
+    color:#f2efe6; overflow:hidden;
+  }
+  .cover::after{
+    content:""; position:absolute; inset:0;
+    background-image:radial-gradient(rgba(255,255,255,.06) 1px, transparent 1px);
+    background-size:3px 3px; opacity:.5; pointer-events:none;
+  }
+  .cover-inner{max-width:900px;margin:0 auto;position:relative;z-index:1;}
+  .kicker{font-size:13px;letter-spacing:.32em;text-transform:uppercase;color:rgba(242,239,230,.62);margin:0 0 22px;}
+  h1{font-size:clamp(38px,6.4vw,74px);line-height:1.12;margin:0 0 8px;font-weight:700;letter-spacing:.01em;}
+  h1 .accent{color:#cfe3c8;}
+  .sub{font-size:clamp(15px,2vw,19px);color:rgba(242,239,230,.76);max-width:44em;margin:18px 0 0;line-height:1.9;}
+  .stats{display:flex;flex-wrap:wrap;gap:36px;margin-top:44px;padding-top:26px;border-top:1px solid rgba(242,239,230,.18);}
+  .stat .n{font-size:28px;font-weight:700;color:#e7f0e3;line-height:1.2;}
+  .stat .l{font-size:12.5px;letter-spacing:.12em;color:rgba(242,239,230,.55);margin-top:4px;}
+  .wrap{max-width:900px;margin:0 auto;padding:0 24px;}
+  section{padding:64px 0 8px;}
+  section + section{border-top:1px solid var(--line);}
+  h2{font-size:clamp(24px,3.4vw,32px);margin:0 0 6px;font-weight:700;letter-spacing:.01em;display:flex;align-items:baseline;gap:14px;}
+  h2 .no{font-size:12px;letter-spacing:.2em;color:var(--cinnabar);font-family:"PingFang SC",system-ui,sans-serif;font-weight:600;}
+  .lede{color:var(--ink-2);margin:6px 0 30px;max-width:46em;}
+  h3{font-size:19px;margin:34px 0 10px;font-weight:700;}
+  p{margin:0 0 14px;}
+  .grid{display:grid;gap:16px;}
+  .g3{grid-template-columns:repeat(auto-fit,minmax(230px,1fr));}
+  .g2{grid-template-columns:repeat(auto-fit,minmax(300px,1fr));}
+  .card{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:22px 22px 18px;}
+  .card h4{margin:0 0 8px;font-size:16.5px;}
+  .card p{font-size:14.5px;color:var(--ink-2);margin:0;line-height:1.8;}
+  .card .tag{display:inline-block;font-size:11.5px;letter-spacing:.08em;color:var(--bamboo);background:var(--mint);padding:2px 9px;border-radius:999px;margin-bottom:10px;font-family:"PingFang SC",system-ui,sans-serif;}
+  .day{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:26px 26px 12px;margin-bottom:20px;}
+  .day-head{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:6px;}
+  .day-no{font-family:"PingFang SC",system-ui,sans-serif;font-size:12px;letter-spacing:.18em;color:#fff;background:var(--moss);padding:3px 10px;border-radius:6px;}
+  .day-title{font-size:20px;font-weight:700;}
+  .day-meta{font-size:13px;color:var(--ink-2);font-family:"PingFang SC",system-ui,sans-serif;}
+  ol.stops{list-style:none;margin:18px 0 0;padding:0;}
+  ol.stops li{position:relative;padding:0 0 20px 30px;border-left:1px solid var(--line);margin-left:7px;}
+  ol.stops li:last-child{border-left-color:transparent;padding-bottom:6px;}
+  ol.stops li::before{content:"";position:absolute;left:-4.5px;top:9px;width:8px;height:8px;border-radius:50%;background:var(--bamboo);box-shadow:0 0 0 3px var(--paper);}
+  .stop-h{font-weight:700;font-size:15.5px;}
+  .stop-t{font-family:"PingFang SC",system-ui,sans-serif;font-size:12px;color:var(--cinnabar);letter-spacing:.06em;margin-left:8px;}
+  .stop-d{font-size:14.5px;color:var(--ink-2);margin-top:2px;}
+  .tbl-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:14px;background:var(--paper);}
+  table{border-collapse:collapse;width:100%;min-width:620px;font-size:14.5px;}
+  th,td{text-align:left;padding:13px 16px;border-bottom:1px solid var(--line);vertical-align:top;}
+  th{font-family:"PingFang SC",system-ui,sans-serif;font-size:12px;letter-spacing:.1em;color:var(--ink-2);background:rgba(74,124,89,.07);font-weight:600;white-space:nowrap;}
+  tr:last-child td{border-bottom:none;}
+  td b{color:var(--ink);}
+  .muted{color:var(--ink-2);font-size:13.5px;}
+  .rank{counter-reset:r;list-style:none;padding:0;margin:0;}
+  .rank li{counter-increment:r;position:relative;padding:13px 0 13px 46px;border-bottom:1px dashed var(--line);font-size:15px;}
+  .rank li:last-child{border-bottom:none;}
+  .rank li::before{content:counter(r);position:absolute;left:0;top:12px;width:26px;height:26px;border-radius:50%;display:grid;place-items:center;background:var(--mint);color:var(--moss);font-family:"PingFang SC",system-ui,sans-serif;font-size:12.5px;font-weight:700;}
+  .rank .why{display:block;font-size:13.5px;color:var(--ink-2);margin-top:2px;}
+  .note{border-left:3px solid var(--cinnabar);background:linear-gradient(90deg, rgba(181,67,47,.06), transparent 70%);padding:16px 20px;border-radius:0 10px 10px 0;margin:22px 0;font-size:14.5px;}
+  .note b{color:var(--cinnabar);}
+  .tip{border-left:3px solid var(--gold);background:linear-gradient(90deg, rgba(168,130,60,.09), transparent 70%);padding:16px 20px;border-radius:0 10px 10px 0;margin:22px 0;font-size:14.5px;}
+  .tip b{color:var(--gold);}
+  .bars{margin:8px 0 0;}
+  .bar{display:grid;grid-template-columns:110px 1fr 54px;gap:12px;align-items:center;margin-bottom:11px;font-size:14px;}
+  .bar .bl{color:var(--ink-2);}
+  .bar .bt{background:rgba(74,124,89,.12);border-radius:999px;height:9px;overflow:hidden;}
+  .bar .bf{height:100%;background:linear-gradient(90deg,var(--bamboo),#7fa889);border-radius:999px;}
+  .bar .bn{text-align:right;color:var(--ink-2);font-size:13px;font-family:"PingFang SC",system-ui,sans-serif;}
+  .src{font-size:12.5px;color:var(--ink-2);font-family:"PingFang SC",system-ui,sans-serif;}
+  footer{margin-top:40px;padding:44px 0 64px;border-top:1px solid var(--line);color:var(--ink-2);font-size:13px;}
+  footer p{max-width:62em;}
+  @media (max-width:600px){
+    .cover{padding:64px 20px 52px;}
+    section{padding:48px 0 8px;}
+    .stats{gap:24px;}
+    .day{padding:20px 18px 6px;}
+    .bar{grid-template-columns:88px 1fr 46px;gap:8px;font-size:13px;}
+  }
+  @media print{
+    .cover{background:#fff;color:#000;}
+    body{background:#fff;}
+    section{page-break-inside:avoid;}
+  }
+</style>
+</head>
+<body>
+
+<header class="cover">
+  <div class="cover-inner">
+    <p class="kicker">HUNAN · YUEYANG · 1–2 天</p>
+    <h1>岳阳<span class="accent">，</span><br>岳阳楼记，和一片洞庭湖</h1>
+    <p class="sub">25 条视频、33.1 万点赞。美食占 <b>76%</b>。岳阳的全部名气来自一篇《岳阳楼记》——范仲淹「先天下之忧而忧，后天下之乐而乐」写的就是这。加上洞庭湖和君山岛，它的文化分量极重。</p>
+    <div class="stats">
+      <div class="stat"><div class="n">25</div><div class="l">条抖音视频</div></div>
+      <div class="stat"><div class="n">33.1万</div><div class="l">累计点赞</div></div>
+      <div class="stat"><div class="n">76%</div><div class="l">美食内容占比</div></div>
+      <div class="stat"><div class="n">9.7万</div><div class="l">单条最高点赞</div></div>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+<section id="s1">
+  <h2><span class="no">01</span> 数据说了什么</h2>
+  <p class="lede">岳阳在湖南东北，长江和洞庭湖交汇处。它的看点很集中：岳阳楼、君山岛、洞庭湖。一天能走完，但「岳阳楼」这三个字的文化重量需要提前读课文才能体会。</p>
+  <h3>内容构成</h3>
+  <div class="bars">
+    <div class="bar"><span class="bl">美食探店</span><span class="bt"><span class="bf" style="width:76%"></span></span><span class="bn">76%</span></div>
+    <div class="bar"><span class="bl">景点盘点</span><span class="bt"><span class="bf" style="width:8%"></span></span><span class="bn">8%</span></div>
+    <div class="bar"><span class="bl">城市 Vlog</span><span class="bt"><span class="bf" style="width:16%"></span></span><span class="bn">16%</span></div>
+  </div>
+
+  <h3>收藏最高的三条</h3>
+  <ul class="rank">
+    <li>逛吃岳阳🔥在岳阳吃到了人生盖码粉和烤串🥹 #寻味街边小吃 #岳阳美食 #美食特种兵 #逛吃全攻略 #和闺蜜一起<span class="why">收藏 1.5万 · 点赞 5万</span></li>
+    <li>岳阳只有本地人知道的12家宝藏小店 都是和朋友反复吃过N次的！全程不走回头路！文字版总结放到最后啦 ！  #岳阳美食#抖音美食推荐官 #岳阳<span class="why">收藏 6167 · 点赞 7384</span></li>
+    <li>湖南岳阳市城市Citywalk，一篇《岳阳楼记》让岳阳名扬千古，上古传说金鹗斗巴蛇在此流传，周瑜二分天下，却遗憾落幕于巴丘，岳州关见证晚清风<span class="why">收藏 5242 · 点赞 3.4万</span></li>
+  </ul>
+
+  <div class="note">
+    <b>① 美食 76%，但景点是硬货。</b>岳阳楼是中国四大名楼里唯一保持原址的。<br>
+    <b>② 洞庭湖和君山是加分项。</b>「白银盘里一青螺」写的就是君山。<br>
+    <b>③ 岳阳的传播靠语文课本。</b>这篇课文让全国人都知道岳阳楼。<br>
+  </div>
+
+  <div class="grid g3" style="margin-top:26px;">
+    <div class="card">
+      <span class="tag">几天够</span>
+      <h4>1 天够，2 天舒服</h4>
+      <p>一天岳阳楼＋君山，第二天可去张谷英村或平江。</p>
+    </div>
+    <div class="card">
+      <span class="tag">住哪儿</span>
+      <h4>岳阳楼区</h4>
+      <p>市区，步行到岳阳楼。</p>
+    </div>
+    <div class="card">
+      <span class="tag">什么时候来</span>
+      <h4>4–6 月 / 9–11 月</h4>
+      <p>春秋最好。夏天洞庭湖荷花，但热。</p>
+    </div>
+  </div>
+</section>
+
+<section id="s2">
+  <h2><span class="no">02</span> 行程</h2>
+  <p class="lede">岳阳市区一天，君山要坐船。周边古村各半天。</p>
+
+  <div class="day">
+    <div class="day-head">
+      <span class="day-no">DAY 1</span>
+      <span class="day-title">岳阳楼与洞庭</span>
+      <span class="day-meta">步行＋船 · 全天 · 门票 80 元</span>
+    </div>
+    <ol class="stops">
+      <li>
+        <div class="stop-h">岳阳楼<span class="stop-t">08:30</span></div>
+        <div class="stop-d">门票 70 元。范仲淹写《岳阳楼记》的地方，中国四大名楼中唯一保持原址的。登楼看洞庭。</div>
+      </li>
+      <li>
+        <div class="stop-h">洞庭湖 / 君山岛<span class="stop-t">11:00</span></div>
+        <div class="stop-d">船票＋门票 80 元左右。「白银盘里一青螺」，二妃墓、柳毅井在岛上。</div>
+      </li>
+      <li>
+        <div class="stop-h">汴河街 / 南湖<span class="stop-t">15:00</span></div>
+        <div class="stop-d">免费。仿古商业街，吃岳阳小吃。</div>
+      </li>
+    </ol>
+  </div>
+
+  <div class="day">
+    <div class="day-head">
+      <span class="day-no">DAY 2</span>
+      <span class="day-title">张谷英村 or 平江</span>
+      <span class="day-meta">自驾 1.5h · 全天</span>
+    </div>
+    <ol class="stops">
+      <li>
+        <div class="stop-h">选项 A：张谷英村<span class="stop-t">08:30</span></div>
+        <div class="stop-d">门票 60 元左右。岳阳的古村落，600 年连体建筑，被称为「民间故宫」。</div>
+      </li>
+      <li>
+        <div class="stop-h">选项 B：平江石牛寨<span class="stop-t">08:30</span></div>
+        <div class="stop-d">门票 100 元左右。丹霞＋玻璃桥，年轻人项目多。</div>
+      </li>
+    </ol>
+  </div>
+
+  <div class="tip"><b>岳阳楼的正确打开方式：</b>提前把《岳阳楼记》读一遍。站在楼上看洞庭湖时，脑子里有「衔远山，吞长江，浩浩汤汤」，感受完全不同。这是语文课本变现的地方。</div>
+</section>
+
+<section id="s3">
+  <h2><span class="no">03</span> 吃什么</h2>
+  <p class="lede">岳阳菜是湘北口味，鲜辣。全鱼席和虾饼是两样代表。</p>
+
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>吃什么</th><th>去哪找</th><th>怎么点</th><th>人均</th></tr></thead>
+      <tbody>
+        <tr><td><b>岳阳全鱼席</b><br><span class="muted"></span></td><td>洞庭湖周边餐馆</td><td>一桌全是洞庭湖的鱼；人多才点</td><td>100–200</td></tr>
+        <tr><td><b>岳阳虾饼</b><br><span class="muted"></span></td><td>街头小吃摊</td><td>小虾和面糊炸的饼，香；当地日常</td><td>10–15</td></tr>
+        <tr><td><b>洞庭银鱼</b><br><span class="muted"></span></td><td>餐馆、特产店</td><td>银鱼蒸蛋或做汤；能带走</td><td>按份</td></tr>
+        <tr><td><b>平江酱干</b><br><span class="muted"></span></td><td>平江县</td><td>酱豆干，辣；当地名产</td><td>按袋</td></tr>
+        <tr><td><b>华容团子</b><br><span class="muted"></span></td><td>华容县</td><td>米粉包的团子，蒸；当地日常</td><td>8–12</td></tr>
+        <tr><td><b>巴陵酒</b><br><span class="muted"></span></td><td>特产店</td><td>岳阳老酒；能带走</td><td>按瓶</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="note"><b>全鱼席：</b>洞庭湖的鱼能做一桌子菜，多的一二十道。两个人别点，去小馆子单点一条鱼更实在。</div>
+</section>
+
+<section id="s4">
+  <h2><span class="no">04</span> 实用与避坑</h2>
+  <div class="grid g2" style="margin-top:10px;">
+    <div class="card"><h4>怎么到</h4><p>高铁到岳阳东站。长沙过来 40 分钟。</p></div>
+    <div class="card"><h4>岳阳楼</h4><p>门票 70 元。和君山岛可以买联票。</p></div>
+    <div class="card"><h4>君山岛</h4><p>要坐船，船班固定。注意末班船时间。</p></div>
+    <div class="card"><h4>带什么走</h4><p>洞庭银鱼、平江酱干、岳阳虾饼（真空）。</p></div>
+  </div>
+</section>
+
+<footer>
+<p><b>数据说明。</b>本页基于抖音真实采集数据：关键词「岳阳旅游」「岳阳美食」，去重后 <b>25 条视频</b>，累计点赞 <b>33.1万</b>、收藏 <b>6.4万</b>，单条最高点赞 9.7万、最高收藏 1.5万。内容构成按视频标题归类统计。</p>
+  <p>门票、交通等硬信息按公开资料核对，价格与开放时间以景区当日公示为准；餐饮只写到「品类＋去哪找」，不写死门牌——老店变动比攻略更新快。</p>
+  <p class="src">采集时间 2026-10-25 · 工具 MediaCrawler（非商业学习许可）· 本页仅供个人出行参考</p>
+</footer>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>宜昌 · 从抖音真实数据整理出的攻略</title>
+<style>
+  :root{
+    --ink:#17251c; --ink-2:#3d4f42; --moss:#1f3d2b; --bamboo:#4a7c59;
+    --mint:#dfe9e0; --rice:#f7f5ef; --paper:#fffefb; --cinnabar:#b5432f;
+    --gold:#a8823c; --line:rgba(23,37,28,.12);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0; background:var(--rice); color:var(--ink);
+    font-family:"Songti SC","Noto Serif SC","Source Han Serif SC","Noto Serif CJK SC","SimSun","STSong",Georgia,"Microsoft YaHei",serif;
+    font-size:16px; line-height:1.85; -webkit-font-smoothing:antialiased;
+  }
+  .cover{
+    position:relative; padding:96px 24px 72px;
+    background:
+      radial-gradient(1200px 500px at 15% -10%, rgba(74,124,89,.22), transparent 60%),
+      radial-gradient(900px 420px at 90% 0%, rgba(168,130,60,.16), transparent 55%),
+      linear-gradient(180deg,#12241a 0%, #1b3527 58%, #23412f 100%);
+    color:#f2efe6; overflow:hidden;
+  }
+  .cover::after{
+    content:""; position:absolute; inset:0;
+    background-image:radial-gradient(rgba(255,255,255,.06) 1px, transparent 1px);
+    background-size:3px 3px; opacity:.5; pointer-events:none;
+  }
+  .cover-inner{max-width:900px;margin:0 auto;position:relative;z-index:1;}
+  .kicker{font-size:13px;letter-spacing:.32em;text-transform:uppercase;color:rgba(242,239,230,.62);margin:0 0 22px;}
+  h1{font-size:clamp(38px,6.4vw,74px);line-height:1.12;margin:0 0 8px;font-weight:700;letter-spacing:.01em;}
+  h1 .accent{color:#cfe3c8;}
+  .sub{font-size:clamp(15px,2vw,19px);color:rgba(242,239,230,.76);max-width:44em;margin:18px 0 0;line-height:1.9;}
+  .stats{display:flex;flex-wrap:wrap;gap:36px;margin-top:44px;padding-top:26px;border-top:1px solid rgba(242,239,230,.18);}
+  .stat .n{font-size:28px;font-weight:700;color:#e7f0e3;line-height:1.2;}
+  .stat .l{font-size:12.5px;letter-spacing:.12em;color:rgba(242,239,230,.55);margin-top:4px;}
+  .wrap{max-width:900px;margin:0 auto;padding:0 24px;}
+  section{padding:64px 0 8px;}
+  section + section{border-top:1px solid var(--line);}
+  h2{font-size:clamp(24px,3.4vw,32px);margin:0 0 6px;font-weight:700;letter-spacing:.01em;display:flex;align-items:baseline;gap:14px;}
+  h2 .no{font-size:12px;letter-spacing:.2em;color:var(--cinnabar);font-family:"PingFang SC",system-ui,sans-serif;font-weight:600;}
+  .lede{color:var(--ink-2);margin:6px 0 30px;max-width:46em;}
+  h3{font-size:19px;margin:34px 0 10px;font-weight:700;}
+  p{margin:0 0 14px;}
+  .grid{display:grid;gap:16px;}
+  .g3{grid-template-columns:repeat(auto-fit,minmax(230px,1fr));}
+  .g2{grid-template-columns:repeat(auto-fit,minmax(300px,1fr));}
+  .card{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:22px 22px 18px;}
+  .card h4{margin:0 0 8px;font-size:16.5px;}
+  .card p{font-size:14.5px;color:var(--ink-2);margin:0;line-height:1.8;}
+  .card .tag{display:inline-block;font-size:11.5px;letter-spacing:.08em;color:var(--bamboo);background:var(--mint);padding:2px 9px;border-radius:999px;margin-bottom:10px;font-family:"PingFang SC",system-ui,sans-serif;}
+  .day{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:26px 26px 12px;margin-bottom:20px;}
+  .day-head{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:6px;}
+  .day-no{font-family:"PingFang SC",system-ui,sans-serif;font-size:12px;letter-spacing:.18em;color:#fff;background:var(--moss);padding:3px 10px;border-radius:6px;}
+  .day-title{font-size:20px;font-weight:700;}
+  .day-meta{font-size:13px;color:var(--ink-2);font-family:"PingFang SC",system-ui,sans-serif;}
+  ol.stops{list-style:none;margin:18px 0 0;padding:0;}
+  ol.stops li{position:relative;padding:0 0 20px 30px;border-left:1px solid var(--line);margin-left:7px;}
+  ol.stops li:last-child{border-left-color:transparent;padding-bottom:6px;}
+  ol.stops li::before{content:"";position:absolute;left:-4.5px;top:9px;width:8px;height:8px;border-radius:50%;background:var(--bamboo);box-shadow:0 0 0 3px var(--paper);}
+  .stop-h{font-weight:700;font-size:15.5px;}
+  .stop-t{font-family:"PingFang SC",system-ui,sans-serif;font-size:12px;color:var(--cinnabar);letter-spacing:.06em;margin-left:8px;}
+  .stop-d{font-size:14.5px;color:var(--ink-2);margin-top:2px;}
+  .tbl-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:14px;background:var(--paper);}
+  table{border-collapse:collapse;width:100%;min-width:620px;font-size:14.5px;}
+  th,td{text-align:left;padding:13px 16px;border-bottom:1px solid var(--line);vertical-align:top;}
+  th{font-family:"PingFang SC",system-ui,sans-serif;font-size:12px;letter-spacing:.1em;color:var(--ink-2);background:rgba(74,124,89,.07);font-weight:600;white-space:nowrap;}
+  tr:last-child td{border-bottom:none;}
+  td b{color:var(--ink);}
+  .muted{color:var(--ink-2);font-size:13.5px;}
+  .rank{counter-reset:r;list-style:none;padding:0;margin:0;}
+  .rank li{counter-increment:r;position:relative;padding:13px 0 13px 46px;border-bottom:1px dashed var(--line);font-size:15px;}
+  .rank li:last-child{border-bottom:none;}
+  .rank li::before{content:counter(r);position:absolute;left:0;top:12px;width:26px;height:26px;border-radius:50%;display:grid;place-items:center;background:var(--mint);color:var(--moss);font-family:"PingFang SC",system-ui,sans-serif;font-size:12.5px;font-weight:700;}
+  .rank .why{display:block;font-size:13.5px;color:var(--ink-2);margin-top:2px;}
+  .note{border-left:3px solid var(--cinnabar);background:linear-gradient(90deg, rgba(181,67,47,.06), transparent 70%);padding:16px 20px;border-radius:0 10px 10px 0;margin:22px 0;font-size:14.5px;}
+  .note b{color:var(--cinnabar);}
+  .tip{border-left:3px solid var(--gold);background:linear-gradient(90deg, rgba(168,130,60,.09), transparent 70%);padding:16px 20px;border-radius:0 10px 10px 0;margin:22px 0;font-size:14.5px;}
+  .tip b{color:var(--gold);}
+  .bars{margin:8px 0 0;}
+  .bar{display:grid;grid-template-columns:110px 1fr 54px;gap:12px;align-items:center;margin-bottom:11px;font-size:14px;}
+  .bar .bl{color:var(--ink-2);}
+  .bar .bt{background:rgba(74,124,89,.12);border-radius:999px;height:9px;overflow:hidden;}
+  .bar .bf{height:100%;background:linear-gradient(90deg,var(--bamboo),#7fa889);border-radius:999px;}
+  .bar .bn{text-align:right;color:var(--ink-2);font-size:13px;font-family:"PingFang SC",system-ui,sans-serif;}
+  .src{font-size:12.5px;color:var(--ink-2);font-family:"PingFang SC",system-ui,sans-serif;}
+  footer{margin-top:40px;padding:44px 0 64px;border-top:1px solid var(--line);color:var(--ink-2);font-size:13px;}
+  footer p{max-width:62em;}
+  @media (max-width:600px){
+    .cover{padding:64px 20px 52px;}
+    section{padding:48px 0 8px;}
+    .stats{gap:24px;}
+    .day{padding:20px 18px 6px;}
+    .bar{grid-template-columns:88px 1fr 46px;gap:8px;font-size:13px;}
+  }
+  @media print{
+    .cover{background:#fff;color:#000;}
+    body{background:#fff;}
+    section{page-break-inside:avoid;}
+  }
+</style>
+</head>
+<body>
+
+<header class="cover">
+  <div class="cover-inner">
+    <p class="kicker">HUBEI · YICHANG · 2–3 天</p>
+    <h1>宜昌<span class="accent">，</span><br>三峡门户，和一座水电城</h1>
+    <p class="sub">28 条视频、48.6 万点赞、23.3 万收藏。景点占 <b>32%</b>——湖北最高。宜昌的分量在两点：三峡大坝和三峡人家。它是「三峡门户」，长江在这里被大坝截住，也被景区还原成原来的样子。</p>
+    <div class="stats">
+      <div class="stat"><div class="n">28</div><div class="l">条抖音视频</div></div>
+      <div class="stat"><div class="n">48.6万</div><div class="l">累计点赞</div></div>
+      <div class="stat"><div class="n">61%</div><div class="l">美食内容占比</div></div>
+      <div class="stat"><div class="n">15.1万</div><div class="l">单条最高点赞</div></div>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+<section id="s1">
+  <h2><span class="no">01</span> 数据说了什么</h2>
+  <p class="lede">宜昌是水电之城（葛洲坝和三峡大坝都在这），也是屈原和王昭君的故乡。它的旅游结构很清晰：一天看工程，一天看自然。加上清江画廊，两天半刚好。</p>
+  <h3>内容构成</h3>
+  <div class="bars">
+    <div class="bar"><span class="bl">美食探店</span><span class="bt"><span class="bf" style="width:61%"></span></span><span class="bn">61%</span></div>
+    <div class="bar"><span class="bl">景点盘点</span><span class="bt"><span class="bf" style="width:32%"></span></span><span class="bn">32%</span></div>
+    <div class="bar"><span class="bl">城市 Vlog</span><span class="bt"><span class="bf" style="width:7%"></span></span><span class="bn">7%</span></div>
+  </div>
+
+  <h3>收藏最高的三条</h3>
+  <ul class="rank">
+    <li>一个人逛吃宜昌美食！此女子已经吃的不吃天地为何物了 #抖音美食推荐官 #宜昌 #宜昌美食 #宜昌旅游 #湖北美食<span class="why">收藏 4.5万 · 点赞 15.1万</span></li>
+    <li>湖北天花板级别自驾路线！ 耗时约2天，贯穿整个西陵峡两岸绝美景色，高处俯瞰三峡大坝高峡平湖的壮阔。#自驾游 #宜昌 #旅行推荐官 #宜昌旅游<span class="why">收藏 3.6万 · 点赞 2.8万</span></li>
+    <li>湖北宜昌的这条自驾路线90%的人都没走完过，全程无门票！ #宜昌自驾游 #湖北宜昌 #小众自驾游 #湖北自驾游 #自驾推荐<span class="why">收藏 2.9万 · 点赞 1.4万</span></li>
+  </ul>
+
+  <div class="note">
+    <b>① 景点 32%，湖北最高。</b>宜昌是湖北少数「景点强于美食」的城市。<br>
+    <b>② 三峡大坝是硬核看点。</b>世界最大的水利枢纽，坛子岭看全景最震撼。<br>
+    <b>③ 三峡人家是活的峡谷。</b>比大坝更有人气，表演和山水结合。<br>
+  </div>
+
+  <div class="grid g3" style="margin-top:26px;">
+    <div class="card">
+      <span class="tag">几天够</span>
+      <h4>2 天，3 天更完整</h4>
+      <p>一天三峡大坝＋坛子岭，一天三峡人家或清江画廊。</p>
+    </div>
+    <div class="card">
+      <span class="tag">住哪儿</span>
+      <h4>西陵区 / 三峡坝区</h4>
+      <p>玩大坝住坝区附近；逛市区住西陵。</p>
+    </div>
+    <div class="card">
+      <span class="tag">什么时候来</span>
+      <h4>4–6 月 / 9–11 月</h4>
+      <p>春秋最好。夏天水位高，大坝泄洪时最壮观。</p>
+    </div>
+  </div>
+</section>
+
+<section id="s2">
+  <h2><span class="no">02</span> 行程</h2>
+  <p class="lede">宜昌按「大坝（西）＋人家（东）」分两天。市区是落脚点。</p>
+
+  <div class="day">
+    <div class="day-head">
+      <span class="day-no">DAY 1</span>
+      <span class="day-title">三峡大坝</span>
+      <span class="day-meta">景区车 · 全天 · 门票 0 元</span>
+    </div>
+    <ol class="stops">
+      <li>
+        <div class="stop-h">坛子岭<span class="stop-t">09:00</span></div>
+        <div class="stop-d">三峡大坝免费但<b>需预约和安检</b>，带身份证。坛子岭是看大坝全景的最佳位置。</div>
+      </li>
+      <li>
+        <div class="stop-h">185 观景平台<span class="stop-t">11:00</span></div>
+        <div class="stop-d">免费。和大坝同高（海拔 185 米），平视坝体，尺度感很强。</div>
+      </li>
+      <li>
+        <div class="stop-h">截流纪念园<span class="stop-t">13:30</span></div>
+        <div class="stop-d">免费。看工程机械和遗址，了解截流历史。</div>
+      </li>
+      <li>
+        <div class="stop-h">晚上：三峡大坝夜景<span class="stop-t">18:30</span></div>
+        <div class="stop-d">免费。大坝亮灯后很震撼，但要注意末班车。</div>
+      </li>
+    </ol>
+  </div>
+
+  <div class="day">
+    <div class="day-head">
+      <span class="day-no">DAY 2</span>
+      <span class="day-title">三峡人家 or 清江画廊</span>
+      <span class="day-meta">车程 1h · 全天 · 门票 150 元</span>
+    </div>
+    <ol class="stops">
+      <li>
+        <div class="stop-h">选项 A：三峡人家<span class="stop-t">08:30</span></div>
+        <div class="stop-d">门票 150 元左右（含船）。龙进溪的土家表演、吊脚楼、猿啼。比大坝更有人气。</div>
+      </li>
+      <li>
+        <div class="stop-h">选项 B：清江画廊<span class="stop-t">08:30</span></div>
+        <div class="stop-d">门票 150 元左右（含船）。清江倒影峡，水清得像假的。</div>
+      </li>
+      <li>
+        <div class="stop-h">回程：吃长江肥鱼<span class="stop-t">17:00</span></div>
+        <div class="stop-d">长江肥鱼是宜昌招牌，汤白肉嫩。</div>
+      </li>
+    </ol>
+  </div>
+
+  <div class="tip"><b>大坝预约提醒：</b>三峡大坝免费但必须提前在「三峡大坝旅游」公众号预约，且<b>禁止带无人机和大量物品</b>，安检严格。别带打火机。</div>
+</section>
+
+<section id="s3">
+  <h2><span class="no">03</span> 吃什么</h2>
+  <p class="lede">宜昌菜是鄂西口味，鲜辣。长江肥鱼和凉虾是两样代表。</p>
+
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>吃什么</th><th>去哪找</th><th>怎么点</th><th>人均</th></tr></thead>
+      <tbody>
+        <tr><td><b>长江肥鱼</b><br><span class="muted"></span></td><td>本地菜馆</td><td>长江鮰鱼炖汤，奶白；宜昌头牌</td><td>80–150</td></tr>
+        <tr><td><b>宜昌凉虾</b><br><span class="muted"></span></td><td>街头甜品摊</td><td>米浆做成虾状的甜品，配红糖；夏日标配</td><td>8–12</td></tr>
+        <tr><td><b>顶顶糕</b><br><span class="muted"></span></td><td>街头小吃摊</td><td>小米粉蒸的小糕，顶出来的；当地名吃</td><td>5–8</td></tr>
+        <tr><td><b>炕土豆</b><br><span class="muted"></span></td><td>街头摊</td><td>小土豆煎到焦香，配辣椒；鄂西日常</td><td>8–12</td></tr>
+        <tr><td><b>三游神仙鸡</b><br><span class="muted"></span></td><td>本地菜馆</td><td>三游洞的典故菜，鸡肉酥烂；尝个意思</td><td>60–90</td></tr>
+        <tr><td><b>清江鱼</b><br><span class="muted"></span></td><td>清江画廊周边</td><td>清江的鱼，清蒸或红烧；鲜</td><td>60–100</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="note"><b>凉虾不是虾：</b>是米浆漏成虾状的甜品，配红糖水。夏天吃解暑，冬天没有。</div>
+</section>
+
+<section id="s4">
+  <h2><span class="no">04</span> 实用与避坑</h2>
+  <div class="grid g2" style="margin-top:10px;">
+    <div class="card"><h4>怎么到</h4><p>高铁到宜昌东站；机场是三峡机场。武汉过来 2 小时。</p></div>
+    <div class="card"><h4>大坝</h4><p>免费但需预约，带身份证。安检严格，禁带无人机。</p></div>
+    <div class="card"><h4>三峡人家</h4><p>从市区约 1 小时。门票含船，表演时间固定，提前看。</p></div>
+    <div class="card"><h4>带什么走</h4><p>清江鱼（真空）、五峰绿茶、秭归脐橙（冬季）。</p></div>
+  </div>
+</section>
+
+<footer>
+<p><b>数据说明。</b>本页基于抖音真实采集数据：关键词「宜昌旅游」「宜昌美食」，去重后 <b>28 条视频</b>，累计点赞 <b>48.6万</b>、收藏 <b>23.3万</b>，单条最高点赞 15.1万、最高收藏 4.5万。内容构成按视频标题归类统计。</p>
+  <p>门票、交通等硬信息按公开资料核对，价格与开放时间以景区当日公示为准；餐饮只写到「品类＋去哪找」，不写死门牌——老店变动比攻略更新快。</p>
+  <p class="src">采集时间 2026-10-25 · 工具 MediaCrawler（非商业学习许可）· 本页仅供个人出行参考</p>
+</footer>
+
+</div>
+</body>
+</html>

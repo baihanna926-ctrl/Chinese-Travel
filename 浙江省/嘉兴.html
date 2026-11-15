@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>嘉兴 · 从抖音真实数据整理出的攻略</title>
+<style>
+  :root{
+    --ink:#17251c; --ink-2:#3d4f42; --moss:#1f3d2b; --bamboo:#4a7c59;
+    --mint:#dfe9e0; --rice:#f7f5ef; --paper:#fffefb; --cinnabar:#b5432f;
+    --gold:#a8823c; --line:rgba(23,37,28,.12);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0; background:var(--rice); color:var(--ink);
+    font-family:"Songti SC","Noto Serif SC","Source Han Serif SC","Noto Serif CJK SC","SimSun","STSong",Georgia,"Microsoft YaHei",serif;
+    font-size:16px; line-height:1.85; -webkit-font-smoothing:antialiased;
+  }
+  .cover{
+    position:relative; padding:96px 24px 72px;
+    background:
+      radial-gradient(1200px 500px at 15% -10%, rgba(74,124,89,.22), transparent 60%),
+      radial-gradient(900px 420px at 90% 0%, rgba(168,130,60,.16), transparent 55%),
+      linear-gradient(180deg,#12241a 0%, #1b3527 58%, #23412f 100%);
+    color:#f2efe6; overflow:hidden;
+  }
+  .cover::after{
+    content:""; position:absolute; inset:0;
+    background-image:radial-gradient(rgba(255,255,255,.06) 1px, transparent 1px);
+    background-size:3px 3px; opacity:.5; pointer-events:none;
+  }
+  .cover-inner{max-width:900px;margin:0 auto;position:relative;z-index:1;}
+  .kicker{font-size:13px;letter-spacing:.32em;text-transform:uppercase;color:rgba(242,239,230,.62);margin:0 0 22px;}
+  h1{font-size:clamp(38px,6.4vw,74px);line-height:1.12;margin:0 0 8px;font-weight:700;letter-spacing:.01em;}
+  h1 .accent{color:#cfe3c8;}
+  .sub{font-size:clamp(15px,2vw,19px);color:rgba(242,239,230,.76);max-width:44em;margin:18px 0 0;line-height:1.9;}
+  .stats{display:flex;flex-wrap:wrap;gap:36px;margin-top:44px;padding-top:26px;border-top:1px solid rgba(242,239,230,.18);}
+  .stat .n{font-size:28px;font-weight:700;color:#e7f0e3;line-height:1.2;}
+  .stat .l{font-size:12.5px;letter-spacing:.12em;color:rgba(242,239,230,.55);margin-top:4px;}
+  .wrap{max-width:900px;margin:0 auto;padding:0 24px;}
+  section{padding:64px 0 8px;}
+  section + section{border-top:1px solid var(--line);}
+  h2{font-size:clamp(24px,3.4vw,32px);margin:0 0 6px;font-weight:700;letter-spacing:.01em;display:flex;align-items:baseline;gap:14px;}
+  h2 .no{font-size:12px;letter-spacing:.2em;color:var(--cinnabar);font-family:"PingFang SC",system-ui,sans-serif;font-weight:600;}
+  .lede{color:var(--ink-2);margin:6px 0 30px;max-width:46em;}
+  h3{font-size:19px;margin:34px 0 10px;font-weight:700;}
+  p{margin:0 0 14px;}
+  .grid{display:grid;gap:16px;}
+  .g3{grid-template-columns:repeat(auto-fit,minmax(230px,1fr));}
+  .g2{grid-template-columns:repeat(auto-fit,minmax(300px,1fr));}
+  .card{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:22px 22px 18px;}
+  .card h4{margin:0 0 8px;font-size:16.5px;}
+  .card p{font-size:14.5px;color:var(--ink-2);margin:0;line-height:1.8;}
+  .card .tag{display:inline-block;font-size:11.5px;letter-spacing:.08em;color:var(--bamboo);background:var(--mint);padding:2px 9px;border-radius:999px;margin-bottom:10px;font-family:"PingFang SC",system-ui,sans-serif;}
+  .day{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:26px 26px 12px;margin-bottom:20px;}
+  .day-head{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:6px;}
+  .day-no{font-family:"PingFang SC",system-ui,sans-serif;font-size:12px;letter-spacing:.18em;color:#fff;background:var(--moss);padding:3px 10px;border-radius:6px;}
+  .day-title{font-size:20px;font-weight:700;}
+  .day-meta{font-size:13px;color:var(--ink-2);font-family:"PingFang SC",system-ui,sans-serif;}
+  ol.stops{list-style:none;margin:18px 0 0;padding:0;}
+  ol.stops li{position:relative;padding:0 0 20px 30px;border-left:1px solid var(--line);margin-left:7px;}
+  ol.stops li:last-child{border-left-color:transparent;padding-bottom:6px;}
+  ol.stops li::before{content:"";position:absolute;left:-4.5px;top:9px;width:8px;height:8px;border-radius:50%;background:var(--bamboo);box-shadow:0 0 0 3px var(--paper);}
+  .stop-h{font-weight:700;font-size:15.5px;}
+  .stop-t{font-family:"PingFang SC",system-ui,sans-serif;font-size:12px;color:var(--cinnabar);letter-spacing:.06em;margin-left:8px;}
+  .stop-d{font-size:14.5px;color:var(--ink-2);margin-top:2px;}
+  .tbl-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:14px;background:var(--paper);}
+  table{border-collapse:collapse;width:100%;min-width:620px;font-size:14.5px;}
+  th,td{text-align:left;padding:13px 16px;border-bottom:1px solid var(--line);vertical-align:top;}
+  th{font-family:"PingFang SC",system-ui,sans-serif;font-size:12px;letter-spacing:.1em;color:var(--ink-2);background:rgba(74,124,89,.07);font-weight:600;white-space:nowrap;}
+  tr:last-child td{border-bottom:none;}
+  td b{color:var(--ink);}
+  .muted{color:var(--ink-2);font-size:13.5px;}
+  .rank{counter-reset:r;list-style:none;padding:0;margin:0;}
+  .rank li{counter-increment:r;position:relative;padding:13px 0 13px 46px;border-bottom:1px dashed var(--line);font-size:15px;}
+  .rank li:last-child{border-bottom:none;}
+  .rank li::before{content:counter(r);position:absolute;left:0;top:12px;width:26px;height:26px;border-radius:50%;display:grid;place-items:center;background:var(--mint);color:var(--moss);font-family:"PingFang SC",system-ui,sans-serif;font-size:12.5px;font-weight:700;}
+  .rank .why{display:block;font-size:13.5px;color:var(--ink-2);margin-top:2px;}
+  .note{border-left:3px solid var(--cinnabar);background:linear-gradient(90deg, rgba(181,67,47,.06), transparent 70%);padding:16px 20px;border-radius:0 10px 10px 0;margin:22px 0;font-size:14.5px;}
+  .note b{color:var(--cinnabar);}
+  .tip{border-left:3px solid var(--gold);background:linear-gradient(90deg, rgba(168,130,60,.09), transparent 70%);padding:16px 20px;border-radius:0 10px 10px 0;margin:22px 0;font-size:14.5px;}
+  .tip b{color:var(--gold);}
+  .bars{margin:8px 0 0;}
+  .bar{display:grid;grid-template-columns:110px 1fr 54px;gap:12px;align-items:center;margin-bottom:11px;font-size:14px;}
+  .bar .bl{color:var(--ink-2);}
+  .bar .bt{background:rgba(74,124,89,.12);border-radius:999px;height:9px;overflow:hidden;}
+  .bar .bf{height:100%;background:linear-gradient(90deg,var(--bamboo),#7fa889);border-radius:999px;}
+  .bar .bn{text-align:right;color:var(--ink-2);font-size:13px;font-family:"PingFang SC",system-ui,sans-serif;}
+  .src{font-size:12.5px;color:var(--ink-2);font-family:"PingFang SC",system-ui,sans-serif;}
+  footer{margin-top:40px;padding:44px 0 64px;border-top:1px solid var(--line);color:var(--ink-2);font-size:13px;}
+  footer p{max-width:62em;}
+  @media (max-width:600px){
+    .cover{padding:64px 20px 52px;}
+    section{padding:48px 0 8px;}
+    .stats{gap:24px;}
+    .day{padding:20px 18px 6px;}
+    .bar{grid-template-columns:88px 1fr 46px;gap:8px;font-size:13px;}
+  }
+  @media print{
+    .cover{background:#fff;color:#000;}
+    body{background:#fff;}
+    section{page-break-inside:avoid;}
+  }
+</style>
+</head>
+<body>
+
+<header class="cover">
+  <div class="cover-inner">
+    <p class="kicker">ZHEJIANG · JIAXING · 2 天</p>
+    <h1>嘉兴<span class="accent">，</span><br>乌镇的夜，和一只粽子</h1>
+    <p class="sub">26 条视频拿下 <b>311.6 万点赞</b>——浙江第一。其中单条最高 <b>276.9 万赞</b>，是乌镇夜景那条「我说缘分，一如参禅不说话」，<b>18.9 万收藏</b>。一个视频顶别人一个城市，这就是乌镇的分量。</p>
+    <div class="stats">
+      <div class="stat"><div class="n">26</div><div class="l">条抖音视频</div></div>
+      <div class="stat"><div class="n">311.6万</div><div class="l">累计点赞</div></div>
+      <div class="stat"><div class="n">62%</div><div class="l">美食内容占比</div></div>
+      <div class="stat"><div class="n">276.9万</div><div class="l">单条最高点赞</div></div>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+<section id="s1">
+  <h2><span class="no">01</span> 数据说了什么</h2>
+  <p class="lede">嘉兴的旅游结构极度集中：乌镇和西塘两个水乡古镇吃掉绝大部分流量，南湖是红色旅游的锚点，剩下的就是粽子。它的强项是「夜」——乌镇的夜景是全国水乡里最好的。</p>
+  <h3>内容构成</h3>
+  <div class="bars">
+    <div class="bar"><span class="bl">美食探店</span><span class="bt"><span class="bf" style="width:62%"></span></span><span class="bn">62%</span></div>
+    <div class="bar"><span class="bl">景点盘点</span><span class="bt"><span class="bf" style="width:23%"></span></span><span class="bn">23%</span></div>
+    <div class="bar"><span class="bl">城市 Vlog</span><span class="bt"><span class="bf" style="width:15%"></span></span><span class="bn">15%</span></div>
+  </div>
+
+  <h3>收藏最高的三条</h3>
+  <ul class="rank">
+    <li>我说缘分 一如参禅不说话#嘉兴 #乌镇 #江南烟雨#来过未曾离开乌镇  #乌镇消夏节 #浙里dou是好风光<span class="why">收藏 18.9万 · 点赞 276.9万</span></li>
+    <li>《嘉兴》极限16小时逛吃攻略！#嘉兴#嘉兴旅游攻略 #嘉兴美食攻略<span class="why">收藏 2.8万 · 点赞 8.5万</span></li>
+    <li>浙F土著大馋丫头极限16小时逛吃嘉兴攻略！#嘉兴旅游攻略 #嘉兴美食攻略 #嘉兴美食<span class="why">收藏 1.8万 · 点赞 9.4万</span></li>
+  </ul>
+
+  <div class="note">
+    <b>① 单条 276.9 万赞，浙江最高。</b>乌镇夜景的传播力超过任何一个城市的所有内容总和。<br>
+    <b>② 「极限 16 小时逛吃」出现两条。</b>说明嘉兴也被当成快闪目的地，不需要长假。<br>
+    <b>③ 美食 62%，粽子是符号。</b>但它不只是粽子——南湖菱、酱鸭、糟蛋都是本地货。<br>
+  </div>
+
+  <div class="grid g3" style="margin-top:26px;">
+    <div class="card">
+      <span class="tag">几天够</span>
+      <h4>2 天</h4>
+      <p>一天乌镇（住一晚看夜景），一天西塘或南湖。</p>
+    </div>
+    <div class="card">
+      <span class="tag">住哪儿</span>
+      <h4>乌镇西栅内 / 嘉兴市区</h4>
+      <p>住西栅里才能看夜景和清晨，价格高但值。</p>
+    </div>
+    <div class="card">
+      <span class="tag">什么时候来</span>
+      <h4>3–5 月 / 9–11 月</h4>
+      <p>春秋最好。乌镇戏剧节（10 月）和互联网大会期间人多且贵。</p>
+    </div>
+  </div>
+</section>
+
+<section id="s2">
+  <h2><span class="no">02</span> 行程</h2>
+  <p class="lede">嘉兴的关键是「住进古镇」。当天来回只能看到白天的商业街，看不到它真正的样子。</p>
+
+  <div class="day">
+    <div class="day-head">
+      <span class="day-no">DAY 1</span>
+      <span class="day-title">乌镇：白天到夜晚</span>
+      <span class="day-meta">步行 · 全天 · 门票 150 元</span>
+    </div>
+    <ol class="stops">
+      <li>
+        <div class="stop-h">东栅<span class="stop-t">09:00</span></div>
+        <div class="stop-d">门票 110 元（东西栅联票 190 元）。原住民还住在里面，生活气重。茅盾故居在这。</div>
+      </li>
+      <li>
+        <div class="stop-h">西栅<span class="stop-t">13:00</span></div>
+        <div class="stop-d">联票已含。比东栅大得多，也更精致。昭明书院、草木本色染坊、白莲塔。</div>
+      </li>
+      <li>
+        <div class="stop-h">西栅夜游<span class="stop-t">18:30</span></div>
+        <div class="stop-d">这是乌镇的核心体验，也是那条 276 万赞视频拍的东西。灯亮起来后，水面倒影整个镇子。</div>
+      </li>
+      <li>
+        <div class="stop-h">住西栅内<span class="stop-t">21:00</span></div>
+        <div class="stop-d">住景区内才能看到清晨没人的乌镇。价格高（500+），但值得住一次。</div>
+      </li>
+    </ol>
+  </div>
+
+  <div class="day">
+    <div class="day-head">
+      <span class="day-no">DAY 2</span>
+      <span class="day-title">西塘 or 南湖</span>
+      <span class="day-meta">车程 1h · 全天 · 门票 100 元</span>
+    </div>
+    <ol class="stops">
+      <li>
+        <div class="stop-h">选项 A：西塘<span class="stop-t">09:00</span></div>
+        <div class="stop-d">门票 95 元。比乌镇更「野」，烟雨长廊和石皮弄是特色。晚上酒吧街很吵，白天安静。</div>
+      </li>
+      <li>
+        <div class="stop-h">选项 B：南湖<span class="stop-t">09:00</span></div>
+        <div class="stop-d">门票 60 元左右（含船）。中共一大会址之一，湖心岛的烟雨楼。红色旅游的核心点。</div>
+      </li>
+      <li>
+        <div class="stop-h">回程：月河街区<span class="stop-t">16:00</span></div>
+        <div class="stop-d">免费。嘉兴市区的水乡街区，比乌镇朴素，本地人多。吃粽子、买酱鸭。</div>
+      </li>
+    </ol>
+  </div>
+
+  <div class="tip"><b>乌镇怎么选：</b>时间紧就只去西栅（更精致、夜景最好）；想看原生态加东栅。联票 190 元，比单买省 60。住景区内要提前订，旺季一房难求。</div>
+</section>
+
+<section id="s3">
+  <h2><span class="no">03</span> 吃什么</h2>
+  <p class="lede">嘉兴的吃很朴实：粽子、菱角、酱鸭。没有花哨的做法，但都是几百年的日常。</p>
+
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>吃什么</th><th>去哪找</th><th>怎么点</th><th>人均</th></tr></thead>
+      <tbody>
+        <tr><td><b>嘉兴粽子</b><br><span class="muted"></span></td><td>五芳斋等老字号</td><td>鲜肉粽是招牌，肥瘦相间；趁热吃</td><td>8–15</td></tr>
+        <tr><td><b>南湖菱</b><br><span class="muted"></span></td><td>秋季，南湖边</td><td>无角菱，脆甜；只有嘉兴这一带产</td><td>按斤</td></tr>
+        <tr><td><b>嘉兴酱鸭</b><br><span class="muted"></span></td><td>老字号卤味店</td><td>酱香浓郁，肉紧；切片冷吃</td><td>40–60</td></tr>
+        <tr><td><b>平湖糟蛋</b><br><span class="muted"></span></td><td>平湖特产店</td><td>酒糟腌的蛋，软糯带酒香；口味特殊</td><td>按盒</td></tr>
+        <tr><td><b>桐乡煲</b><br><span class="muted"></span></td><td>桐乡一带</td><td>砂锅煲，冬天吃暖；本地人聚餐常点</td><td>50–80</td></tr>
+        <tr><td><b>斜桥榨菜</b><br><span class="muted"></span></td><td>海宁斜桥</td><td>浙江名榨菜，脆爽；能带走</td><td>按袋</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="note"><b>粽子怎么买：</b>五芳斋到处都有，但现煮的热粽子比真空装好吃太多。在嘉兴买热的，带走再买真空的。</div>
+</section>
+
+<section id="s4">
+  <h2><span class="no">04</span> 实用与避坑</h2>
+  <div class="grid g2" style="margin-top:10px;">
+    <div class="card"><h4>怎么到</h4><p>高铁到嘉兴南站（高铁）或嘉兴站。乌镇没有高铁站，需转车约 40 分钟。</p></div>
+    <div class="card"><h4>乌镇门票</h4><p>东栅 110、西栅 150、联票 190。住景区内可多次进出，记得登记。</p></div>
+    <div class="card"><h4>避开人潮</h4><p>乌镇周末和节假日人极多，尤其西栅夜游。工作日去，或住一晚等清场。</p></div>
+    <div class="card"><h4>带什么走</h4><p>五芳斋粽子（真空）、酱鸭、南湖菱（季节）、杭白菊（桐乡）。</p></div>
+  </div>
+</section>
+
+<footer>
+<p><b>数据说明。</b>本页基于抖音真实采集数据：关键词「嘉兴旅游」「嘉兴美食」，去重后 <b>26 条视频</b>，累计点赞 <b>311.6万</b>、收藏 <b>28.2万</b>，单条最高点赞 276.9万、最高收藏 18.9万。内容构成按视频标题归类统计。</p>
+  <p>门票、交通等硬信息按公开资料核对，价格与开放时间以景区当日公示为准；餐饮只写到「品类＋去哪找」，不写死门牌——老店变动比攻略更新快。</p>
+  <p class="src">采集时间 2026-10-25 · 工具 MediaCrawler（非商业学习许可）· 本页仅供个人出行参考</p>
+</footer>
+
+</div>
+</body>
+</html>

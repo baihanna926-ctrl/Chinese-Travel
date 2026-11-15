@@ -1,0 +1,1706 @@
+{
+  "matched": [
+    {
+      "city": "上海",
+      "slug": "shanghai",
+      "photoDir": "上海"
+    },
+    {
+      "city": "临沧",
+      "slug": "lincang",
+      "photoDir": "临沧"
+    },
+    {
+      "city": "丽江",
+      "slug": "lijiang",
+      "photoDir": "丽江"
+    },
+    {
+      "city": "保山",
+      "slug": "baoshan",
+      "photoDir": "保山"
+    },
+    {
+      "city": "大理",
+      "slug": "dali",
+      "photoDir": "大理"
+    },
+    {
+      "city": "德宏",
+      "slug": "dehong",
+      "photoDir": "德宏"
+    },
+    {
+      "city": "怒江",
+      "slug": "nujiang",
+      "photoDir": "怒江"
+    },
+    {
+      "city": "文山",
+      "slug": "wenshan",
+      "photoDir": "文山"
+    },
+    {
+      "city": "昆明",
+      "slug": "kunming",
+      "photoDir": "昆明"
+    },
+    {
+      "city": "昭通",
+      "slug": "zhaotong",
+      "photoDir": "昭通"
+    },
+    {
+      "city": "普洱",
+      "slug": "puer",
+      "photoDir": "普洱"
+    },
+    {
+      "city": "曲靖",
+      "slug": "qujing",
+      "photoDir": "曲靖"
+    },
+    {
+      "city": "楚雄",
+      "slug": "chuxiong",
+      "photoDir": "楚雄"
+    },
+    {
+      "city": "玉溪",
+      "slug": "yuxi",
+      "photoDir": "玉溪"
+    },
+    {
+      "city": "红河",
+      "slug": "honghe",
+      "photoDir": "红河"
+    },
+    {
+      "city": "西双版纳",
+      "slug": "xishuangbanna",
+      "photoDir": "西双版纳"
+    },
+    {
+      "city": "迪庆",
+      "slug": "diqing",
+      "photoDir": "香格里拉"
+    },
+    {
+      "city": "乌海",
+      "slug": "wuhai",
+      "photoDir": "乌海"
+    },
+    {
+      "city": "包头",
+      "slug": "baotou",
+      "photoDir": "包头"
+    },
+    {
+      "city": "呼伦贝尔",
+      "slug": "hulunbeier",
+      "photoDir": "呼伦贝尔"
+    },
+    {
+      "city": "呼和浩特",
+      "slug": "hohhot",
+      "photoDir": "呼和浩特"
+    },
+    {
+      "city": "赤峰",
+      "slug": "chifeng",
+      "photoDir": "赤峰"
+    },
+    {
+      "city": "通辽",
+      "slug": "tongliao",
+      "photoDir": "通辽"
+    },
+    {
+      "city": "鄂尔多斯",
+      "slug": "ordos",
+      "photoDir": "鄂尔多斯"
+    },
+    {
+      "city": "锡林郭勒",
+      "slug": "xilinguolei",
+      "photoDir": "锡林郭勒盟"
+    },
+    {
+      "city": "北京",
+      "slug": "beijing",
+      "photoDir": "北京"
+    },
+    {
+      "city": "吉林市",
+      "slug": "jilin2",
+      "photoDir": "吉林"
+    },
+    {
+      "city": "四平",
+      "slug": "siping",
+      "photoDir": "四平"
+    },
+    {
+      "city": "延边",
+      "slug": "yanbian",
+      "photoDir": "延边"
+    },
+    {
+      "city": "松原",
+      "slug": "songyuan",
+      "photoDir": "松原"
+    },
+    {
+      "city": "白城",
+      "slug": "baicheng",
+      "photoDir": "白城"
+    },
+    {
+      "city": "白山",
+      "slug": "baishan",
+      "photoDir": "白山"
+    },
+    {
+      "city": "辽源",
+      "slug": "liaoyuan",
+      "photoDir": "辽源"
+    },
+    {
+      "city": "通化",
+      "slug": "tonghua",
+      "photoDir": "通化"
+    },
+    {
+      "city": "长春",
+      "slug": "changchun",
+      "photoDir": "长春"
+    },
+    {
+      "city": "乐山",
+      "slug": "leshan",
+      "photoDir": "乐山"
+    },
+    {
+      "city": "内江",
+      "slug": "neijiang",
+      "photoDir": "内江"
+    },
+    {
+      "city": "凉山",
+      "slug": "liangshan",
+      "photoDir": "凉山"
+    },
+    {
+      "city": "南充",
+      "slug": "nanchong",
+      "photoDir": "南充"
+    },
+    {
+      "city": "宜宾",
+      "slug": "yibin",
+      "photoDir": "宜宾"
+    },
+    {
+      "city": "巴中",
+      "slug": "bazhong",
+      "photoDir": "巴中"
+    },
+    {
+      "city": "广元",
+      "slug": "guangyuan",
+      "photoDir": "广元"
+    },
+    {
+      "city": "广安",
+      "slug": "guangan",
+      "photoDir": "广安"
+    },
+    {
+      "city": "德阳",
+      "slug": "deyang",
+      "photoDir": "德阳"
+    },
+    {
+      "city": "成都",
+      "slug": "chengdu",
+      "photoDir": "成都"
+    },
+    {
+      "city": "攀枝花",
+      "slug": "panzhihua",
+      "photoDir": "攀枝花"
+    },
+    {
+      "city": "泸州",
+      "slug": "luzhou",
+      "photoDir": "泸州"
+    },
+    {
+      "city": "甘孜",
+      "slug": "ganzi",
+      "photoDir": "甘孜"
+    },
+    {
+      "city": "眉山",
+      "slug": "meishan",
+      "photoDir": "眉山"
+    },
+    {
+      "city": "绵阳",
+      "slug": "mianyang",
+      "photoDir": "绵阳"
+    },
+    {
+      "city": "自贡",
+      "slug": "zigong",
+      "photoDir": "自贡"
+    },
+    {
+      "city": "资阳",
+      "slug": "ziyang",
+      "photoDir": "资阳"
+    },
+    {
+      "city": "达州",
+      "slug": "dazhou",
+      "photoDir": "达州"
+    },
+    {
+      "city": "遂宁",
+      "slug": "suining",
+      "photoDir": "遂宁"
+    },
+    {
+      "city": "阿坝",
+      "slug": "aba",
+      "photoDir": "阿坝"
+    },
+    {
+      "city": "雅安",
+      "slug": "yaan",
+      "photoDir": "雅安"
+    },
+    {
+      "city": "天津",
+      "slug": "tianjin",
+      "photoDir": "天津"
+    },
+    {
+      "city": "中卫",
+      "slug": "zhongwei",
+      "photoDir": "中卫"
+    },
+    {
+      "city": "吴忠",
+      "slug": "wuzhong",
+      "photoDir": "吴忠"
+    },
+    {
+      "city": "固原",
+      "slug": "guyuan",
+      "photoDir": "固原"
+    },
+    {
+      "city": "石嘴山",
+      "slug": "shizuishan",
+      "photoDir": "石嘴山"
+    },
+    {
+      "city": "银川",
+      "slug": "yinchuan",
+      "photoDir": "银川"
+    },
+    {
+      "city": "亳州",
+      "slug": "bozhou",
+      "photoDir": "亳州"
+    },
+    {
+      "city": "六安",
+      "slug": "luan",
+      "photoDir": "六安"
+    },
+    {
+      "city": "合肥",
+      "slug": "hefei",
+      "photoDir": "合肥"
+    },
+    {
+      "city": "安庆",
+      "slug": "anqing",
+      "photoDir": "安庆"
+    },
+    {
+      "city": "宣城",
+      "slug": "xuancheng",
+      "photoDir": "宣城"
+    },
+    {
+      "city": "宿州",
+      "slug": "suzhou2",
+      "photoDir": "宿州"
+    },
+    {
+      "city": "池州",
+      "slug": "chi",
+      "photoDir": "池州"
+    },
+    {
+      "city": "淮北",
+      "slug": "huaibei",
+      "photoDir": "淮北"
+    },
+    {
+      "city": "淮南",
+      "slug": "huainan",
+      "photoDir": "淮南"
+    },
+    {
+      "city": "滁州",
+      "slug": "chu",
+      "photoDir": "滁州"
+    },
+    {
+      "city": "芜湖",
+      "slug": "wuhu",
+      "photoDir": "芜湖"
+    },
+    {
+      "city": "蚌埠",
+      "slug": "bengbu",
+      "photoDir": "蚌埠"
+    },
+    {
+      "city": "铜陵",
+      "slug": "tongling",
+      "photoDir": "铜陵"
+    },
+    {
+      "city": "阜阳",
+      "slug": "fuyang",
+      "photoDir": "阜阳"
+    },
+    {
+      "city": "马鞍山",
+      "slug": "maanshan",
+      "photoDir": "马鞍山"
+    },
+    {
+      "city": "黄山",
+      "slug": "huangshan",
+      "photoDir": "黄山"
+    },
+    {
+      "city": "东营",
+      "slug": "dongying",
+      "photoDir": "东营"
+    },
+    {
+      "city": "临沂",
+      "slug": "linyi",
+      "photoDir": "临沂"
+    },
+    {
+      "city": "威海",
+      "slug": "weihai",
+      "photoDir": "威海"
+    },
+    {
+      "city": "德州",
+      "slug": "dezhou",
+      "photoDir": "德州"
+    },
+    {
+      "city": "日照",
+      "slug": "rizhao",
+      "photoDir": "日照"
+    },
+    {
+      "city": "枣庄",
+      "slug": "zaozhuang",
+      "photoDir": "枣庄"
+    },
+    {
+      "city": "泰安",
+      "slug": "taian",
+      "photoDir": "泰安"
+    },
+    {
+      "city": "济南",
+      "slug": "jinan",
+      "photoDir": "济南"
+    },
+    {
+      "city": "济宁",
+      "slug": "jining",
+      "photoDir": "济宁"
+    },
+    {
+      "city": "淄博",
+      "slug": "zibo",
+      "photoDir": "淄博"
+    },
+    {
+      "city": "滨州",
+      "slug": "bin",
+      "photoDir": "滨州"
+    },
+    {
+      "city": "潍坊",
+      "slug": "weifang",
+      "photoDir": "潍坊"
+    },
+    {
+      "city": "烟台",
+      "slug": "yantai",
+      "photoDir": "烟台"
+    },
+    {
+      "city": "聊城",
+      "slug": "liaocheng",
+      "photoDir": "聊城"
+    },
+    {
+      "city": "菏泽",
+      "slug": "heze",
+      "photoDir": "菏泽"
+    },
+    {
+      "city": "青岛",
+      "slug": "qingdao",
+      "photoDir": "青岛"
+    },
+    {
+      "city": "临汾",
+      "slug": "linfen",
+      "photoDir": "临汾"
+    },
+    {
+      "city": "吕梁",
+      "slug": "lvliang",
+      "photoDir": "吕梁"
+    },
+    {
+      "city": "大同",
+      "slug": "datong",
+      "photoDir": "大同"
+    },
+    {
+      "city": "太原",
+      "slug": "taiyuan",
+      "photoDir": "太原"
+    },
+    {
+      "city": "忻州",
+      "slug": "xin",
+      "photoDir": "忻州"
+    },
+    {
+      "city": "晋中",
+      "slug": "jinzhong",
+      "photoDir": "晋中"
+    },
+    {
+      "city": "晋城",
+      "slug": "jincheng",
+      "photoDir": "晋城"
+    },
+    {
+      "city": "朔州",
+      "slug": "shuo",
+      "photoDir": "朔州"
+    },
+    {
+      "city": "运城",
+      "slug": "yuncheng",
+      "photoDir": "运城"
+    },
+    {
+      "city": "长治",
+      "slug": "zhangzhi",
+      "photoDir": "长治"
+    },
+    {
+      "city": "阳泉",
+      "slug": "yangquan",
+      "photoDir": "阳泉"
+    },
+    {
+      "city": "东莞",
+      "slug": "dongguan",
+      "photoDir": "东莞"
+    },
+    {
+      "city": "中山",
+      "slug": "zhongshan",
+      "photoDir": "中山"
+    },
+    {
+      "city": "云浮",
+      "slug": "yunfu",
+      "photoDir": "云浮"
+    },
+    {
+      "city": "佛山",
+      "slug": "foshan",
+      "photoDir": "佛山"
+    },
+    {
+      "city": "广州",
+      "slug": "guangzhou",
+      "photoDir": "广州"
+    },
+    {
+      "city": "惠州",
+      "slug": "huizhou",
+      "photoDir": "惠州"
+    },
+    {
+      "city": "揭阳",
+      "slug": "jieyang",
+      "photoDir": "揭阳"
+    },
+    {
+      "city": "梅州",
+      "slug": "mei",
+      "photoDir": "梅州"
+    },
+    {
+      "city": "汕头",
+      "slug": "shantou",
+      "photoDir": "汕头"
+    },
+    {
+      "city": "汕尾",
+      "slug": "shanwei",
+      "photoDir": "汕尾"
+    },
+    {
+      "city": "江门",
+      "slug": "jiangmen",
+      "photoDir": "江门"
+    },
+    {
+      "city": "河源",
+      "slug": "heyuan",
+      "photoDir": "河源"
+    },
+    {
+      "city": "深圳",
+      "slug": "shenzhen",
+      "photoDir": "深圳"
+    },
+    {
+      "city": "清远",
+      "slug": "qingyuan",
+      "photoDir": "清远"
+    },
+    {
+      "city": "湛江",
+      "slug": "zhanjiang",
+      "photoDir": "湛江"
+    },
+    {
+      "city": "潮州",
+      "slug": "chao",
+      "photoDir": "潮州"
+    },
+    {
+      "city": "珠海",
+      "slug": "zhuhai",
+      "photoDir": "珠海"
+    },
+    {
+      "city": "肇庆",
+      "slug": "zhaoqing",
+      "photoDir": "肇庆"
+    },
+    {
+      "city": "茂名",
+      "slug": "maoming",
+      "photoDir": "茂名"
+    },
+    {
+      "city": "阳江",
+      "slug": "yangjiang",
+      "photoDir": "阳江"
+    },
+    {
+      "city": "韶关",
+      "slug": "shaoguan",
+      "photoDir": "韶关"
+    },
+    {
+      "city": "北海",
+      "slug": "beihai",
+      "photoDir": "北海"
+    },
+    {
+      "city": "南宁",
+      "slug": "nanning",
+      "photoDir": "南宁"
+    },
+    {
+      "city": "崇左",
+      "slug": "chongzuo",
+      "photoDir": "崇左"
+    },
+    {
+      "city": "来宾",
+      "slug": "laibin",
+      "photoDir": "来宾"
+    },
+    {
+      "city": "柳州",
+      "slug": "liu",
+      "photoDir": "柳州"
+    },
+    {
+      "city": "桂林",
+      "slug": "guilin",
+      "photoDir": "桂林"
+    },
+    {
+      "city": "梧州",
+      "slug": "wuzhou",
+      "photoDir": "梧州"
+    },
+    {
+      "city": "河池",
+      "slug": "hechi",
+      "photoDir": "河池"
+    },
+    {
+      "city": "玉林",
+      "slug": "yulin",
+      "photoDir": "玉林"
+    },
+    {
+      "city": "百色",
+      "slug": "baise",
+      "photoDir": "百色"
+    },
+    {
+      "city": "贵港",
+      "slug": "guigang",
+      "photoDir": "贵港"
+    },
+    {
+      "city": "贺州",
+      "slug": "hezhou",
+      "photoDir": "贺州"
+    },
+    {
+      "city": "钦州",
+      "slug": "qin",
+      "photoDir": "钦州"
+    },
+    {
+      "city": "防城港",
+      "slug": "fangchenggang",
+      "photoDir": "防城港"
+    },
+    {
+      "city": "乌鲁木齐",
+      "slug": "urumqi",
+      "photoDir": "乌鲁木齐"
+    },
+    {
+      "city": "伊宁",
+      "slug": "yining",
+      "photoDir": "伊犁"
+    },
+    {
+      "city": "克拉玛依",
+      "slug": "kelamayi",
+      "photoDir": "克拉玛依"
+    },
+    {
+      "city": "吐鲁番",
+      "slug": "turpan",
+      "photoDir": "吐鲁番"
+    },
+    {
+      "city": "和田",
+      "slug": "hetian",
+      "photoDir": "和田"
+    },
+    {
+      "city": "哈密",
+      "slug": "hami",
+      "photoDir": "哈密"
+    },
+    {
+      "city": "喀什",
+      "slug": "kashgar",
+      "photoDir": "喀什"
+    },
+    {
+      "city": "库尔勒",
+      "slug": "kuerlei",
+      "photoDir": "巴音郭楞"
+    },
+    {
+      "city": "阿克苏",
+      "slug": "akesu",
+      "photoDir": "阿克苏"
+    },
+    {
+      "city": "阿勒泰",
+      "slug": "aleitai",
+      "photoDir": "阿勒泰"
+    },
+    {
+      "city": "南京",
+      "slug": "nanjing",
+      "photoDir": "南京"
+    },
+    {
+      "city": "南通",
+      "slug": "nantong",
+      "photoDir": "南通"
+    },
+    {
+      "city": "宿迁",
+      "slug": "suqian",
+      "photoDir": "宿迁"
+    },
+    {
+      "city": "常州",
+      "slug": "changzhou",
+      "photoDir": "常州"
+    },
+    {
+      "city": "徐州",
+      "slug": "xuzhou",
+      "photoDir": "徐州"
+    },
+    {
+      "city": "扬州",
+      "slug": "yangzhou",
+      "photoDir": "扬州"
+    },
+    {
+      "city": "无锡",
+      "slug": "wuxi",
+      "photoDir": "无锡"
+    },
+    {
+      "city": "泰州",
+      "slug": "tai",
+      "photoDir": "泰州"
+    },
+    {
+      "city": "淮安",
+      "slug": "huaian",
+      "photoDir": "淮安"
+    },
+    {
+      "city": "盐城",
+      "slug": "yancheng",
+      "photoDir": "盐城"
+    },
+    {
+      "city": "苏州",
+      "slug": "suzhou",
+      "photoDir": "苏州"
+    },
+    {
+      "city": "连云港",
+      "slug": "lianyungang",
+      "photoDir": "连云港"
+    },
+    {
+      "city": "镇江",
+      "slug": "zhenjiang",
+      "photoDir": "镇江"
+    },
+    {
+      "city": "上饶",
+      "slug": "shangrao",
+      "photoDir": "上饶"
+    },
+    {
+      "city": "九江",
+      "slug": "jiujiang",
+      "photoDir": "九江"
+    },
+    {
+      "city": "南昌",
+      "slug": "nanchang",
+      "photoDir": "南昌"
+    },
+    {
+      "city": "吉安",
+      "slug": "jian",
+      "photoDir": "吉安"
+    },
+    {
+      "city": "宜春",
+      "slug": "yichun",
+      "photoDir": "宜春"
+    },
+    {
+      "city": "抚州",
+      "slug": "fuzhou2",
+      "photoDir": "抚州"
+    },
+    {
+      "city": "新余",
+      "slug": "xinyu",
+      "photoDir": "新余"
+    },
+    {
+      "city": "景德镇",
+      "slug": "jingdezhen",
+      "photoDir": "景德镇"
+    },
+    {
+      "city": "萍乡",
+      "slug": "pingxiang",
+      "photoDir": "萍乡"
+    },
+    {
+      "city": "赣州",
+      "slug": "gan",
+      "photoDir": "赣州"
+    },
+    {
+      "city": "鹰潭",
+      "slug": "yingtan",
+      "photoDir": "鹰潭"
+    },
+    {
+      "city": "保定",
+      "slug": "baoding",
+      "photoDir": "保定"
+    },
+    {
+      "city": "唐山",
+      "slug": "tangshan",
+      "photoDir": "唐山"
+    },
+    {
+      "city": "廊坊",
+      "slug": "langfang",
+      "photoDir": "廊坊"
+    },
+    {
+      "city": "张家口",
+      "slug": "zhangjiakou",
+      "photoDir": "张家口"
+    },
+    {
+      "city": "承德",
+      "slug": "chengde",
+      "photoDir": "承德"
+    },
+    {
+      "city": "沧州",
+      "slug": "cang",
+      "photoDir": "沧州"
+    },
+    {
+      "city": "石家庄",
+      "slug": "shijiazhuang",
+      "photoDir": "石家庄"
+    },
+    {
+      "city": "秦皇岛",
+      "slug": "qinhuangdao",
+      "photoDir": "秦皇岛"
+    },
+    {
+      "city": "衡水",
+      "slug": "hengshui",
+      "photoDir": "衡水"
+    },
+    {
+      "city": "邢台",
+      "slug": "xingtai",
+      "photoDir": "邢台"
+    },
+    {
+      "city": "邯郸",
+      "slug": "handan",
+      "photoDir": "邯郸"
+    },
+    {
+      "city": "三门峡",
+      "slug": "sanmenxia",
+      "photoDir": "三门峡"
+    },
+    {
+      "city": "信阳",
+      "slug": "xinyang",
+      "photoDir": "信阳"
+    },
+    {
+      "city": "南阳",
+      "slug": "nanyang",
+      "photoDir": "南阳"
+    },
+    {
+      "city": "周口",
+      "slug": "zhoukou",
+      "photoDir": "周口"
+    },
+    {
+      "city": "商丘",
+      "slug": "shangqiu",
+      "photoDir": "商丘"
+    },
+    {
+      "city": "安阳",
+      "slug": "anyang",
+      "photoDir": "安阳"
+    },
+    {
+      "city": "平顶山",
+      "slug": "pingdingshan",
+      "photoDir": "平顶山"
+    },
+    {
+      "city": "开封",
+      "slug": "kaifeng",
+      "photoDir": "开封"
+    },
+    {
+      "city": "新乡",
+      "slug": "xinxiang",
+      "photoDir": "新乡"
+    },
+    {
+      "city": "洛阳",
+      "slug": "luoyang",
+      "photoDir": "洛阳"
+    },
+    {
+      "city": "漯河",
+      "slug": "tahe",
+      "photoDir": "漯河"
+    },
+    {
+      "city": "濮阳",
+      "slug": "puyang",
+      "photoDir": "濮阳"
+    },
+    {
+      "city": "焦作",
+      "slug": "jiaozuo",
+      "photoDir": "焦作"
+    },
+    {
+      "city": "许昌",
+      "slug": "xuchang",
+      "photoDir": "许昌"
+    },
+    {
+      "city": "郑州",
+      "slug": "zhengzhou",
+      "photoDir": "郑州"
+    },
+    {
+      "city": "驻马店",
+      "slug": "zhumadian",
+      "photoDir": "驻马店"
+    },
+    {
+      "city": "鹤壁",
+      "slug": "hebi",
+      "photoDir": "鹤壁"
+    },
+    {
+      "city": "丽水",
+      "slug": "lishui",
+      "photoDir": "丽水"
+    },
+    {
+      "city": "台州",
+      "slug": "tai2",
+      "photoDir": "台州"
+    },
+    {
+      "city": "嘉兴",
+      "slug": "jiaxing",
+      "photoDir": "嘉兴"
+    },
+    {
+      "city": "宁波",
+      "slug": "ningbo",
+      "photoDir": "宁波"
+    },
+    {
+      "city": "杭州",
+      "slug": "hangzhou",
+      "photoDir": "杭州"
+    },
+    {
+      "city": "温州",
+      "slug": "wenzhou",
+      "photoDir": "温州"
+    },
+    {
+      "city": "湖州",
+      "slug": "huzhou",
+      "photoDir": "湖州"
+    },
+    {
+      "city": "绍兴",
+      "slug": "shaoxing",
+      "photoDir": "绍兴"
+    },
+    {
+      "city": "舟山",
+      "slug": "zhoushan",
+      "photoDir": "舟山"
+    },
+    {
+      "city": "衢州",
+      "slug": "quzhou",
+      "photoDir": "衢州"
+    },
+    {
+      "city": "金华",
+      "slug": "jinhua",
+      "photoDir": "金华"
+    },
+    {
+      "city": "三亚",
+      "slug": "sanya",
+      "photoDir": "三亚"
+    },
+    {
+      "city": "三沙",
+      "slug": "sansha",
+      "photoDir": "三沙"
+    },
+    {
+      "city": "儋州",
+      "slug": "dan",
+      "photoDir": "儋州"
+    },
+    {
+      "city": "海口",
+      "slug": "haikou",
+      "photoDir": "海口"
+    },
+    {
+      "city": "十堰",
+      "slug": "shiyan",
+      "photoDir": "十堰"
+    },
+    {
+      "city": "咸宁",
+      "slug": "xianning",
+      "photoDir": "咸宁"
+    },
+    {
+      "city": "孝感",
+      "slug": "xiaogan",
+      "photoDir": "孝感"
+    },
+    {
+      "city": "宜昌",
+      "slug": "yichang",
+      "photoDir": "宜昌"
+    },
+    {
+      "city": "恩施",
+      "slug": "enshi",
+      "photoDir": "恩施"
+    },
+    {
+      "city": "武汉",
+      "slug": "wuhan",
+      "photoDir": "武汉"
+    },
+    {
+      "city": "荆州",
+      "slug": "jing",
+      "photoDir": "荆州"
+    },
+    {
+      "city": "荆门",
+      "slug": "jingmen",
+      "photoDir": "荆门"
+    },
+    {
+      "city": "襄阳",
+      "slug": "xiangyang",
+      "photoDir": "襄阳"
+    },
+    {
+      "city": "鄂州",
+      "slug": "ezhou",
+      "photoDir": "鄂州"
+    },
+    {
+      "city": "随州",
+      "slug": "sui",
+      "photoDir": "随州"
+    },
+    {
+      "city": "黄冈",
+      "slug": "huanggang",
+      "photoDir": "黄冈"
+    },
+    {
+      "city": "黄石",
+      "slug": "huang",
+      "photoDir": "黄石"
+    },
+    {
+      "city": "娄底",
+      "slug": "loudi",
+      "photoDir": "娄底"
+    },
+    {
+      "city": "岳阳",
+      "slug": "yueyang",
+      "photoDir": "岳阳"
+    },
+    {
+      "city": "常德",
+      "slug": "changde",
+      "photoDir": "常德"
+    },
+    {
+      "city": "张家界",
+      "slug": "zhangjiajie",
+      "photoDir": "张家界"
+    },
+    {
+      "city": "怀化",
+      "slug": "huaihua",
+      "photoDir": "怀化"
+    },
+    {
+      "city": "株洲",
+      "slug": "zhu",
+      "photoDir": "株洲"
+    },
+    {
+      "city": "永州",
+      "slug": "yong",
+      "photoDir": "永州"
+    },
+    {
+      "city": "湘潭",
+      "slug": "xiangtan",
+      "photoDir": "湘潭"
+    },
+    {
+      "city": "湘西",
+      "slug": "xiangxi",
+      "photoDir": "湘西"
+    },
+    {
+      "city": "益阳",
+      "slug": "yiyang",
+      "photoDir": "益阳"
+    },
+    {
+      "city": "衡阳",
+      "slug": "hengyang",
+      "photoDir": "衡阳"
+    },
+    {
+      "city": "邵阳",
+      "slug": "shaoyang",
+      "photoDir": "邵阳"
+    },
+    {
+      "city": "郴州",
+      "slug": "chen",
+      "photoDir": "郴州"
+    },
+    {
+      "city": "长沙",
+      "slug": "changsha",
+      "photoDir": "长沙"
+    },
+    {
+      "city": "兰州",
+      "slug": "lanzhou",
+      "photoDir": "兰州"
+    },
+    {
+      "city": "嘉峪关",
+      "slug": "jiayuguan",
+      "photoDir": "嘉峪关"
+    },
+    {
+      "city": "天水",
+      "slug": "tianshui",
+      "photoDir": "天水"
+    },
+    {
+      "city": "平凉",
+      "slug": "pingliang",
+      "photoDir": "平凉"
+    },
+    {
+      "city": "庆阳",
+      "slug": "qingyang",
+      "photoDir": "庆阳"
+    },
+    {
+      "city": "张掖",
+      "slug": "zhangye",
+      "photoDir": "张掖"
+    },
+    {
+      "city": "武威",
+      "slug": "wuwei",
+      "photoDir": "武威"
+    },
+    {
+      "city": "白银",
+      "slug": "baiyin",
+      "photoDir": "白银"
+    },
+    {
+      "city": "酒泉",
+      "slug": "jiuquan",
+      "photoDir": "酒泉"
+    },
+    {
+      "city": "金昌",
+      "slug": "jinchang",
+      "photoDir": "金昌"
+    },
+    {
+      "city": "三明",
+      "slug": "sanming",
+      "photoDir": "三明"
+    },
+    {
+      "city": "南平",
+      "slug": "nanping",
+      "photoDir": "南平"
+    },
+    {
+      "city": "厦门",
+      "slug": "xiamen",
+      "photoDir": "厦门"
+    },
+    {
+      "city": "宁德",
+      "slug": "ningde",
+      "photoDir": "宁德"
+    },
+    {
+      "city": "泉州",
+      "slug": "quanzhou",
+      "photoDir": "泉州"
+    },
+    {
+      "city": "漳州",
+      "slug": "zhang",
+      "photoDir": "漳州"
+    },
+    {
+      "city": "福州",
+      "slug": "fuzhou",
+      "photoDir": "福州"
+    },
+    {
+      "city": "莆田",
+      "slug": "putian",
+      "photoDir": "莆田"
+    },
+    {
+      "city": "龙岩",
+      "slug": "longyan",
+      "photoDir": "龙岩"
+    },
+    {
+      "city": "山南",
+      "slug": "shannan",
+      "photoDir": "山南"
+    },
+    {
+      "city": "拉萨",
+      "slug": "lhasa",
+      "photoDir": "拉萨"
+    },
+    {
+      "city": "日喀则",
+      "slug": "rikaze",
+      "photoDir": "日喀则"
+    },
+    {
+      "city": "昌都",
+      "slug": "changdou",
+      "photoDir": "昌都"
+    },
+    {
+      "city": "林芝",
+      "slug": "nyingchi",
+      "photoDir": "林芝"
+    },
+    {
+      "city": "那曲",
+      "slug": "naqu",
+      "photoDir": "那曲"
+    },
+    {
+      "city": "阿里",
+      "slug": "ali",
+      "photoDir": "阿里"
+    },
+    {
+      "city": "六盘水",
+      "slug": "liupanshui",
+      "photoDir": "六盘水"
+    },
+    {
+      "city": "安顺",
+      "slug": "anshun",
+      "photoDir": "安顺"
+    },
+    {
+      "city": "毕节",
+      "slug": "bijie",
+      "photoDir": "毕节"
+    },
+    {
+      "city": "贵阳",
+      "slug": "guiyang",
+      "photoDir": "贵阳"
+    },
+    {
+      "city": "遵义",
+      "slug": "zunyi",
+      "photoDir": "遵义"
+    },
+    {
+      "city": "铜仁",
+      "slug": "tongren",
+      "photoDir": "铜仁"
+    },
+    {
+      "city": "黔东南",
+      "slug": "qiandongnan",
+      "photoDir": "黔东南"
+    },
+    {
+      "city": "黔南",
+      "slug": "qiannan",
+      "photoDir": "黔南"
+    },
+    {
+      "city": "黔西南",
+      "slug": "qianxinan",
+      "photoDir": "黔西南"
+    },
+    {
+      "city": "丹东",
+      "slug": "dandong",
+      "photoDir": "丹东"
+    },
+    {
+      "city": "大连",
+      "slug": "dalian",
+      "photoDir": "大连"
+    },
+    {
+      "city": "抚顺",
+      "slug": "fushun",
+      "photoDir": "抚顺"
+    },
+    {
+      "city": "朝阳",
+      "slug": "zhaoyang",
+      "photoDir": "朝阳"
+    },
+    {
+      "city": "本溪",
+      "slug": "benxi",
+      "photoDir": "本溪"
+    },
+    {
+      "city": "沈阳",
+      "slug": "shenyang",
+      "photoDir": "沈阳"
+    },
+    {
+      "city": "盘锦",
+      "slug": "panjin",
+      "photoDir": "盘锦"
+    },
+    {
+      "city": "营口",
+      "slug": "yingkou",
+      "photoDir": "营口"
+    },
+    {
+      "city": "葫芦岛",
+      "slug": "huludao",
+      "photoDir": "葫芦岛"
+    },
+    {
+      "city": "辽阳",
+      "slug": "liaoyang",
+      "photoDir": "辽阳"
+    },
+    {
+      "city": "铁岭",
+      "slug": "tieling",
+      "photoDir": "铁岭"
+    },
+    {
+      "city": "锦州",
+      "slug": "jin",
+      "photoDir": "锦州"
+    },
+    {
+      "city": "阜新",
+      "slug": "fuxin",
+      "photoDir": "阜新"
+    },
+    {
+      "city": "鞍山",
+      "slug": "anshan",
+      "photoDir": "鞍山"
+    },
+    {
+      "city": "重庆",
+      "slug": "chongqing",
+      "photoDir": "重庆"
+    },
+    {
+      "city": "咸阳",
+      "slug": "xianyang",
+      "photoDir": "咸阳"
+    },
+    {
+      "city": "商洛",
+      "slug": "shangluo",
+      "photoDir": "商洛"
+    },
+    {
+      "city": "安康",
+      "slug": "ankang",
+      "photoDir": "安康"
+    },
+    {
+      "city": "宝鸡",
+      "slug": "baoji",
+      "photoDir": "宝鸡"
+    },
+    {
+      "city": "延安",
+      "slug": "yanan",
+      "photoDir": "延安"
+    },
+    {
+      "city": "榆林",
+      "slug": "yulin2",
+      "photoDir": "榆林"
+    },
+    {
+      "city": "汉中",
+      "slug": "hanzhong",
+      "photoDir": "汉中"
+    },
+    {
+      "city": "渭南",
+      "slug": "weinan",
+      "photoDir": "渭南"
+    },
+    {
+      "city": "西安",
+      "slug": "xian",
+      "photoDir": "西安"
+    },
+    {
+      "city": "铜川",
+      "slug": "tongchuan",
+      "photoDir": "铜川"
+    },
+    {
+      "city": "德令哈",
+      "slug": "delingha",
+      "photoDir": "海西"
+    },
+    {
+      "city": "果洛",
+      "slug": "guoluo",
+      "photoDir": "果洛"
+    },
+    {
+      "city": "格尔木",
+      "slug": "geermu",
+      "photoDir": "海西"
+    },
+    {
+      "city": "海东",
+      "slug": "haidong",
+      "photoDir": "海东"
+    },
+    {
+      "city": "海北",
+      "slug": "haibei",
+      "photoDir": "海北"
+    },
+    {
+      "city": "海南州",
+      "slug": "hainan",
+      "photoDir": "海南州"
+    },
+    {
+      "city": "海西",
+      "slug": "haixi",
+      "photoDir": "海西"
+    },
+    {
+      "city": "玉树",
+      "slug": "yushu",
+      "photoDir": "玉树"
+    },
+    {
+      "city": "西宁",
+      "slug": "xining",
+      "photoDir": "西宁"
+    },
+    {
+      "city": "黄南",
+      "slug": "huangnan",
+      "photoDir": "黄南"
+    },
+    {
+      "city": "七台河",
+      "slug": "qitaihe",
+      "photoDir": "七台河"
+    },
+    {
+      "city": "伊春",
+      "slug": "yichun2",
+      "photoDir": "伊春"
+    },
+    {
+      "city": "佳木斯",
+      "slug": "jiamusi",
+      "photoDir": "佳木斯"
+    },
+    {
+      "city": "双鸭山",
+      "slug": "shuangyashan",
+      "photoDir": "双鸭山"
+    },
+    {
+      "city": "哈尔滨",
+      "slug": "harbin",
+      "photoDir": "哈尔滨"
+    },
+    {
+      "city": "大兴安岭",
+      "slug": "daxinganling",
+      "photoDir": "大兴安岭"
+    },
+    {
+      "city": "大庆",
+      "slug": "daqing",
+      "photoDir": "大庆"
+    },
+    {
+      "city": "牡丹江",
+      "slug": "mudanjiang",
+      "photoDir": "牡丹江"
+    },
+    {
+      "city": "绥化",
+      "slug": "suihua",
+      "photoDir": "绥化"
+    },
+    {
+      "city": "鸡西",
+      "slug": "jixi",
+      "photoDir": "鸡西"
+    },
+    {
+      "city": "鹤岗",
+      "slug": "hegang",
+      "photoDir": "鹤岗"
+    },
+    {
+      "city": "黑河",
+      "slug": "heihe",
+      "photoDir": "黑河"
+    },
+    {
+      "city": "齐齐哈尔",
+      "slug": "qiqihar",
+      "photoDir": "齐齐哈尔"
+    }
+  ],
+  "noPhoto": [
+    {
+      "province": "台湾省",
+      "city": "台东",
+      "slug": "taidong"
+    },
+    {
+      "province": "台湾省",
+      "city": "台中",
+      "slug": "taizhong"
+    },
+    {
+      "province": "台湾省",
+      "city": "台北",
+      "slug": "taibei"
+    },
+    {
+      "province": "台湾省",
+      "city": "台南",
+      "slug": "tainan"
+    },
+    {
+      "province": "台湾省",
+      "city": "嘉义",
+      "slug": "jiayi"
+    },
+    {
+      "province": "台湾省",
+      "city": "基隆",
+      "slug": "jilong"
+    },
+    {
+      "province": "台湾省",
+      "city": "宜兰",
+      "slug": "yilan"
+    },
+    {
+      "province": "台湾省",
+      "city": "屏东",
+      "slug": "pingdong"
+    },
+    {
+      "province": "台湾省",
+      "city": "新竹",
+      "slug": "xinzhu"
+    },
+    {
+      "province": "台湾省",
+      "city": "花莲",
+      "slug": "hualian"
+    },
+    {
+      "province": "台湾省",
+      "city": "高雄",
+      "slug": "gaoxiong"
+    },
+    {
+      "province": "澳门特别行政区",
+      "city": "澳门",
+      "slug": "aomen"
+    },
+    {
+      "province": "香港特别行政区",
+      "city": "香港",
+      "slug": "xianggang"
+    }
+  ]
+}

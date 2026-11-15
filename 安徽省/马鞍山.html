@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>马鞍山 · 从抖音真实数据整理出的攻略</title>
+<style>
+  :root{
+    --ink:#17251c; --ink-2:#3d4f42; --moss:#1f3d2b; --bamboo:#4a7c59;
+    --mint:#dfe9e0; --rice:#f7f5ef; --paper:#fffefb; --cinnabar:#b5432f;
+    --gold:#a8823c; --line:rgba(23,37,28,.12);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0; background:var(--rice); color:var(--ink);
+    font-family:"Songti SC","Noto Serif SC","Source Han Serif SC","Noto Serif CJK SC","SimSun","STSong",Georgia,"Microsoft YaHei",serif;
+    font-size:16px; line-height:1.85; -webkit-font-smoothing:antialiased;
+  }
+  .cover{
+    position:relative; padding:96px 24px 72px;
+    background:
+      radial-gradient(1200px 500px at 15% -10%, rgba(74,124,89,.22), transparent 60%),
+      radial-gradient(900px 420px at 90% 0%, rgba(168,130,60,.16), transparent 55%),
+      linear-gradient(180deg,#12241a 0%, #1b3527 58%, #23412f 100%);
+    color:#f2efe6; overflow:hidden;
+  }
+  .cover::after{
+    content:""; position:absolute; inset:0;
+    background-image:radial-gradient(rgba(255,255,255,.06) 1px, transparent 1px);
+    background-size:3px 3px; opacity:.5; pointer-events:none;
+  }
+  .cover-inner{max-width:900px;margin:0 auto;position:relative;z-index:1;}
+  .kicker{font-size:13px;letter-spacing:.32em;text-transform:uppercase;color:rgba(242,239,230,.62);margin:0 0 22px;}
+  h1{font-size:clamp(38px,6.4vw,74px);line-height:1.12;margin:0 0 8px;font-weight:700;letter-spacing:.01em;}
+  h1 .accent{color:#cfe3c8;}
+  .sub{font-size:clamp(15px,2vw,19px);color:rgba(242,239,230,.76);max-width:44em;margin:18px 0 0;line-height:1.9;}
+  .stats{display:flex;flex-wrap:wrap;gap:36px;margin-top:44px;padding-top:26px;border-top:1px solid rgba(242,239,230,.18);}
+  .stat .n{font-size:28px;font-weight:700;color:#e7f0e3;line-height:1.2;}
+  .stat .l{font-size:12.5px;letter-spacing:.12em;color:rgba(242,239,230,.55);margin-top:4px;}
+  .wrap{max-width:900px;margin:0 auto;padding:0 24px;}
+  section{padding:64px 0 8px;}
+  section + section{border-top:1px solid var(--line);}
+  h2{font-size:clamp(24px,3.4vw,32px);margin:0 0 6px;font-weight:700;letter-spacing:.01em;display:flex;align-items:baseline;gap:14px;}
+  h2 .no{font-size:12px;letter-spacing:.2em;color:var(--cinnabar);font-family:"PingFang SC",system-ui,sans-serif;font-weight:600;}
+  .lede{color:var(--ink-2);margin:6px 0 30px;max-width:46em;}
+  h3{font-size:19px;margin:34px 0 10px;font-weight:700;}
+  p{margin:0 0 14px;}
+  .grid{display:grid;gap:16px;}
+  .g3{grid-template-columns:repeat(auto-fit,minmax(230px,1fr));}
+  .g2{grid-template-columns:repeat(auto-fit,minmax(300px,1fr));}
+  .card{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:22px 22px 18px;}
+  .card h4{margin:0 0 8px;font-size:16.5px;}
+  .card p{font-size:14.5px;color:var(--ink-2);margin:0;line-height:1.8;}
+  .card .tag{display:inline-block;font-size:11.5px;letter-spacing:.08em;color:var(--bamboo);background:var(--mint);padding:2px 9px;border-radius:999px;margin-bottom:10px;font-family:"PingFang SC",system-ui,sans-serif;}
+  .day{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:26px 26px 12px;margin-bottom:20px;}
+  .day-head{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:6px;}
+  .day-no{font-family:"PingFang SC",system-ui,sans-serif;font-size:12px;letter-spacing:.18em;color:#fff;background:var(--moss);padding:3px 10px;border-radius:6px;}
+  .day-title{font-size:20px;font-weight:700;}
+  .day-meta{font-size:13px;color:var(--ink-2);font-family:"PingFang SC",system-ui,sans-serif;}
+  ol.stops{list-style:none;margin:18px 0 0;padding:0;}
+  ol.stops li{position:relative;padding:0 0 20px 30px;border-left:1px solid var(--line);margin-left:7px;}
+  ol.stops li:last-child{border-left-color:transparent;padding-bottom:6px;}
+  ol.stops li::before{content:"";position:absolute;left:-4.5px;top:9px;width:8px;height:8px;border-radius:50%;background:var(--bamboo);box-shadow:0 0 0 3px var(--paper);}
+  .stop-h{font-weight:700;font-size:15.5px;}
+  .stop-t{font-family:"PingFang SC",system-ui,sans-serif;font-size:12px;color:var(--cinnabar);letter-spacing:.06em;margin-left:8px;}
+  .stop-d{font-size:14.5px;color:var(--ink-2);margin-top:2px;}
+  .tbl-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:14px;background:var(--paper);}
+  table{border-collapse:collapse;width:100%;min-width:620px;font-size:14.5px;}
+  th,td{text-align:left;padding:13px 16px;border-bottom:1px solid var(--line);vertical-align:top;}
+  th{font-family:"PingFang SC",system-ui,sans-serif;font-size:12px;letter-spacing:.1em;color:var(--ink-2);background:rgba(74,124,89,.07);font-weight:600;white-space:nowrap;}
+  tr:last-child td{border-bottom:none;}
+  td b{color:var(--ink);}
+  .muted{color:var(--ink-2);font-size:13.5px;}
+  .rank{counter-reset:r;list-style:none;padding:0;margin:0;}
+  .rank li{counter-increment:r;position:relative;padding:13px 0 13px 46px;border-bottom:1px dashed var(--line);font-size:15px;}
+  .rank li:last-child{border-bottom:none;}
+  .rank li::before{content:counter(r);position:absolute;left:0;top:12px;width:26px;height:26px;border-radius:50%;display:grid;place-items:center;background:var(--mint);color:var(--moss);font-family:"PingFang SC",system-ui,sans-serif;font-size:12.5px;font-weight:700;}
+  .rank .why{display:block;font-size:13.5px;color:var(--ink-2);margin-top:2px;}
+  .note{border-left:3px solid var(--cinnabar);background:linear-gradient(90deg, rgba(181,67,47,.06), transparent 70%);padding:16px 20px;border-radius:0 10px 10px 0;margin:22px 0;font-size:14.5px;}
+  .note b{color:var(--cinnabar);}
+  .tip{border-left:3px solid var(--gold);background:linear-gradient(90deg, rgba(168,130,60,.09), transparent 70%);padding:16px 20px;border-radius:0 10px 10px 0;margin:22px 0;font-size:14.5px;}
+  .tip b{color:var(--gold);}
+  .bars{margin:8px 0 0;}
+  .bar{display:grid;grid-template-columns:110px 1fr 54px;gap:12px;align-items:center;margin-bottom:11px;font-size:14px;}
+  .bar .bl{color:var(--ink-2);}
+  .bar .bt{background:rgba(74,124,89,.12);border-radius:999px;height:9px;overflow:hidden;}
+  .bar .bf{height:100%;background:linear-gradient(90deg,var(--bamboo),#7fa889);border-radius:999px;}
+  .bar .bn{text-align:right;color:var(--ink-2);font-size:13px;font-family:"PingFang SC",system-ui,sans-serif;}
+  .src{font-size:12.5px;color:var(--ink-2);font-family:"PingFang SC",system-ui,sans-serif;}
+  footer{margin-top:40px;padding:44px 0 64px;border-top:1px solid var(--line);color:var(--ink-2);font-size:13px;}
+  footer p{max-width:62em;}
+  @media (max-width:600px){
+    .cover{padding:64px 20px 52px;}
+    section{padding:48px 0 8px;}
+    .stats{gap:24px;}
+    .day{padding:20px 18px 6px;}
+    .bar{grid-template-columns:88px 1fr 46px;gap:8px;font-size:13px;}
+  }
+  @media print{
+    .cover{background:#fff;color:#000;}
+    body{background:#fff;}
+    section{page-break-inside:avoid;}
+  }
+</style>
+</head>
+<body>
+
+<header class="cover">
+  <div class="cover-inner">
+    <p class="kicker">ANHUI · MA'ANSHAN · 1–2 天</p>
+    <h1>马鞍山<span class="accent">，</span><br>李白终老的地方，南京的后花园</h1>
+    <p class="sub">26 条视频，点赞总量只有 10.1 万，是安徽各市里最低的——但「宁马城际」被提及 5 次、「采石矶」3 次、「南京周边游」2 次。数据把它的定位说得很清楚：这不是一个目的地城市，是南京人周末的后花园。</p>
+    <div class="stats">
+      <div class="stat"><div class="n">26</div><div class="l">条抖音视频</div></div>
+      <div class="stat"><div class="n">10.1万</div><div class="l">累计点赞</div></div>
+      <div class="stat"><div class="n">62%</div><div class="l">美食内容占比</div></div>
+      <div class="stat"><div class="n">1.6万</div><div class="l">单条最高点赞</div></div>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+<section id="s1">
+  <h2><span class="no">01</span> 数据说了什么</h2>
+  <p class="lede">马鞍山的牌面是李白。他晚年住在当涂，最后葬在青山。采石矶是他传说中捉月落水的地方。加上宁马城际开通，从南京坐地铁就能到——这让它成了长三角最方便的一日游选项之一。</p>
+  <h3>内容构成</h3>
+  <div class="bars">
+    <div class="bar"><span class="bl">美食探店</span><span class="bt"><span class="bf" style="width:62%"></span></span><span class="bn">62%</span></div>
+    <div class="bar"><span class="bl">景点盘点</span><span class="bt"><span class="bf" style="width:19%"></span></span><span class="bn">19%</span></div>
+    <div class="bar"><span class="bl">城市 Vlog</span><span class="bt"><span class="bf" style="width:19%"></span></span><span class="bn">19%</span></div>
+  </div>
+
+  <h3>收藏最高的三条</h3>
+  <ul class="rank">
+    <li>没有常规马鞍山美食的马鞍山一日游来了 #长长长假美食判官 #本地美食判官请回答 #我的长长长假 #我的假期生活图鉴 #吃<span class="why">收藏 5588 · 点赞 7655</span></li>
+    <li>安徽马鞍山必吃榜，欢迎继续补充 #安徽 #马鞍山美食 #马鞍山 #地道美食 #美食分享<span class="why">收藏 4995 · 点赞 6469</span></li>
+    <li>马鞍山一日游！逛吃10家来了 #满级吃商通关赛 #抖音吃商新灵感 #马鞍山美食 #马鞍山旅游 #宁马城际<span class="why">收藏 3327 · 点赞 3814</span></li>
+  </ul>
+
+  <div class="note">
+    <b>① 总量最低，但结构清晰。</b>10.1 万点赞说明它没爆款，可「宁马城际」5 次提及暴露了真实客群：南京人。<br>
+    <b>② 美食 62%、景点 19%。</b>它跟蚌埠一样偏吃，但多了一个明确的景点锚点——采石矶。<br>
+    <b>③ 收藏量只有 3.7 万</b>，远低于点赞比。说明大家看个热闹，真正计划去的不多——这恰恰是它的机会：人少。<br>
+  </div>
+
+  <div class="grid g3" style="margin-top:26px;">
+    <div class="card">
+      <span class="tag">几天够</span>
+      <h4>1 天够，2 天更好</h4>
+      <p>一天采石矶＋市区吃，两天加当涂李白墓和濮塘。</p>
+    </div>
+    <div class="card">
+      <span class="tag">住哪儿</span>
+      <h4>花山区 / 雨山区</h4>
+      <p>市区中心，去采石矶打车 20 分钟。如果只为一日游，其实不用住。</p>
+    </div>
+    <div class="card">
+      <span class="tag">什么时候来</span>
+      <h4>3–4 月 / 10–11 月</h4>
+      <p>采石矶临江，春秋江风舒服。夏天湿热，冬天江边冷。</p>
+    </div>
+  </div>
+</section>
+
+<section id="s2">
+  <h2><span class="no">02</span> 行程</h2>
+  <p class="lede">马鞍山适合「一日游」节奏：上午采石矶，中午市区吃，下午看情况加一个点。</p>
+
+  <div class="day">
+    <div class="day-head">
+      <span class="day-no">DAY 1</span>
+      <span class="day-title">采石矶与李白</span>
+      <span class="day-meta">打车＋步行 · 一天 · 门票 0–80 元</span>
+    </div>
+    <ol class="stops">
+      <li>
+        <div class="stop-h">采石矶<span class="stop-t">09:00</span></div>
+        <div class="stop-d">长江三矶之首，门票 80 元左右。太白楼、三元洞、蛾眉亭沿江排开，崖壁下就是长江。传说李白在此醉酒捉月落水。</div>
+      </li>
+      <li>
+        <div class="stop-h">太白楼<span class="stop-t">11:00</span></div>
+        <div class="stop-d">在采石矶景区内。历代文人题咏极多，是江南有名的楼阁。登楼看江，视野比想象中开阔。</div>
+      </li>
+      <li>
+        <div class="stop-h">午餐：当涂大肉面<span class="stop-t">12:30</span></div>
+        <div class="stop-d">马鞍山的招牌面。大块红烧肉盖在面上，酱汁浓，面条筋道。市区和当涂都有老店。</div>
+      </li>
+      <li>
+        <div class="stop-h">濮塘风景区 / 雨山湖<span class="stop-t">14:30</span></div>
+        <div class="stop-d">濮塘是近郊山林，竹海和茶园，适合散步；雨山湖在市区，免费，环湖走走也舒服。</div>
+      </li>
+      <li>
+        <div class="stop-h">晚餐：采石矶茶干＋江鲜<span class="stop-t">18:00</span></div>
+        <div class="stop-d">茶干是马鞍山的特产，五香入味；江边餐馆有刀鱼、鲥鱼（季节性强，价格高，问清楚再点）。</div>
+      </li>
+    </ol>
+  </div>
+
+  <div class="day">
+    <div class="day-head">
+      <span class="day-no">DAY 2</span>
+      <span class="day-title">当涂：李白墓与青山</span>
+      <span class="day-meta">自驾/打车 20 km · 半天</span>
+    </div>
+    <ol class="stops">
+      <li>
+        <div class="stop-h">李白墓园<span class="stop-t">09:00</span></div>
+        <div class="stop-d">门票不贵。李白葬在青山脚下，墓园古柏参天，历代碑刻很多。对喜欢诗的人来说，这是必须来的一站。</div>
+      </li>
+      <li>
+        <div class="stop-h">青山李白文化旅游区<span class="stop-t">10:30</span></div>
+        <div class="stop-d">和墓园连在一起，有太白祠、十咏亭。春天桃花开的时候最好。</div>
+      </li>
+      <li>
+        <div class="stop-h">回程：当涂老城<span class="stop-t">12:00</span></div>
+        <div class="stop-d">小县城，生活气重。吃一碗大肉面，买点茶干带走。</div>
+      </li>
+    </ol>
+  </div>
+
+  <div class="tip"><b>南京人的玩法：</b>宁马城际开通后，从南京坐城际到马鞍山只要半小时左右。当天来回完全够——上午采石矶，中午吃面，下午回南京。这是它最舒服的打开方式。</div>
+</section>
+
+<section id="s3">
+  <h2><span class="no">03</span> 吃什么</h2>
+  <p class="lede">马鞍山夹在南京和芜湖之间，口味偏江南：甜、鲜、讲究汤头。特色是「大肉面」和「茶干」。</p>
+
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>吃什么</th><th>去哪找</th><th>怎么点</th><th>人均</th></tr></thead>
+      <tbody>
+        <tr><td><b>当涂大肉面</b><br><span class="muted"></span></td><td>当涂县城、市区老面馆</td><td>大块红烧肉盖面，酱汁浓；要肥瘦相间的</td><td>15–25</td></tr>
+        <tr><td><b>采石矶茶干</b><br><span class="muted"></span></td><td>采石镇、超市特产区</td><td>五香卤制的豆干，越嚼越香；能带走</td><td>10–20</td></tr>
+        <tr><td><b>和县炸牛肉</b><br><span class="muted"></span></td><td>和县老铺</td><td>牛肉裹糊炸，外酥里嫩；现炸才好吃</td><td>30–50</td></tr>
+        <tr><td><b>江鲜</b><br><span class="muted"></span></td><td>采石矶附近江边餐馆</td><td>刀鱼、鮰鱼按季节，价格浮动大；先问价</td><td>80–200</td></tr>
+        <tr><td><b>口袋鸭</b><br><span class="muted"></span></td><td>市区卤味店</td><td>卤鸭切块装袋，边走边吃</td><td>20–40</td></tr>
+        <tr><td><b>含山老鹅</b><br><span class="muted"></span></td><td>含山县</td><td>红烧老鹅，肉紧味厚；适合人多</td><td>60–90</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="note"><b>注意：</b>江鲜价格弹性极大，尤其「长江刀鱼」这类，一定先问清单价再点。普通馆子的大肉面和茶干才是日常。</div>
+</section>
+
+<section id="s4">
+  <h2><span class="no">04</span> 实用与避坑</h2>
+  <div class="grid g2" style="margin-top:10px;">
+    <div class="card"><h4>怎么到</h4><p>高铁到马鞍山东站；南京方向有宁马城际，从南京地铁换乘可直达，是最方便的方式。</p></div>
+    <div class="card"><h4>一日游够不够</h4><p>够。采石矶＋市区吃＋一个公园，一天能走完。除非你要去当涂看李白墓，那才需要第二天。</p></div>
+    <div class="card"><h4>采石矶门票</h4><p>80 元左右，网上买常有优惠。景区不小，穿舒服的鞋，江边风大。</p></div>
+    <div class="card"><h4>顺路去哪</h4><p>离南京、芜湖都近。可以设计成「南京—马鞍山—芜湖」的三城串联，高铁都在一小时内。</p></div>
+  </div>
+</section>
+
+<footer>
+<p><b>数据说明。</b>本页基于抖音真实采集数据：关键词「马鞍山旅游」「马鞍山美食」，去重后 <b>26 条视频</b>，累计点赞 <b>10.1万</b>、收藏 <b>3.7万</b>，单条最高点赞 1.6万、最高收藏 5588。内容构成按视频标题归类统计。</p>
+  <p>门票、交通等硬信息按公开资料核对，价格与开放时间以景区当日公示为准；餐饮只写到「品类＋去哪找」，不写死门牌——老店变动比攻略更新快。</p>
+  <p class="src">采集时间 2026-10-24 · 工具 MediaCrawler（非商业学习许可）· 本页仅供个人出行参考</p>
+</footer>
+
+</div>
+</body>
+</html>

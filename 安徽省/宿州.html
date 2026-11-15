@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>宿州 · 从抖音真实数据整理出的攻略</title>
+<style>
+  :root{
+    --ink:#17251c; --ink-2:#3d4f42; --moss:#1f3d2b; --bamboo:#4a7c59;
+    --mint:#dfe9e0; --rice:#f7f5ef; --paper:#fffefb; --cinnabar:#b5432f;
+    --gold:#a8823c; --line:rgba(23,37,28,.12);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0; background:var(--rice); color:var(--ink);
+    font-family:"Songti SC","Noto Serif SC","Source Han Serif SC","Noto Serif CJK SC","SimSun","STSong",Georgia,"Microsoft YaHei",serif;
+    font-size:16px; line-height:1.85; -webkit-font-smoothing:antialiased;
+  }
+  .cover{
+    position:relative; padding:96px 24px 72px;
+    background:
+      radial-gradient(1200px 500px at 15% -10%, rgba(74,124,89,.22), transparent 60%),
+      radial-gradient(900px 420px at 90% 0%, rgba(168,130,60,.16), transparent 55%),
+      linear-gradient(180deg,#12241a 0%, #1b3527 58%, #23412f 100%);
+    color:#f2efe6; overflow:hidden;
+  }
+  .cover::after{
+    content:""; position:absolute; inset:0;
+    background-image:radial-gradient(rgba(255,255,255,.06) 1px, transparent 1px);
+    background-size:3px 3px; opacity:.5; pointer-events:none;
+  }
+  .cover-inner{max-width:900px;margin:0 auto;position:relative;z-index:1;}
+  .kicker{font-size:13px;letter-spacing:.32em;text-transform:uppercase;color:rgba(242,239,230,.62);margin:0 0 22px;}
+  h1{font-size:clamp(38px,6.4vw,74px);line-height:1.12;margin:0 0 8px;font-weight:700;letter-spacing:.01em;}
+  h1 .accent{color:#cfe3c8;}
+  .sub{font-size:clamp(15px,2vw,19px);color:rgba(242,239,230,.76);max-width:44em;margin:18px 0 0;line-height:1.9;}
+  .stats{display:flex;flex-wrap:wrap;gap:36px;margin-top:44px;padding-top:26px;border-top:1px solid rgba(242,239,230,.18);}
+  .stat .n{font-size:28px;font-weight:700;color:#e7f0e3;line-height:1.2;}
+  .stat .l{font-size:12.5px;letter-spacing:.12em;color:rgba(242,239,230,.55);margin-top:4px;}
+  .wrap{max-width:900px;margin:0 auto;padding:0 24px;}
+  section{padding:64px 0 8px;}
+  section + section{border-top:1px solid var(--line);}
+  h2{font-size:clamp(24px,3.4vw,32px);margin:0 0 6px;font-weight:700;letter-spacing:.01em;display:flex;align-items:baseline;gap:14px;}
+  h2 .no{font-size:12px;letter-spacing:.2em;color:var(--cinnabar);font-family:"PingFang SC",system-ui,sans-serif;font-weight:600;}
+  .lede{color:var(--ink-2);margin:6px 0 30px;max-width:46em;}
+  h3{font-size:19px;margin:34px 0 10px;font-weight:700;}
+  p{margin:0 0 14px;}
+  .grid{display:grid;gap:16px;}
+  .g3{grid-template-columns:repeat(auto-fit,minmax(230px,1fr));}
+  .g2{grid-template-columns:repeat(auto-fit,minmax(300px,1fr));}
+  .card{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:22px 22px 18px;}
+  .card h4{margin:0 0 8px;font-size:16.5px;}
+  .card p{font-size:14.5px;color:var(--ink-2);margin:0;line-height:1.8;}
+  .card .tag{display:inline-block;font-size:11.5px;letter-spacing:.08em;color:var(--bamboo);background:var(--mint);padding:2px 9px;border-radius:999px;margin-bottom:10px;font-family:"PingFang SC",system-ui,sans-serif;}
+  .day{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:26px 26px 12px;margin-bottom:20px;}
+  .day-head{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:6px;}
+  .day-no{font-family:"PingFang SC",system-ui,sans-serif;font-size:12px;letter-spacing:.18em;color:#fff;background:var(--moss);padding:3px 10px;border-radius:6px;}
+  .day-title{font-size:20px;font-weight:700;}
+  .day-meta{font-size:13px;color:var(--ink-2);font-family:"PingFang SC",system-ui,sans-serif;}
+  ol.stops{list-style:none;margin:18px 0 0;padding:0;}
+  ol.stops li{position:relative;padding:0 0 20px 30px;border-left:1px solid var(--line);margin-left:7px;}
+  ol.stops li:last-child{border-left-color:transparent;padding-bottom:6px;}
+  ol.stops li::before{content:"";position:absolute;left:-4.5px;top:9px;width:8px;height:8px;border-radius:50%;background:var(--bamboo);box-shadow:0 0 0 3px var(--paper);}
+  .stop-h{font-weight:700;font-size:15.5px;}
+  .stop-t{font-family:"PingFang SC",system-ui,sans-serif;font-size:12px;color:var(--cinnabar);letter-spacing:.06em;margin-left:8px;}
+  .stop-d{font-size:14.5px;color:var(--ink-2);margin-top:2px;}
+  .tbl-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:14px;background:var(--paper);}
+  table{border-collapse:collapse;width:100%;min-width:620px;font-size:14.5px;}
+  th,td{text-align:left;padding:13px 16px;border-bottom:1px solid var(--line);vertical-align:top;}
+  th{font-family:"PingFang SC",system-ui,sans-serif;font-size:12px;letter-spacing:.1em;color:var(--ink-2);background:rgba(74,124,89,.07);font-weight:600;white-space:nowrap;}
+  tr:last-child td{border-bottom:none;}
+  td b{color:var(--ink);}
+  .muted{color:var(--ink-2);font-size:13.5px;}
+  .rank{counter-reset:r;list-style:none;padding:0;margin:0;}
+  .rank li{counter-increment:r;position:relative;padding:13px 0 13px 46px;border-bottom:1px dashed var(--line);font-size:15px;}
+  .rank li:last-child{border-bottom:none;}
+  .rank li::before{content:counter(r);position:absolute;left:0;top:12px;width:26px;height:26px;border-radius:50%;display:grid;place-items:center;background:var(--mint);color:var(--moss);font-family:"PingFang SC",system-ui,sans-serif;font-size:12.5px;font-weight:700;}
+  .rank .why{display:block;font-size:13.5px;color:var(--ink-2);margin-top:2px;}
+  .note{border-left:3px solid var(--cinnabar);background:linear-gradient(90deg, rgba(181,67,47,.06), transparent 70%);padding:16px 20px;border-radius:0 10px 10px 0;margin:22px 0;font-size:14.5px;}
+  .note b{color:var(--cinnabar);}
+  .tip{border-left:3px solid var(--gold);background:linear-gradient(90deg, rgba(168,130,60,.09), transparent 70%);padding:16px 20px;border-radius:0 10px 10px 0;margin:22px 0;font-size:14.5px;}
+  .tip b{color:var(--gold);}
+  .bars{margin:8px 0 0;}
+  .bar{display:grid;grid-template-columns:110px 1fr 54px;gap:12px;align-items:center;margin-bottom:11px;font-size:14px;}
+  .bar .bl{color:var(--ink-2);}
+  .bar .bt{background:rgba(74,124,89,.12);border-radius:999px;height:9px;overflow:hidden;}
+  .bar .bf{height:100%;background:linear-gradient(90deg,var(--bamboo),#7fa889);border-radius:999px;}
+  .bar .bn{text-align:right;color:var(--ink-2);font-size:13px;font-family:"PingFang SC",system-ui,sans-serif;}
+  .src{font-size:12.5px;color:var(--ink-2);font-family:"PingFang SC",system-ui,sans-serif;}
+  footer{margin-top:40px;padding:44px 0 64px;border-top:1px solid var(--line);color:var(--ink-2);font-size:13px;}
+  footer p{max-width:62em;}
+  @media (max-width:600px){
+    .cover{padding:64px 20px 52px;}
+    section{padding:48px 0 8px;}
+    .stats{gap:24px;}
+    .day{padding:20px 18px 6px;}
+    .bar{grid-template-columns:88px 1fr 46px;gap:8px;font-size:13px;}
+  }
+  @media print{
+    .cover{background:#fff;color:#000;}
+    body{background:#fff;}
+    section{page-break-inside:avoid;}
+  }
+</style>
+</head>
+<body>
+
+<header class="cover">
+  <div class="cover-inner">
+    <p class="kicker">ANHUI · SUZHOU · 1–2 天</p>
+    <h1>宿州<span class="accent">，</span><br>隋堤烟柳，和一只符离集烧鸡</h1>
+    <p class="sub">27 条视频、30.9 万点赞，但收藏只有 3.5 万——看的人多，真去的人少。数据里最动人的是一条 3 万赞的文案：「宿州不大，也并不出名，在安徽甚至算得上是小透明，但他有隋堤烟柳，有汴河悠悠，有灵璧垓下，有符离的烧鸡」。</p>
+    <div class="stats">
+      <div class="stat"><div class="n">27</div><div class="l">条抖音视频</div></div>
+      <div class="stat"><div class="n">30.9万</div><div class="l">累计点赞</div></div>
+      <div class="stat"><div class="n">59%</div><div class="l">美食内容占比</div></div>
+      <div class="stat"><div class="n">10万</div><div class="l">单条最高点赞</div></div>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+<section id="s1">
+  <h2><span class="no">01</span> 数据说了什么</h2>
+  <p class="lede">宿州是安徽最「小透明」的城市之一，但它有真东西：楚汉相争的终点垓下、隋唐大运河的活遗址、还有一只全国闻名的烧鸡。它的旅游没被开发，意味着人少、便宜、没有套路。</p>
+  <h3>内容构成</h3>
+  <div class="bars">
+    <div class="bar"><span class="bl">美食探店</span><span class="bt"><span class="bf" style="width:59%"></span></span><span class="bn">59%</span></div>
+    <div class="bar"><span class="bl">景点盘点</span><span class="bt"><span class="bf" style="width:7%"></span></span><span class="bn">7%</span></div>
+    <div class="bar"><span class="bl">城市 Vlog</span><span class="bt"><span class="bf" style="width:30%"></span></span><span class="bn">30%</span></div>
+    <div class="bar"><span class="bl">亲子乐园</span><span class="bt"><span class="bf" style="width:4%"></span></span><span class="bn">4%</span></div>
+  </div>
+
+  <h3>收藏最高的三条</h3>
+  <ul class="rank">
+    <li>安徽宿州必吃榜 虚线一点都不虚哦，萧县很是夯#安徽 #安徽美食 #宿州 #宿州美食 #安徽dou知道 @安徽文旅 @宿州<span class="why">收藏 6044 · 点赞 1.1万</span></li>
+    <li>40秒带你感受一下宿州烟火气小吃的魅力！#宿州美食 #宿州旅游攻略 #街边小吃<span class="why">收藏 3445 · 点赞 2.2万</span></li>
+    <li>宿州不大，也并不出名 在安徽甚至算得上是小透明 但他有隋提烟柳，有汴河悠悠 有灵璧垓下，西楚霸王的壮志难酬 有符离的烧鸡<span class="why">收藏 3334 · 点赞 3万</span></li>
+  </ul>
+
+  <div class="note">
+    <b>① 美食 59%，符离集烧鸡是符号。</b>「萧县」「灵璧」在标签里反复出现，说明它是县域组合型城市。<br>
+    <b>② 收藏量低（3.5 万）但点赞不低（30.9 万）。</b>典型的「内容好看，但没转化成出行计划」——现在去，人少。<br>
+    <b>③ 景点只占 7%。</b>皇藏峪、垓下、大运河都有分量，但几乎没人拍。<br>
+  </div>
+
+  <div class="grid g3" style="margin-top:26px;">
+    <div class="card">
+      <span class="tag">几天够</span>
+      <h4>1 天够，2 天更完整</h4>
+      <p>一天市区＋大运河，第二天去萧县皇藏峪或灵璧垓下。</p>
+    </div>
+    <div class="card">
+      <span class="tag">住哪儿</span>
+      <h4>埇桥区</h4>
+      <p>市区中心，交通和吃饭都方便。</p>
+    </div>
+    <div class="card">
+      <span class="tag">什么时候来</span>
+      <h4>4–5 月 / 9–10 月</h4>
+      <p>春秋舒服。砀山梨花 4 月开，是一年中最美的时候。</p>
+    </div>
+  </div>
+</section>
+
+<section id="s2">
+  <h2><span class="no">02</span> 行程</h2>
+  <p class="lede">宿州的景点分散在几个县，市区反而不多。想玩透要按县来规划路线。</p>
+
+  <div class="day">
+    <div class="day-head">
+      <span class="day-no">DAY 1</span>
+      <span class="day-title">市区与大运河</span>
+      <span class="day-meta">步行＋打车 · 一天 · 门票 0–60 元</span>
+    </div>
+    <ol class="stops">
+      <li>
+        <div class="stop-h">宿州市博物馆<span class="stop-t">09:00</span></div>
+        <div class="stop-d">免费，周一闭馆。看隋唐大运河泗县段出土的瓷器，理解宿州为什么是「运河城市」。</div>
+      </li>
+      <li>
+        <div class="stop-h">隋唐大运河通济渠泗县段<span class="stop-t">11:00</span></div>
+        <div class="stop-d">世界文化遗产点，免费。至今仍有水面，是通济渠仅存的活态河道。没什么游客，很安静。</div>
+      </li>
+      <li>
+        <div class="stop-h">午餐：符离集烧鸡<span class="stop-t">12:30</span></div>
+        <div class="stop-d">宿州的名片，和德州扒鸡、道口烧鸡并称。认符离镇的老字号，真空包装能带走。</div>
+      </li>
+      <li>
+        <div class="stop-h">新汴河景观带 / 三角洲公园<span class="stop-t">15:00</span></div>
+        <div class="stop-d">免费。宿州人日常散步的地方，河面开阔，傍晚光线好。</div>
+      </li>
+      <li>
+        <div class="stop-h">晚餐：萧县羊肉汤<span class="stop-t">18:00</span></div>
+        <div class="stop-d">市区也有分店。汤白味浓，配烧饼，冬天喝最舒服。</div>
+      </li>
+    </ol>
+  </div>
+
+  <div class="day">
+    <div class="day-head">
+      <span class="day-no">DAY 2</span>
+      <span class="day-title">二选一：皇藏峪 or 垓下</span>
+      <span class="day-meta">自驾/班车 · 半天到一天</span>
+    </div>
+    <ol class="stops">
+      <li>
+        <div class="stop-h">选项 A：皇藏峪（萧县）<span class="stop-t">08:30</span></div>
+        <div class="stop-d">门票 50 元左右。汉高祖刘邦藏身过的山林，古树成群，森林覆盖率极高。秋天红叶好，夏天凉快。</div>
+      </li>
+      <li>
+        <div class="stop-h">选项 B：垓下遗址（灵璧）<span class="stop-t">09:00</span></div>
+        <div class="stop-d">免费或低价。项羽兵败自刎的地方，「四面楚歌」就在这发生。遗址朴素，历史感重。</div>
+      </li>
+      <li>
+        <div class="stop-h">顺路：灵璧奇石文化园<span class="stop-t">14:00</span></div>
+        <div class="stop-d">灵璧石是四大名石之首，园里能看到各种奇石。对石头没兴趣可以跳过。</div>
+      </li>
+      <li>
+        <div class="stop-h">砀山梨园（4 月限定）<span class="stop-t">季节</span></div>
+        <div class="stop-d">4 月梨花盛开时，砀山是白色的海。其他季节就是普通果园。</div>
+      </li>
+    </ol>
+  </div>
+
+  <div class="tip"><b>宿州的价值在于「没人」。</b>它没有网红景点，也就没有排队和黄牛。皇藏峪、大运河、垓下这些地方，你很可能一个人走完——这在安徽已经很难得了。</div>
+</section>
+
+<section id="s3">
+  <h2><span class="no">03</span> 吃什么</h2>
+  <p class="lede">宿州的吃是皖北的底子，加上几样县域特产。烧鸡、羊肉汤、酥梨，三样就够了。</p>
+
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>吃什么</th><th>去哪找</th><th>怎么点</th><th>人均</th></tr></thead>
+      <tbody>
+        <tr><td><b>符离集烧鸡</b><br><span class="muted"></span></td><td>符离镇老字号，市区有店</td><td>卤香透骨，手撕着吃；真空装能带走</td><td>30–50</td></tr>
+        <tr><td><b>萧县羊肉汤</b><br><span class="muted"></span></td><td>萧县最正，市区有分店</td><td>汤白味浓，配烧饼；冬天必喝</td><td>15–25</td></tr>
+        <tr><td><b>砀山酥梨</b><br><span class="muted"></span></td><td>秋季，砀山县</td><td>皮薄汁多，酥脆无渣；当季最好吃</td><td>按斤</td></tr>
+        <tr><td><b>sa汤（撒汤）</b><br><span class="muted"></span></td><td>早点摊</td><td>鸡蛋冲开的咸汤，皖北通用早饭</td><td>5–8</td></tr>
+        <tr><td><b>灵璧绿豆丸子</b><br><span class="muted"></span></td><td>灵璧县</td><td>绿豆面做的丸子，炸或煮；当地小吃</td><td>10–15</td></tr>
+        <tr><td><b>萧县面皮</b><br><span class="muted"></span></td><td>萧县、市区小吃摊</td><td>凉拌面皮，酸辣爽口；夏天吃</td><td>8–12</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="note"><b>烧鸡怎么挑：</b>符离集烧鸡认「符离镇」产的老字号，超市真空装和现卤的味道差一截。能去符离镇买现卤的最好。</div>
+</section>
+
+<section id="s4">
+  <h2><span class="no">04</span> 实用与避坑</h2>
+  <div class="grid g2" style="margin-top:10px;">
+    <div class="card"><h4>怎么到</h4><p>高铁到宿州东站，离市区约 20 分钟。去萧县、灵璧、砀山各有高铁站，可以直接到县里。</p></div>
+    <div class="card"><h4>县域交通</h4><p>宿州的景点分散在萧县、灵璧、泗县、砀山，建议自驾或坐高铁到县里再打车。</p></div>
+    <div class="card"><h4>4 月是最好时节</h4><p>砀山梨花 4 月开，是宿州一年里最美的时候，也是唯一会「挤」的时候。</p></div>
+    <div class="card"><h4>带什么走</h4><p>符离集烧鸡（真空装）、砀山酥梨（秋季）、灵璧石（小件）。</p></div>
+  </div>
+</section>
+
+<footer>
+<p><b>数据说明。</b>本页基于抖音真实采集数据：关键词「宿州旅游」「宿州美食」，去重后 <b>27 条视频</b>，累计点赞 <b>30.9万</b>、收藏 <b>3.5万</b>，单条最高点赞 10万、最高收藏 6044。内容构成按视频标题归类统计。</p>
+  <p>门票、交通等硬信息按公开资料核对，价格与开放时间以景区当日公示为准；餐饮只写到「品类＋去哪找」，不写死门牌——老店变动比攻略更新快。</p>
+  <p class="src">采集时间 2026-10-24 · 工具 MediaCrawler（非商业学习许可）· 本页仅供个人出行参考</p>
+</footer>
+
+</div>
+</body>
+</html>
