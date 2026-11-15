@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>东营 · 从抖音真实数据整理出的攻略</title>
+<style>
+  :root{
+    --ink:#17251c; --ink-2:#3d4f42; --moss:#1f3d2b; --bamboo:#4a7c59;
+    --mint:#dfe9e0; --rice:#f7f5ef; --paper:#fffefb; --cinnabar:#b5432f;
+    --gold:#a8823c; --line:rgba(23,37,28,.12);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0; background:var(--rice); color:var(--ink);
+    font-family:"Songti SC","Noto Serif SC","Source Han Serif SC","Noto Serif CJK SC","SimSun","STSong",Georgia,"Microsoft YaHei",serif;
+    font-size:16px; line-height:1.85; -webkit-font-smoothing:antialiased;
+  }
+  .cover{
+    position:relative; padding:96px 24px 72px;
+    background:
+      radial-gradient(1200px 500px at 15% -10%, rgba(74,124,89,.22), transparent 60%),
+      radial-gradient(900px 420px at 90% 0%, rgba(168,130,60,.16), transparent 55%),
+      linear-gradient(180deg,#12241a 0%, #1b3527 58%, #23412f 100%);
+    color:#f2efe6; overflow:hidden;
+  }
+  .cover::after{
+    content:""; position:absolute; inset:0;
+    background-image:radial-gradient(rgba(255,255,255,.06) 1px, transparent 1px);
+    background-size:3px 3px; opacity:.5; pointer-events:none;
+  }
+  .cover-inner{max-width:900px;margin:0 auto;position:relative;z-index:1;}
+  .kicker{font-size:13px;letter-spacing:.32em;text-transform:uppercase;color:rgba(242,239,230,.62);margin:0 0 22px;}
+  h1{font-size:clamp(38px,6.4vw,74px);line-height:1.12;margin:0 0 8px;font-weight:700;letter-spacing:.01em;}
+  h1 .accent{color:#cfe3c8;}
+  .sub{font-size:clamp(15px,2vw,19px);color:rgba(242,239,230,.76);max-width:44em;margin:18px 0 0;line-height:1.9;}
+  .stats{display:flex;flex-wrap:wrap;gap:36px;margin-top:44px;padding-top:26px;border-top:1px solid rgba(242,239,230,.18);}
+  .stat .n{font-size:28px;font-weight:700;color:#e7f0e3;line-height:1.2;}
+  .stat .l{font-size:12.5px;letter-spacing:.12em;color:rgba(242,239,230,.55);margin-top:4px;}
+  .wrap{max-width:900px;margin:0 auto;padding:0 24px;}
+  section{padding:64px 0 8px;}
+  section + section{border-top:1px solid var(--line);}
+  h2{font-size:clamp(24px,3.4vw,32px);margin:0 0 6px;font-weight:700;letter-spacing:.01em;display:flex;align-items:baseline;gap:14px;}
+  h2 .no{font-size:12px;letter-spacing:.2em;color:var(--cinnabar);font-family:"PingFang SC",system-ui,sans-serif;font-weight:600;}
+  .lede{color:var(--ink-2);margin:6px 0 30px;max-width:46em;}
+  h3{font-size:19px;margin:34px 0 10px;font-weight:700;}
+  p{margin:0 0 14px;}
+  .grid{display:grid;gap:16px;}
+  .g3{grid-template-columns:repeat(auto-fit,minmax(230px,1fr));}
+  .g2{grid-template-columns:repeat(auto-fit,minmax(300px,1fr));}
+  .card{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:22px 22px 18px;}
+  .card h4{margin:0 0 8px;font-size:16.5px;}
+  .card p{font-size:14.5px;color:var(--ink-2);margin:0;line-height:1.8;}
+  .card .tag{display:inline-block;font-size:11.5px;letter-spacing:.08em;color:var(--bamboo);background:var(--mint);padding:2px 9px;border-radius:999px;margin-bottom:10px;font-family:"PingFang SC",system-ui,sans-serif;}
+  .day{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:26px 26px 12px;margin-bottom:20px;}
+  .day-head{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:6px;}
+  .day-no{font-family:"PingFang SC",system-ui,sans-serif;font-size:12px;letter-spacing:.18em;color:#fff;background:var(--moss);padding:3px 10px;border-radius:6px;}
+  .day-title{font-size:20px;font-weight:700;}
+  .day-meta{font-size:13px;color:var(--ink-2);font-family:"PingFang SC",system-ui,sans-serif;}
+  ol.stops{list-style:none;margin:18px 0 0;padding:0;}
+  ol.stops li{position:relative;padding:0 0 20px 30px;border-left:1px solid var(--line);margin-left:7px;}
+  ol.stops li:last-child{border-left-color:transparent;padding-bottom:6px;}
+  ol.stops li::before{content:"";position:absolute;left:-4.5px;top:9px;width:8px;height:8px;border-radius:50%;background:var(--bamboo);box-shadow:0 0 0 3px var(--paper);}
+  .stop-h{font-weight:700;font-size:15.5px;}
+  .stop-t{font-family:"PingFang SC",system-ui,sans-serif;font-size:12px;color:var(--cinnabar);letter-spacing:.06em;margin-left:8px;}
+  .stop-d{font-size:14.5px;color:var(--ink-2);margin-top:2px;}
+  .tbl-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:14px;background:var(--paper);}
+  table{border-collapse:collapse;width:100%;min-width:620px;font-size:14.5px;}
+  th,td{text-align:left;padding:13px 16px;border-bottom:1px solid var(--line);vertical-align:top;}
+  th{font-family:"PingFang SC",system-ui,sans-serif;font-size:12px;letter-spacing:.1em;color:var(--ink-2);background:rgba(74,124,89,.07);font-weight:600;white-space:nowrap;}
+  tr:last-child td{border-bottom:none;}
+  td b{color:var(--ink);}
+  .muted{color:var(--ink-2);font-size:13.5px;}
+  .rank{counter-reset:r;list-style:none;padding:0;margin:0;}
+  .rank li{counter-increment:r;position:relative;padding:13px 0 13px 46px;border-bottom:1px dashed var(--line);font-size:15px;}
+  .rank li:last-child{border-bottom:none;}
+  .rank li::before{content:counter(r);position:absolute;left:0;top:12px;width:26px;height:26px;border-radius:50%;display:grid;place-items:center;background:var(--mint);color:var(--moss);font-family:"PingFang SC",system-ui,sans-serif;font-size:12.5px;font-weight:700;}
+  .rank .why{display:block;font-size:13.5px;color:var(--ink-2);margin-top:2px;}
+  .note{border-left:3px solid var(--cinnabar);background:linear-gradient(90deg, rgba(181,67,47,.06), transparent 70%);padding:16px 20px;border-radius:0 10px 10px 0;margin:22px 0;font-size:14.5px;}
+  .note b{color:var(--cinnabar);}
+  .tip{border-left:3px solid var(--gold);background:linear-gradient(90deg, rgba(168,130,60,.09), transparent 70%);padding:16px 20px;border-radius:0 10px 10px 0;margin:22px 0;font-size:14.5px;}
+  .tip b{color:var(--gold);}
+  .bars{margin:8px 0 0;}
+  .bar{display:grid;grid-template-columns:110px 1fr 54px;gap:12px;align-items:center;margin-bottom:11px;font-size:14px;}
+  .bar .bl{color:var(--ink-2);}
+  .bar .bt{background:rgba(74,124,89,.12);border-radius:999px;height:9px;overflow:hidden;}
+  .bar .bf{height:100%;background:linear-gradient(90deg,var(--bamboo),#7fa889);border-radius:999px;}
+  .bar .bn{text-align:right;color:var(--ink-2);font-size:13px;font-family:"PingFang SC",system-ui,sans-serif;}
+  .src{font-size:12.5px;color:var(--ink-2);font-family:"PingFang SC",system-ui,sans-serif;}
+  footer{margin-top:40px;padding:44px 0 64px;border-top:1px solid var(--line);color:var(--ink-2);font-size:13px;}
+  footer p{max-width:62em;}
+  @media (max-width:600px){
+    .cover{padding:64px 20px 52px;}
+    section{padding:48px 0 8px;}
+    .stats{gap:24px;}
+    .day{padding:20px 18px 6px;}
+    .bar{grid-template-columns:88px 1fr 46px;gap:8px;font-size:13px;}
+  }
+  @media print{
+    .cover{background:#fff;color:#000;}
+    body{background:#fff;}
+    section{page-break-inside:avoid;}
+  }
+</style>
+</head>
+<body>
+
+<header class="cover">
+  <div class="cover-inner">
+    <p class="kicker">SHANDONG · DONGYING · 2 天</p>
+    <h1>东营<span class="accent">，</span><br>黄河入海的地方</h1>
+    <p class="sub">27 条视频、111.5 万点赞。美食占 <b>81%</b>——山东最高。而它真正的独特性在于：<b>黄河在这里入海</b>。黄蓝交汇、河海分界的景观，全国只有这一处。东营是因石油（胜利油田）设市的城市，文化底子薄，但自然景观独一份。</p>
+    <div class="stats">
+      <div class="stat"><div class="n">27</div><div class="l">条抖音视频</div></div>
+      <div class="stat"><div class="n">111.5万</div><div class="l">累计点赞</div></div>
+      <div class="stat"><div class="n">81%</div><div class="l">美食内容占比</div></div>
+      <div class="stat"><div class="n">77.1万</div><div class="l">单条最高点赞</div></div>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+<section id="s1">
+  <h2><span class="no">01</span> 数据说了什么</h2>
+  <p class="lede">东营的核心只有一件事：看黄河入海。黄蓝交汇的奇观、大片的湿地、候鸟迁徙的驿站，这是它区别于山东其他沿海城市的根本。市区本身没什么可看的，两天足够。</p>
+  <h3>内容构成</h3>
+  <div class="bars">
+    <div class="bar"><span class="bl">美食探店</span><span class="bt"><span class="bf" style="width:81%"></span></span><span class="bn">81%</span></div>
+    <div class="bar"><span class="bl">景点盘点</span><span class="bt"><span class="bf" style="width:7%"></span></span><span class="bn">7%</span></div>
+    <div class="bar"><span class="bl">城市 Vlog</span><span class="bt"><span class="bf" style="width:7%"></span></span><span class="bn">7%</span></div>
+    <div class="bar"><span class="bl">亲子乐园</span><span class="bt"><span class="bf" style="width:4%"></span></span><span class="bn">4%</span></div>
+  </div>
+
+  <h3>收藏最高的三条</h3>
+  <ul class="rank">
+    <li>北冥有鱼是真的！在东营看到此生难忘的鸟浪 #东营鸟浪 #北冥有鱼 #逍遥游 #东营旅游 #黄河口生态旅游区<span class="why">收藏 8.9万 · 点赞 77.1万</span></li>
+    <li>北冥有鱼是真的！在东营看到此生难忘的鸟浪 #追秋色彩之旅 #秋色入山河 #迁徙的候鸟 #东营观鸟  #东营旅游攻略<span class="why">收藏 1.1万 · 点赞 20.8万</span></li>
+    <li>淡季来东营，才知道反向旅游有多香！ #东营旅游 #东营美食 #地方特色美食 #沿着黄河遇见海 #看完黄河来赶海<span class="why">收藏 9711 · 点赞 2.1万</span></li>
+  </ul>
+
+  <div class="note">
+    <b>① 美食 81%，山东最高。</b>黄河口大闸蟹和海鲜是本地人的日常，但外地人不知道。<br>
+    <b>② 黄河入海是独一份。</b>黄蓝交汇、河海分界，全国仅此一处。<br>
+    <b>③ 城市本身弱。</b>东营是因石油设的新城，历史和文化积累薄，别期待古城。<br>
+  </div>
+
+  <div class="grid g3" style="margin-top:26px;">
+    <div class="card">
+      <span class="tag">几天够</span>
+      <h4>2 天</h4>
+      <p>一天黄河口生态旅游区，一天湿地＋市区。</p>
+    </div>
+    <div class="card">
+      <span class="tag">住哪儿</span>
+      <h4>东城区</h4>
+      <p>市中心，吃饭方便。去黄河口要 1 小时。</p>
+    </div>
+    <div class="card">
+      <span class="tag">什么时候来</span>
+      <h4>4–5 月 / 10–11 月</h4>
+      <p>春天候鸟北飞，秋天南迁，湿地最热闹。夏天热。</p>
+    </div>
+  </div>
+</section>
+
+<section id="s2">
+  <h2><span class="no">02</span> 行程</h2>
+  <p class="lede">东营的景点全在城外的黄河口，一天来回。第二天可以去孤岛或孙子文化园。</p>
+
+  <div class="day">
+    <div class="day-head">
+      <span class="day-no">DAY 1</span>
+      <span class="day-title">黄河入海</span>
+      <span class="day-meta">自驾 · 全天 · 门票 90 元</span>
+    </div>
+    <ol class="stops">
+      <li>
+        <div class="stop-h">黄河口生态旅游区<span class="stop-t">08:30</span></div>
+        <div class="stop-d">门票 90 元左右。黄河入海的地方，坐船看「黄蓝交汇」——黄河的黄色和渤海的蓝色分界清晰。</div>
+      </li>
+      <li>
+        <div class="stop-h">远望楼 / 鸟类博物馆<span class="stop-t">12:00</span></div>
+        <div class="stop-d">含在门票内。看湿地全景和候鸟标本。</div>
+      </li>
+      <li>
+        <div class="stop-h">湿地栈道<span class="stop-t">14:30</span></div>
+        <div class="stop-d">含在门票内。大片的芦苇荡和滩涂，秋天红地毯（盐地碱蓬）变红，很壮观。</div>
+      </li>
+    </ol>
+  </div>
+
+  <div class="day">
+    <div class="day-head">
+      <span class="day-no">DAY 2</span>
+      <span class="day-title">孤岛 or 孙子文化园</span>
+      <span class="day-meta">半天到一天</span>
+    </div>
+    <ol class="stops">
+      <li>
+        <div class="stop-h">孤岛滨海湿地<span class="stop-t">09:00</span></div>
+        <div class="stop-d">免费或低价。比景区更原始的湿地，适合自驾走一圈。</div>
+      </li>
+      <li>
+        <div class="stop-h">孙子文化园<span class="stop-t">13:00</span></div>
+        <div class="stop-d">门票 60 元左右。广饶是孙武故里，主题乐园式建筑。</div>
+      </li>
+      <li>
+        <div class="stop-h">回程：吃大闸蟹<span class="stop-t">17:00</span></div>
+        <div class="stop-d">黄河口大闸蟹是黄河水养的，蟹黄饱满。秋天最好。</div>
+      </li>
+    </ol>
+  </div>
+
+  <div class="tip"><b>黄河入海的时机：</b>「黄蓝交汇」要坐船到海里去才看得清（船票另收），而且受水量和潮汐影响，不是每次都能看到清晰分界。去之前问景区当天情况。</div>
+</section>
+
+<section id="s3">
+  <h2><span class="no">03</span> 吃什么</h2>
+  <p class="lede">东营菜是鲁北口味，海鲜为主。黄河口大闸蟹和利津水煎包是两样代表。</p>
+
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>吃什么</th><th>去哪找</th><th>怎么点</th><th>人均</th></tr></thead>
+      <tbody>
+        <tr><td><b>黄河口大闸蟹</b><br><span class="muted"></span></td><td>秋天，黄河口周边</td><td>黄河水养的蟹，蟹黄饱满；清蒸</td><td>按斤</td></tr>
+        <tr><td><b>利津水煎包</b><br><span class="muted"></span></td><td>利津县、市区</td><td>水煎包，底脆馅鲜；利津是产地</td><td>10–15</td></tr>
+        <tr><td><b>广饶肴驴肉</b><br><span class="muted"></span></td><td>广饶县</td><td>卤驴肉，切片冷吃；当地名菜</td><td>40–70</td></tr>
+        <tr><td><b>史口烧鸡</b><br><span class="muted"></span></td><td>史口镇</td><td>卤烧鸡，肉烂脱骨；当地特产</td><td>30–50</td></tr>
+        <tr><td><b>孤岛鲜鱼汤</b><br><span class="muted"></span></td><td>孤岛镇</td><td>黄河里的鱼炖汤，奶白；配饼</td><td>40–60</td></tr>
+        <tr><td><b>东方对虾</b><br><span class="muted"></span></td><td>海鲜市场</td><td>渤海对虾，肉紧；按个头论价</td><td>按斤</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="note"><b>螃蟹季节：</b>黄河口大闸蟹 9–11 月最好，雌蟹蟹黄饱满。其他季节是空壳，别专程来吃。</div>
+</section>
+
+<section id="s4">
+  <h2><span class="no">04</span> 实用与避坑</h2>
+  <div class="grid g2" style="margin-top:10px;">
+    <div class="card"><h4>怎么到</h4><p>高铁到东营南站。东营在山东北部，从北京 2.5 小时、济南 1.5 小时。</p></div>
+    <div class="card"><h4>黄河口</h4><p>从市区约 1 小时，自驾最方便。看黄蓝交汇要坐船，另收费。</p></div>
+    <div class="card"><h4>季节</h4><p>4–5 月候鸟北飞、10–11 月南迁，湿地最热闹。夏天热且蚊虫多。</p></div>
+    <div class="card"><h4>带什么走</h4><p>黄河口大闸蟹（季节）、利津水煎包（真空）、东方对虾。</p></div>
+  </div>
+</section>
+
+<footer>
+<p><b>数据说明。</b>本页基于抖音真实采集数据：关键词「东营旅游」「东营美食」，去重后 <b>27 条视频</b>，累计点赞 <b>111.5万</b>、收藏 <b>15.1万</b>，单条最高点赞 77.1万、最高收藏 8.9万。内容构成按视频标题归类统计。</p>
+  <p>门票、交通等硬信息按公开资料核对，价格与开放时间以景区当日公示为准；餐饮只写到「品类＋去哪找」，不写死门牌——老店变动比攻略更新快。</p>
+  <p class="src">采集时间 2026-10-25 · 工具 MediaCrawler（非商业学习许可）· 本页仅供个人出行参考</p>
+</footer>
+
+</div>
+</body>
+</html>

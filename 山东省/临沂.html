@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>临沂 · 从抖音真实数据整理出的攻略</title>
+<style>
+  :root{
+    --ink:#17251c; --ink-2:#3d4f42; --moss:#1f3d2b; --bamboo:#4a7c59;
+    --mint:#dfe9e0; --rice:#f7f5ef; --paper:#fffefb; --cinnabar:#b5432f;
+    --gold:#a8823c; --line:rgba(23,37,28,.12);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0; background:var(--rice); color:var(--ink);
+    font-family:"Songti SC","Noto Serif SC","Source Han Serif SC","Noto Serif CJK SC","SimSun","STSong",Georgia,"Microsoft YaHei",serif;
+    font-size:16px; line-height:1.85; -webkit-font-smoothing:antialiased;
+  }
+  .cover{
+    position:relative; padding:96px 24px 72px;
+    background:
+      radial-gradient(1200px 500px at 15% -10%, rgba(74,124,89,.22), transparent 60%),
+      radial-gradient(900px 420px at 90% 0%, rgba(168,130,60,.16), transparent 55%),
+      linear-gradient(180deg,#12241a 0%, #1b3527 58%, #23412f 100%);
+    color:#f2efe6; overflow:hidden;
+  }
+  .cover::after{
+    content:""; position:absolute; inset:0;
+    background-image:radial-gradient(rgba(255,255,255,.06) 1px, transparent 1px);
+    background-size:3px 3px; opacity:.5; pointer-events:none;
+  }
+  .cover-inner{max-width:900px;margin:0 auto;position:relative;z-index:1;}
+  .kicker{font-size:13px;letter-spacing:.32em;text-transform:uppercase;color:rgba(242,239,230,.62);margin:0 0 22px;}
+  h1{font-size:clamp(38px,6.4vw,74px);line-height:1.12;margin:0 0 8px;font-weight:700;letter-spacing:.01em;}
+  h1 .accent{color:#cfe3c8;}
+  .sub{font-size:clamp(15px,2vw,19px);color:rgba(242,239,230,.76);max-width:44em;margin:18px 0 0;line-height:1.9;}
+  .stats{display:flex;flex-wrap:wrap;gap:36px;margin-top:44px;padding-top:26px;border-top:1px solid rgba(242,239,230,.18);}
+  .stat .n{font-size:28px;font-weight:700;color:#e7f0e3;line-height:1.2;}
+  .stat .l{font-size:12.5px;letter-spacing:.12em;color:rgba(242,239,230,.55);margin-top:4px;}
+  .wrap{max-width:900px;margin:0 auto;padding:0 24px;}
+  section{padding:64px 0 8px;}
+  section + section{border-top:1px solid var(--line);}
+  h2{font-size:clamp(24px,3.4vw,32px);margin:0 0 6px;font-weight:700;letter-spacing:.01em;display:flex;align-items:baseline;gap:14px;}
+  h2 .no{font-size:12px;letter-spacing:.2em;color:var(--cinnabar);font-family:"PingFang SC",system-ui,sans-serif;font-weight:600;}
+  .lede{color:var(--ink-2);margin:6px 0 30px;max-width:46em;}
+  h3{font-size:19px;margin:34px 0 10px;font-weight:700;}
+  p{margin:0 0 14px;}
+  .grid{display:grid;gap:16px;}
+  .g3{grid-template-columns:repeat(auto-fit,minmax(230px,1fr));}
+  .g2{grid-template-columns:repeat(auto-fit,minmax(300px,1fr));}
+  .card{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:22px 22px 18px;}
+  .card h4{margin:0 0 8px;font-size:16.5px;}
+  .card p{font-size:14.5px;color:var(--ink-2);margin:0;line-height:1.8;}
+  .card .tag{display:inline-block;font-size:11.5px;letter-spacing:.08em;color:var(--bamboo);background:var(--mint);padding:2px 9px;border-radius:999px;margin-bottom:10px;font-family:"PingFang SC",system-ui,sans-serif;}
+  .day{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:26px 26px 12px;margin-bottom:20px;}
+  .day-head{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:6px;}
+  .day-no{font-family:"PingFang SC",system-ui,sans-serif;font-size:12px;letter-spacing:.18em;color:#fff;background:var(--moss);padding:3px 10px;border-radius:6px;}
+  .day-title{font-size:20px;font-weight:700;}
+  .day-meta{font-size:13px;color:var(--ink-2);font-family:"PingFang SC",system-ui,sans-serif;}
+  ol.stops{list-style:none;margin:18px 0 0;padding:0;}
+  ol.stops li{position:relative;padding:0 0 20px 30px;border-left:1px solid var(--line);margin-left:7px;}
+  ol.stops li:last-child{border-left-color:transparent;padding-bottom:6px;}
+  ol.stops li::before{content:"";position:absolute;left:-4.5px;top:9px;width:8px;height:8px;border-radius:50%;background:var(--bamboo);box-shadow:0 0 0 3px var(--paper);}
+  .stop-h{font-weight:700;font-size:15.5px;}
+  .stop-t{font-family:"PingFang SC",system-ui,sans-serif;font-size:12px;color:var(--cinnabar);letter-spacing:.06em;margin-left:8px;}
+  .stop-d{font-size:14.5px;color:var(--ink-2);margin-top:2px;}
+  .tbl-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:14px;background:var(--paper);}
+  table{border-collapse:collapse;width:100%;min-width:620px;font-size:14.5px;}
+  th,td{text-align:left;padding:13px 16px;border-bottom:1px solid var(--line);vertical-align:top;}
+  th{font-family:"PingFang SC",system-ui,sans-serif;font-size:12px;letter-spacing:.1em;color:var(--ink-2);background:rgba(74,124,89,.07);font-weight:600;white-space:nowrap;}
+  tr:last-child td{border-bottom:none;}
+  td b{color:var(--ink);}
+  .muted{color:var(--ink-2);font-size:13.5px;}
+  .rank{counter-reset:r;list-style:none;padding:0;margin:0;}
+  .rank li{counter-increment:r;position:relative;padding:13px 0 13px 46px;border-bottom:1px dashed var(--line);font-size:15px;}
+  .rank li:last-child{border-bottom:none;}
+  .rank li::before{content:counter(r);position:absolute;left:0;top:12px;width:26px;height:26px;border-radius:50%;display:grid;place-items:center;background:var(--mint);color:var(--moss);font-family:"PingFang SC",system-ui,sans-serif;font-size:12.5px;font-weight:700;}
+  .rank .why{display:block;font-size:13.5px;color:var(--ink-2);margin-top:2px;}
+  .note{border-left:3px solid var(--cinnabar);background:linear-gradient(90deg, rgba(181,67,47,.06), transparent 70%);padding:16px 20px;border-radius:0 10px 10px 0;margin:22px 0;font-size:14.5px;}
+  .note b{color:var(--cinnabar);}
+  .tip{border-left:3px solid var(--gold);background:linear-gradient(90deg, rgba(168,130,60,.09), transparent 70%);padding:16px 20px;border-radius:0 10px 10px 0;margin:22px 0;font-size:14.5px;}
+  .tip b{color:var(--gold);}
+  .bars{margin:8px 0 0;}
+  .bar{display:grid;grid-template-columns:110px 1fr 54px;gap:12px;align-items:center;margin-bottom:11px;font-size:14px;}
+  .bar .bl{color:var(--ink-2);}
+  .bar .bt{background:rgba(74,124,89,.12);border-radius:999px;height:9px;overflow:hidden;}
+  .bar .bf{height:100%;background:linear-gradient(90deg,var(--bamboo),#7fa889);border-radius:999px;}
+  .bar .bn{text-align:right;color:var(--ink-2);font-size:13px;font-family:"PingFang SC",system-ui,sans-serif;}
+  .src{font-size:12.5px;color:var(--ink-2);font-family:"PingFang SC",system-ui,sans-serif;}
+  footer{margin-top:40px;padding:44px 0 64px;border-top:1px solid var(--line);color:var(--ink-2);font-size:13px;}
+  footer p{max-width:62em;}
+  @media (max-width:600px){
+    .cover{padding:64px 20px 52px;}
+    section{padding:48px 0 8px;}
+    .stats{gap:24px;}
+    .day{padding:20px 18px 6px;}
+    .bar{grid-template-columns:88px 1fr 46px;gap:8px;font-size:13px;}
+  }
+  @media print{
+    .cover{background:#fff;color:#000;}
+    body{background:#fff;}
+    section{page-break-inside:avoid;}
+  }
+</style>
+</head>
+<body>
+
+<header class="cover">
+  <div class="cover-inner">
+    <p class="kicker">SHANDONG · LINYI · 2–3 天</p>
+    <h1>临沂<span class="accent">，</span><br>沂蒙山，和一片地下画廊</h1>
+    <p class="sub">临沂是山东面积最大的市，沂蒙山是它的精神地标。它的旅游有两类：一类是山水（沂蒙山、地下大峡谷、竹泉村），一类是红色（孟良崮、红嫂故里）。加上王羲之故居，文化底子也有。</p>
+    <div class="stats">
+      <div class="stat"><div class="n">28</div><div class="l">条抖音视频</div></div>
+      <div class="stat"><div class="n">79万</div><div class="l">累计点赞</div></div>
+      <div class="stat"><div class="n">57%</div><div class="l">美食内容占比</div></div>
+      <div class="stat"><div class="n">45.8万</div><div class="l">单条最高点赞</div></div>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+<section id="s1">
+  <h2><span class="no">01</span> 数据说了什么</h2>
+  <p class="lede">临沂的山水被严重低估。沂蒙山的云蒙景区、地下大峡谷的溶洞漂流、竹泉村的泉水村落，三样各有特色。它不适合快闪，适合慢慢走。</p>
+  <h3>内容构成</h3>
+  <div class="bars">
+    <div class="bar"><span class="bl">美食探店</span><span class="bt"><span class="bf" style="width:57%"></span></span><span class="bn">57%</span></div>
+    <div class="bar"><span class="bl">景点盘点</span><span class="bt"><span class="bf" style="width:36%"></span></span><span class="bn">36%</span></div>
+    <div class="bar"><span class="bl">城市 Vlog</span><span class="bt"><span class="bf" style="width:4%"></span></span><span class="bn">4%</span></div>
+    <div class="bar"><span class="bl">亲子乐园</span><span class="bt"><span class="bf" style="width:4%"></span></span><span class="bn">4%</span></div>
+  </div>
+
+  <h3>收藏最高的三条</h3>
+  <ul class="rank">
+    <li>极限48小时逛吃山东临沂！两天打卡23家美食！ #不减肥的一天吃什么 #爱吃食物的小女孩 #山东临沂 #临沂炒鸡 #临沂美食<span class="why">收藏 4.3万 · 点赞 10.2万</span></li>
+    <li>花521元在临沂吃「临沂炒鸡」～我还是喜欢吃嫩的 #特别乌啦啦 #乌啦啦 #寻味烟火气 #需要大声安利的烟火气美食  #我比乌啦啦更懂烟火小<span class="why">收藏 1.8万 · 点赞 45.8万</span></li>
+    <li>山东临沂旅游必去的十大景点#旅游#旅游景点#暑假#山东#旅游攻略<span class="why">收藏 1.3万 · 点赞 1.5万</span></li>
+  </ul>
+
+  <div class="note">
+    <b>① 沂蒙山是核心。</b>云蒙、龟蒙、天蒙三个景区，各有特色。<br>
+    <b>② 地下大峡谷是特色。</b>溶洞里的地下漂流，山东独一份。<br>
+    <b>③ 竹泉村是「网红村」。</b>泉水穿村而过，竹影婆娑，是临沂最出片的地方。<br>
+  </div>
+
+  <div class="grid g3" style="margin-top:26px;">
+    <div class="card">
+      <span class="tag">几天够</span>
+      <h4>2 天，3 天更完整</h4>
+      <p>一天沂蒙山，一天地下大峡谷＋竹泉村。</p>
+    </div>
+    <div class="card">
+      <span class="tag">住哪儿</span>
+      <h4>兰山区 / 沂水</h4>
+      <p>市区方便；玩沂水景区就住沂水县城。</p>
+    </div>
+    <div class="card">
+      <span class="tag">什么时候来</span>
+      <h4>4–6 月 / 9–10 月</h4>
+      <p>春秋最好。夏天山里凉快，但雨多。</p>
+    </div>
+  </div>
+</section>
+
+<section id="s2">
+  <h2><span class="no">02</span> 行程</h2>
+  <p class="lede">临沂的景区分散在几个县：沂水（地下大峡谷、竹泉村）、蒙阴（云蒙）、平邑（龟蒙）。</p>
+
+  <div class="day">
+    <div class="day-head">
+      <span class="day-no">DAY 1</span>
+      <span class="day-title">沂蒙山</span>
+      <span class="day-meta">自驾 · 全天 · 门票 100 元</span>
+    </div>
+    <ol class="stops">
+      <li>
+        <div class="stop-h">云蒙景区<span class="stop-t">08:30</span></div>
+        <div class="stop-d">门票 100 元左右（含景交）。沂蒙山的主景区，森林覆盖率高，空气好。</div>
+      </li>
+      <li>
+        <div class="stop-h">蒙山寿星 / 望海楼<span class="stop-t">11:00</span></div>
+        <div class="stop-d">含在门票内。巨型寿星雕刻是标志，山顶能看云海。</div>
+      </li>
+      <li>
+        <div class="stop-h">回程：吃炒鸡<span class="stop-t">17:00</span></div>
+        <div class="stop-d">沂蒙炒鸡是临沂招牌，辣香，配煎饼。</div>
+      </li>
+    </ol>
+  </div>
+
+  <div class="day">
+    <div class="day-head">
+      <span class="day-no">DAY 2</span>
+      <span class="day-title">地下大峡谷与竹泉村</span>
+      <span class="day-meta">自驾 · 全天 · 门票 200 元</span>
+    </div>
+    <ol class="stops">
+      <li>
+        <div class="stop-h">地下大峡谷<span class="stop-t">09:00</span></div>
+        <div class="stop-d">门票 96 元左右（漂流另收）。溶洞里的地下漂流，全长 1000 米，很刺激。</div>
+      </li>
+      <li>
+        <div class="stop-h">萤火虫水洞<span class="stop-t">12:00</span></div>
+        <div class="stop-d">门票 96 元左右。洞里有萤火虫，坐船进去，头顶一片星光。</div>
+      </li>
+      <li>
+        <div class="stop-h">竹泉村<span class="stop-t">15:00</span></div>
+        <div class="stop-d">门票 80 元左右。泉水穿村，竹影婆娑，石头房子。临沂最出片的地方。</div>
+      </li>
+    </ol>
+  </div>
+
+  <div class="tip"><b>地下漂流：</b>地下大峡谷的漂流要另收费（60 元左右），但值得——在溶洞里漂 1000 米，别处没有。带件外套，洞里凉。</div>
+</section>
+
+<section id="s3">
+  <h2><span class="no">03</span> 吃什么</h2>
+  <p class="lede">临沂菜是鲁南口味，咸香微辣。沂蒙炒鸡和糁是最有代表性的两样。</p>
+
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>吃什么</th><th>去哪找</th><th>怎么点</th><th>人均</th></tr></thead>
+      <tbody>
+        <tr><td><b>沂蒙炒鸡</b><br><span class="muted"></span></td><td>本地菜馆</td><td>土鸡炒制，辣香；配煎饼或米饭</td><td>50–80</td></tr>
+        <tr><td><b>临沂糁（sa）</b><br><span class="muted"></span></td><td>早餐铺</td><td>牛肉或鸡肉熬的浓汤，冲鸡蛋；临沂人的早饭</td><td>8–15</td></tr>
+        <tr><td><b>煎饼卷大葱</b><br><span class="muted"></span></td><td>街头摊</td><td>山东通用，临沂的煎饼更薄</td><td>5–10</td></tr>
+        <tr><td><b>八宝豆豉</b><br><span class="muted"></span></td><td>老字号</td><td>临沂的传统酱菜，配粥；能带走</td><td>按袋</td></tr>
+        <tr><td><b>光棍鸡</b><br><span class="muted"></span></td><td>蒙阴县</td><td>蒙阴的特色炒鸡，一只鸡一锅</td><td>60–90</td></tr>
+        <tr><td><b>沂水丰糕</b><br><span class="muted"></span></td><td>沂水县</td><td>米糕，甜软；当地点心</td><td>按块</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="note"><b>炒鸡的分量：</b>临沂炒鸡是一整只鸡起做，两三个人点一份就够，别按人数点。</div>
+</section>
+
+<section id="s4">
+  <h2><span class="no">04</span> 实用与避坑</h2>
+  <div class="grid g2" style="margin-top:10px;">
+    <div class="card"><h4>怎么到</h4><p>高铁到临沂北站。临沂在鲁南，从济南 2 小时、徐州 1.5 小时。</p></div>
+    <div class="card"><h4>景区交通</h4><p>景区分散在各县，自驾最方便。公共交通班次少。</p></div>
+    <div class="card"><h4>地下漂流</h4><p>洞里温度低（15℃ 左右），带外套。漂流会溅水，别穿浅色。</p></div>
+    <div class="card"><h4>带什么走</h4><p>八宝豆豉、沂蒙煎饼、金银花（平邑）。</p></div>
+  </div>
+</section>
+
+<footer>
+<p><b>数据说明。</b>本页基于抖音真实采集数据：关键词「临沂旅游」「临沂美食」，去重后 <b>28 条视频</b>，累计点赞 <b>79万</b>、收藏 <b>13.8万</b>，单条最高点赞 45.8万、最高收藏 4.3万。内容构成按视频标题归类统计。</p>
+  <p>门票、交通等硬信息按公开资料核对，价格与开放时间以景区当日公示为准；餐饮只写到「品类＋去哪找」，不写死门牌——老店变动比攻略更新快。</p>
+  <p class="src">采集时间 2026-10-25 · 工具 MediaCrawler（非商业学习许可）· 本页仅供个人出行参考</p>
+</footer>
+
+</div>
+</body>
+</html>

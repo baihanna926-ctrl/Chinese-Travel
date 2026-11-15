@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>聊城 · 从抖音真实数据整理出的攻略</title>
+<style>
+  :root{
+    --ink:#17251c; --ink-2:#3d4f42; --moss:#1f3d2b; --bamboo:#4a7c59;
+    --mint:#dfe9e0; --rice:#f7f5ef; --paper:#fffefb; --cinnabar:#b5432f;
+    --gold:#a8823c; --line:rgba(23,37,28,.12);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0; background:var(--rice); color:var(--ink);
+    font-family:"Songti SC","Noto Serif SC","Source Han Serif SC","Noto Serif CJK SC","SimSun","STSong",Georgia,"Microsoft YaHei",serif;
+    font-size:16px; line-height:1.85; -webkit-font-smoothing:antialiased;
+  }
+  .cover{
+    position:relative; padding:96px 24px 72px;
+    background:
+      radial-gradient(1200px 500px at 15% -10%, rgba(74,124,89,.22), transparent 60%),
+      radial-gradient(900px 420px at 90% 0%, rgba(168,130,60,.16), transparent 55%),
+      linear-gradient(180deg,#12241a 0%, #1b3527 58%, #23412f 100%);
+    color:#f2efe6; overflow:hidden;
+  }
+  .cover::after{
+    content:""; position:absolute; inset:0;
+    background-image:radial-gradient(rgba(255,255,255,.06) 1px, transparent 1px);
+    background-size:3px 3px; opacity:.5; pointer-events:none;
+  }
+  .cover-inner{max-width:900px;margin:0 auto;position:relative;z-index:1;}
+  .kicker{font-size:13px;letter-spacing:.32em;text-transform:uppercase;color:rgba(242,239,230,.62);margin:0 0 22px;}
+  h1{font-size:clamp(38px,6.4vw,74px);line-height:1.12;margin:0 0 8px;font-weight:700;letter-spacing:.01em;}
+  h1 .accent{color:#cfe3c8;}
+  .sub{font-size:clamp(15px,2vw,19px);color:rgba(242,239,230,.76);max-width:44em;margin:18px 0 0;line-height:1.9;}
+  .stats{display:flex;flex-wrap:wrap;gap:36px;margin-top:44px;padding-top:26px;border-top:1px solid rgba(242,239,230,.18);}
+  .stat .n{font-size:28px;font-weight:700;color:#e7f0e3;line-height:1.2;}
+  .stat .l{font-size:12.5px;letter-spacing:.12em;color:rgba(242,239,230,.55);margin-top:4px;}
+  .wrap{max-width:900px;margin:0 auto;padding:0 24px;}
+  section{padding:64px 0 8px;}
+  section + section{border-top:1px solid var(--line);}
+  h2{font-size:clamp(24px,3.4vw,32px);margin:0 0 6px;font-weight:700;letter-spacing:.01em;display:flex;align-items:baseline;gap:14px;}
+  h2 .no{font-size:12px;letter-spacing:.2em;color:var(--cinnabar);font-family:"PingFang SC",system-ui,sans-serif;font-weight:600;}
+  .lede{color:var(--ink-2);margin:6px 0 30px;max-width:46em;}
+  h3{font-size:19px;margin:34px 0 10px;font-weight:700;}
+  p{margin:0 0 14px;}
+  .grid{display:grid;gap:16px;}
+  .g3{grid-template-columns:repeat(auto-fit,minmax(230px,1fr));}
+  .g2{grid-template-columns:repeat(auto-fit,minmax(300px,1fr));}
+  .card{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:22px 22px 18px;}
+  .card h4{margin:0 0 8px;font-size:16.5px;}
+  .card p{font-size:14.5px;color:var(--ink-2);margin:0;line-height:1.8;}
+  .card .tag{display:inline-block;font-size:11.5px;letter-spacing:.08em;color:var(--bamboo);background:var(--mint);padding:2px 9px;border-radius:999px;margin-bottom:10px;font-family:"PingFang SC",system-ui,sans-serif;}
+  .day{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:26px 26px 12px;margin-bottom:20px;}
+  .day-head{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:6px;}
+  .day-no{font-family:"PingFang SC",system-ui,sans-serif;font-size:12px;letter-spacing:.18em;color:#fff;background:var(--moss);padding:3px 10px;border-radius:6px;}
+  .day-title{font-size:20px;font-weight:700;}
+  .day-meta{font-size:13px;color:var(--ink-2);font-family:"PingFang SC",system-ui,sans-serif;}
+  ol.stops{list-style:none;margin:18px 0 0;padding:0;}
+  ol.stops li{position:relative;padding:0 0 20px 30px;border-left:1px solid var(--line);margin-left:7px;}
+  ol.stops li:last-child{border-left-color:transparent;padding-bottom:6px;}
+  ol.stops li::before{content:"";position:absolute;left:-4.5px;top:9px;width:8px;height:8px;border-radius:50%;background:var(--bamboo);box-shadow:0 0 0 3px var(--paper);}
+  .stop-h{font-weight:700;font-size:15.5px;}
+  .stop-t{font-family:"PingFang SC",system-ui,sans-serif;font-size:12px;color:var(--cinnabar);letter-spacing:.06em;margin-left:8px;}
+  .stop-d{font-size:14.5px;color:var(--ink-2);margin-top:2px;}
+  .tbl-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:14px;background:var(--paper);}
+  table{border-collapse:collapse;width:100%;min-width:620px;font-size:14.5px;}
+  th,td{text-align:left;padding:13px 16px;border-bottom:1px solid var(--line);vertical-align:top;}
+  th{font-family:"PingFang SC",system-ui,sans-serif;font-size:12px;letter-spacing:.1em;color:var(--ink-2);background:rgba(74,124,89,.07);font-weight:600;white-space:nowrap;}
+  tr:last-child td{border-bottom:none;}
+  td b{color:var(--ink);}
+  .muted{color:var(--ink-2);font-size:13.5px;}
+  .rank{counter-reset:r;list-style:none;padding:0;margin:0;}
+  .rank li{counter-increment:r;position:relative;padding:13px 0 13px 46px;border-bottom:1px dashed var(--line);font-size:15px;}
+  .rank li:last-child{border-bottom:none;}
+  .rank li::before{content:counter(r);position:absolute;left:0;top:12px;width:26px;height:26px;border-radius:50%;display:grid;place-items:center;background:var(--mint);color:var(--moss);font-family:"PingFang SC",system-ui,sans-serif;font-size:12.5px;font-weight:700;}
+  .rank .why{display:block;font-size:13.5px;color:var(--ink-2);margin-top:2px;}
+  .note{border-left:3px solid var(--cinnabar);background:linear-gradient(90deg, rgba(181,67,47,.06), transparent 70%);padding:16px 20px;border-radius:0 10px 10px 0;margin:22px 0;font-size:14.5px;}
+  .note b{color:var(--cinnabar);}
+  .tip{border-left:3px solid var(--gold);background:linear-gradient(90deg, rgba(168,130,60,.09), transparent 70%);padding:16px 20px;border-radius:0 10px 10px 0;margin:22px 0;font-size:14.5px;}
+  .tip b{color:var(--gold);}
+  .bars{margin:8px 0 0;}
+  .bar{display:grid;grid-template-columns:110px 1fr 54px;gap:12px;align-items:center;margin-bottom:11px;font-size:14px;}
+  .bar .bl{color:var(--ink-2);}
+  .bar .bt{background:rgba(74,124,89,.12);border-radius:999px;height:9px;overflow:hidden;}
+  .bar .bf{height:100%;background:linear-gradient(90deg,var(--bamboo),#7fa889);border-radius:999px;}
+  .bar .bn{text-align:right;color:var(--ink-2);font-size:13px;font-family:"PingFang SC",system-ui,sans-serif;}
+  .src{font-size:12.5px;color:var(--ink-2);font-family:"PingFang SC",system-ui,sans-serif;}
+  footer{margin-top:40px;padding:44px 0 64px;border-top:1px solid var(--line);color:var(--ink-2);font-size:13px;}
+  footer p{max-width:62em;}
+  @media (max-width:600px){
+    .cover{padding:64px 20px 52px;}
+    section{padding:48px 0 8px;}
+    .stats{gap:24px;}
+    .day{padding:20px 18px 6px;}
+    .bar{grid-template-columns:88px 1fr 46px;gap:8px;font-size:13px;}
+  }
+  @media print{
+    .cover{background:#fff;color:#000;}
+    body{background:#fff;}
+    section{page-break-inside:avoid;}
+  }
+</style>
+</head>
+<body>
+
+<header class="cover">
+  <div class="cover-inner">
+    <p class="kicker">SHANDONG · LIAOCHENG · 2 天</p>
+    <h1>聊城<span class="accent">，</span><br>江北水城，和一座会说话的楼</h1>
+    <p class="sub">27 条视频、59.4 万赞。聊城被称为「江北水城」——京杭大运河穿城而过，城中心有一个 6 平方公里的东昌湖，比西湖还大。这座城市的格局很特别：一个方形的古城，被一片方形的水围着。</p>
+    <div class="stats">
+      <div class="stat"><div class="n">27</div><div class="l">条抖音视频</div></div>
+      <div class="stat"><div class="n">59.4万</div><div class="l">累计点赞</div></div>
+      <div class="stat"><div class="n">59%</div><div class="l">美食内容占比</div></div>
+      <div class="stat"><div class="n">30.2万</div><div class="l">单条最高点赞</div></div>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+<section id="s1">
+  <h2><span class="no">01</span> 数据说了什么</h2>
+  <p class="lede">聊城的核心是「水＋古城」。东昌湖环抱古城，光岳楼在城中心，山陕会馆在山脚下。一天能走完，是那种「小而完整」的城市。</p>
+  <h3>内容构成</h3>
+  <div class="bars">
+    <div class="bar"><span class="bl">美食探店</span><span class="bt"><span class="bf" style="width:59%"></span></span><span class="bn">59%</span></div>
+    <div class="bar"><span class="bl">景点盘点</span><span class="bt"><span class="bf" style="width:22%"></span></span><span class="bn">22%</span></div>
+    <div class="bar"><span class="bl">城市 Vlog</span><span class="bt"><span class="bf" style="width:19%"></span></span><span class="bn">19%</span></div>
+  </div>
+
+  <h3>收藏最高的三条</h3>
+  <ul class="rank">
+    <li>山东人嘴真严 聊城这么好吃又不说！去过6次山东后悔才来聊城！ #了不起的中国菜 #美食判官已上线 #非遗好去处 #招牌菜 #心动打卡指南<span class="why">收藏 4.8万 · 点赞 30.2万</span></li>
+    <li>芝麻羊肉配瀑布毛肚！巨大呱嗒碳水爆炸！连炫20家山东聊城（含临清）本地特色！保姆级美食速通攻略！幸福下饭！#山东 #聊城 #美食攻略 #呱嗒<span class="why">收藏 1.6万 · 点赞 5.6万</span></li>
+    <li>山东聊城美食速通攻略！24小时逛吃18顿！ 帮你避开网红店，和聊城本地人抢饭吃！抓紧抄作业吧！都是宝藏老店！#聊城 #聊城美食 #聊城美食攻<span class="why">收藏 9436 · 点赞 2.5万</span></li>
+  </ul>
+
+  <div class="note">
+    <b>① 东昌湖是江北少见的城中湖。</b>6 平方公里，环湖一圈 12 公里，比杭州西湖大。<br>
+    <b>② 光岳楼是「活文物」。</b>明代木结构楼阁，600 年不倒，梁思成专门考察过。<br>
+    <b>③ 山陕会馆的雕刻是国宝。</b>清代晋商和陕商的会馆，木雕和石雕极精。<br>
+  </div>
+
+  <div class="grid g3" style="margin-top:26px;">
+    <div class="card">
+      <span class="tag">几天够</span>
+      <h4>2 天</h4>
+      <p>一天古城（光岳楼＋山陕会馆＋东昌湖），一天景阳冈或临清。</p>
+    </div>
+    <div class="card">
+      <span class="tag">住哪儿</span>
+      <h4>东昌湖 / 古城</h4>
+      <p>古城中心，步行到主要景点。</p>
+    </div>
+    <div class="card">
+      <span class="tag">什么时候来</span>
+      <h4>4–5 月 / 9–10 月</h4>
+      <p>春秋最好。夏天湖上凉快，荷花盛开。</p>
+    </div>
+  </div>
+</section>
+
+<section id="s2">
+  <h2><span class="no">02</span> 行程</h2>
+  <p class="lede">聊城古城被东昌湖围着，一天走完核心。第二天往武松打虎的景阳冈或临清。</p>
+
+  <div class="day">
+    <div class="day-head">
+      <span class="day-no">DAY 1</span>
+      <span class="day-title">水城与古城</span>
+      <span class="day-meta">步行 · 全天 · 门票 30 元</span>
+    </div>
+    <ol class="stops">
+      <li>
+        <div class="stop-h">光岳楼<span class="stop-t">09:00</span></div>
+        <div class="stop-d">门票 30 元。明代木结构楼阁，全木无钉，600 年不倒。登楼看古城全景。</div>
+      </li>
+      <li>
+        <div class="stop-h">山陕会馆<span class="stop-t">11:00</span></div>
+        <div class="stop-d">门票 30 元。清代晋陕商人的会馆，木雕石雕极精，关帝庙的雕刻是国宝级。</div>
+      </li>
+      <li>
+        <div class="stop-h">东昌湖<span class="stop-t">14:30</span></div>
+        <div class="stop-d">免费。环湖 12 公里，可以坐船或骑车。湖中有水上古城。</div>
+      </li>
+      <li>
+        <div class="stop-h">古城街巷<span class="stop-t">16:30</span></div>
+        <div class="stop-d">免费。古城内的老街，道署东街一带还有老院子。</div>
+      </li>
+    </ol>
+  </div>
+
+  <div class="day">
+    <div class="day-head">
+      <span class="day-no">DAY 2</span>
+      <span class="day-title">景阳冈 or 临清</span>
+      <span class="day-meta">自驾 · 半天到一天</span>
+    </div>
+    <ol class="stops">
+      <li>
+        <div class="stop-h">景阳冈<span class="stop-t">09:00</span></div>
+        <div class="stop-d">门票 40 元左右。武松打虎的地方，阳谷县。有武松庙和山神庙。</div>
+      </li>
+      <li>
+        <div class="stop-h">临清舍利塔 / 运河钞关<span class="stop-t">09:30</span></div>
+        <div class="stop-d">门票 30 元左右。明代运河税收机构遗址，临清曾是北方商业重镇。</div>
+      </li>
+      <li>
+        <div class="stop-h">回程：吃呱嗒<span class="stop-t">13:00</span></div>
+        <div class="stop-d">聊城呱嗒是煎制的肉馅饼，外脆内嫩；聊城人的早饭。</div>
+      </li>
+    </ol>
+  </div>
+
+  <div class="tip"><b>聊城的格局：</b>古城是方的，水也是方的，1 平方公里古城被 6 平方公里湖水围着。从光岳楼顶看下去，这个「城在水中央」的格局很清楚——这是它最值得看的东西。</div>
+</section>
+
+<section id="s3">
+  <h2><span class="no">03</span> 吃什么</h2>
+  <p class="lede">聊城菜是鲁西口味，咸鲜。呱嗒和魏氏熏鸡是两样代表。</p>
+
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>吃什么</th><th>去哪找</th><th>怎么点</th><th>人均</th></tr></thead>
+      <tbody>
+        <tr><td><b>聊城呱嗒</b><br><span class="muted"></span></td><td>老店、街头摊</td><td>煎制的肉馅饼，外脆内嫩；聊城人的早饭</td><td>8–12</td></tr>
+        <tr><td><b>魏氏熏鸡</b><br><span class="muted"></span></td><td>老字号</td><td>卤制后熏制的鸡，腊香；能带走</td><td>40–70</td></tr>
+        <tr><td><b>临清汤</b><br><span class="muted"></span></td><td>临清市</td><td>牛羊肉熬的浓汤，配烧饼；临清特色</td><td>12–20</td></tr>
+        <tr><td><b>沙镇呱嗒</b><br><span class="muted"></span></td><td>东昌府区沙镇</td><td>聊城最有名的呱嗒产地；现做的好吃</td><td>8–12</td></tr>
+        <tr><td><b>高唐驴肉</b><br><span class="muted"></span></td><td>高唐县</td><td>卤驴肉，香；当地名产</td><td>50–80</td></tr>
+        <tr><td><b>阳谷肉饼</b><br><span class="muted"></span></td><td>阳谷县</td><td>肉馅饼，煎制；当地小吃</td><td>8–12</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="note"><b>呱嗒的时间：</b>只做早市，很多店九点后就收。想吃要早起，这是聊城最地道的一顿早饭。</div>
+</section>
+
+<section id="s4">
+  <h2><span class="no">04</span> 实用与避坑</h2>
+  <div class="grid g2" style="margin-top:10px;">
+    <div class="card"><h4>怎么到</h4><p>高铁到聊城站。聊城在鲁西，济南 1 小时、北京 2.5 小时。</p></div>
+    <div class="card"><h4>古城</h4><p>步行最好，古城内禁止或限制车辆。东昌湖可以坐船（40 元左右）。</p></div>
+    <div class="card"><h4>景阳冈</h4><p>在阳谷，从市区约 1 小时。武松打虎是《水浒传》情节，看个意思。</p></div>
+    <div class="card"><h4>带什么走</h4><p>魏氏熏鸡、临清贡砖（小件）、聊城驴肉。</p></div>
+  </div>
+</section>
+
+<footer>
+<p><b>数据说明。</b>本页基于抖音真实采集数据：关键词「聊城旅游」「聊城美食」，去重后 <b>27 条视频</b>，累计点赞 <b>59.4万</b>、收藏 <b>11.3万</b>，单条最高点赞 30.2万、最高收藏 4.8万。内容构成按视频标题归类统计。</p>
+  <p>门票、交通等硬信息按公开资料核对，价格与开放时间以景区当日公示为准；餐饮只写到「品类＋去哪找」，不写死门牌——老店变动比攻略更新快。</p>
+  <p class="src">采集时间 2026-10-25 · 工具 MediaCrawler（非商业学习许可）· 本页仅供个人出行参考</p>
+</footer>
+
+</div>
+</body>
+</html>

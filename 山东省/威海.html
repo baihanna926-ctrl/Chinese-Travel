@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>威海 · 从抖音真实数据整理出的攻略</title>
+<style>
+  :root{
+    --ink:#17251c; --ink-2:#3d4f42; --moss:#1f3d2b; --bamboo:#4a7c59;
+    --mint:#dfe9e0; --rice:#f7f5ef; --paper:#fffefb; --cinnabar:#b5432f;
+    --gold:#a8823c; --line:rgba(23,37,28,.12);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0; background:var(--rice); color:var(--ink);
+    font-family:"Songti SC","Noto Serif SC","Source Han Serif SC","Noto Serif CJK SC","SimSun","STSong",Georgia,"Microsoft YaHei",serif;
+    font-size:16px; line-height:1.85; -webkit-font-smoothing:antialiased;
+  }
+  .cover{
+    position:relative; padding:96px 24px 72px;
+    background:
+      radial-gradient(1200px 500px at 15% -10%, rgba(74,124,89,.22), transparent 60%),
+      radial-gradient(900px 420px at 90% 0%, rgba(168,130,60,.16), transparent 55%),
+      linear-gradient(180deg,#12241a 0%, #1b3527 58%, #23412f 100%);
+    color:#f2efe6; overflow:hidden;
+  }
+  .cover::after{
+    content:""; position:absolute; inset:0;
+    background-image:radial-gradient(rgba(255,255,255,.06) 1px, transparent 1px);
+    background-size:3px 3px; opacity:.5; pointer-events:none;
+  }
+  .cover-inner{max-width:900px;margin:0 auto;position:relative;z-index:1;}
+  .kicker{font-size:13px;letter-spacing:.32em;text-transform:uppercase;color:rgba(242,239,230,.62);margin:0 0 22px;}
+  h1{font-size:clamp(38px,6.4vw,74px);line-height:1.12;margin:0 0 8px;font-weight:700;letter-spacing:.01em;}
+  h1 .accent{color:#cfe3c8;}
+  .sub{font-size:clamp(15px,2vw,19px);color:rgba(242,239,230,.76);max-width:44em;margin:18px 0 0;line-height:1.9;}
+  .stats{display:flex;flex-wrap:wrap;gap:36px;margin-top:44px;padding-top:26px;border-top:1px solid rgba(242,239,230,.18);}
+  .stat .n{font-size:28px;font-weight:700;color:#e7f0e3;line-height:1.2;}
+  .stat .l{font-size:12.5px;letter-spacing:.12em;color:rgba(242,239,230,.55);margin-top:4px;}
+  .wrap{max-width:900px;margin:0 auto;padding:0 24px;}
+  section{padding:64px 0 8px;}
+  section + section{border-top:1px solid var(--line);}
+  h2{font-size:clamp(24px,3.4vw,32px);margin:0 0 6px;font-weight:700;letter-spacing:.01em;display:flex;align-items:baseline;gap:14px;}
+  h2 .no{font-size:12px;letter-spacing:.2em;color:var(--cinnabar);font-family:"PingFang SC",system-ui,sans-serif;font-weight:600;}
+  .lede{color:var(--ink-2);margin:6px 0 30px;max-width:46em;}
+  h3{font-size:19px;margin:34px 0 10px;font-weight:700;}
+  p{margin:0 0 14px;}
+  .grid{display:grid;gap:16px;}
+  .g3{grid-template-columns:repeat(auto-fit,minmax(230px,1fr));}
+  .g2{grid-template-columns:repeat(auto-fit,minmax(300px,1fr));}
+  .card{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:22px 22px 18px;}
+  .card h4{margin:0 0 8px;font-size:16.5px;}
+  .card p{font-size:14.5px;color:var(--ink-2);margin:0;line-height:1.8;}
+  .card .tag{display:inline-block;font-size:11.5px;letter-spacing:.08em;color:var(--bamboo);background:var(--mint);padding:2px 9px;border-radius:999px;margin-bottom:10px;font-family:"PingFang SC",system-ui,sans-serif;}
+  .day{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:26px 26px 12px;margin-bottom:20px;}
+  .day-head{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:6px;}
+  .day-no{font-family:"PingFang SC",system-ui,sans-serif;font-size:12px;letter-spacing:.18em;color:#fff;background:var(--moss);padding:3px 10px;border-radius:6px;}
+  .day-title{font-size:20px;font-weight:700;}
+  .day-meta{font-size:13px;color:var(--ink-2);font-family:"PingFang SC",system-ui,sans-serif;}
+  ol.stops{list-style:none;margin:18px 0 0;padding:0;}
+  ol.stops li{position:relative;padding:0 0 20px 30px;border-left:1px solid var(--line);margin-left:7px;}
+  ol.stops li:last-child{border-left-color:transparent;padding-bottom:6px;}
+  ol.stops li::before{content:"";position:absolute;left:-4.5px;top:9px;width:8px;height:8px;border-radius:50%;background:var(--bamboo);box-shadow:0 0 0 3px var(--paper);}
+  .stop-h{font-weight:700;font-size:15.5px;}
+  .stop-t{font-family:"PingFang SC",system-ui,sans-serif;font-size:12px;color:var(--cinnabar);letter-spacing:.06em;margin-left:8px;}
+  .stop-d{font-size:14.5px;color:var(--ink-2);margin-top:2px;}
+  .tbl-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:14px;background:var(--paper);}
+  table{border-collapse:collapse;width:100%;min-width:620px;font-size:14.5px;}
+  th,td{text-align:left;padding:13px 16px;border-bottom:1px solid var(--line);vertical-align:top;}
+  th{font-family:"PingFang SC",system-ui,sans-serif;font-size:12px;letter-spacing:.1em;color:var(--ink-2);background:rgba(74,124,89,.07);font-weight:600;white-space:nowrap;}
+  tr:last-child td{border-bottom:none;}
+  td b{color:var(--ink);}
+  .muted{color:var(--ink-2);font-size:13.5px;}
+  .rank{counter-reset:r;list-style:none;padding:0;margin:0;}
+  .rank li{counter-increment:r;position:relative;padding:13px 0 13px 46px;border-bottom:1px dashed var(--line);font-size:15px;}
+  .rank li:last-child{border-bottom:none;}
+  .rank li::before{content:counter(r);position:absolute;left:0;top:12px;width:26px;height:26px;border-radius:50%;display:grid;place-items:center;background:var(--mint);color:var(--moss);font-family:"PingFang SC",system-ui,sans-serif;font-size:12.5px;font-weight:700;}
+  .rank .why{display:block;font-size:13.5px;color:var(--ink-2);margin-top:2px;}
+  .note{border-left:3px solid var(--cinnabar);background:linear-gradient(90deg, rgba(181,67,47,.06), transparent 70%);padding:16px 20px;border-radius:0 10px 10px 0;margin:22px 0;font-size:14.5px;}
+  .note b{color:var(--cinnabar);}
+  .tip{border-left:3px solid var(--gold);background:linear-gradient(90deg, rgba(168,130,60,.09), transparent 70%);padding:16px 20px;border-radius:0 10px 10px 0;margin:22px 0;font-size:14.5px;}
+  .tip b{color:var(--gold);}
+  .bars{margin:8px 0 0;}
+  .bar{display:grid;grid-template-columns:110px 1fr 54px;gap:12px;align-items:center;margin-bottom:11px;font-size:14px;}
+  .bar .bl{color:var(--ink-2);}
+  .bar .bt{background:rgba(74,124,89,.12);border-radius:999px;height:9px;overflow:hidden;}
+  .bar .bf{height:100%;background:linear-gradient(90deg,var(--bamboo),#7fa889);border-radius:999px;}
+  .bar .bn{text-align:right;color:var(--ink-2);font-size:13px;font-family:"PingFang SC",system-ui,sans-serif;}
+  .src{font-size:12.5px;color:var(--ink-2);font-family:"PingFang SC",system-ui,sans-serif;}
+  footer{margin-top:40px;padding:44px 0 64px;border-top:1px solid var(--line);color:var(--ink-2);font-size:13px;}
+  footer p{max-width:62em;}
+  @media (max-width:600px){
+    .cover{padding:64px 20px 52px;}
+    section{padding:48px 0 8px;}
+    .stats{gap:24px;}
+    .day{padding:20px 18px 6px;}
+    .bar{grid-template-columns:88px 1fr 46px;gap:8px;font-size:13px;}
+  }
+  @media print{
+    .cover{background:#fff;color:#000;}
+    body{background:#fff;}
+    section{page-break-inside:avoid;}
+  }
+</style>
+</head>
+<body>
+
+<header class="cover">
+  <div class="cover-inner">
+    <p class="kicker">SHANDONG · WEIHAI · 2–3 天</p>
+    <h1>威海<span class="accent">，</span><br>中国最干净的海边小城</h1>
+    <p class="sub">威海是那种「干净到不像话」的城市：街道整洁、海水清澈、空气好。它的牌面是刘公岛（甲午战争的见证）和成山头（中国陆地最东端）。加上环海路的自驾线，它是山东最适合「慢下来」的海滨城市。</p>
+    <div class="stats">
+      <div class="stat"><div class="n">28</div><div class="l">条抖音视频</div></div>
+      <div class="stat"><div class="n">908.9万</div><div class="l">累计点赞</div></div>
+      <div class="stat"><div class="n">61%</div><div class="l">美食内容占比</div></div>
+      <div class="stat"><div class="n">328.9万</div><div class="l">单条最高点赞</div></div>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+<section id="s1">
+  <h2><span class="no">01</span> 数据说了什么</h2>
+  <p class="lede">威海比青岛安静得多，价格也低。它的玩法是「沿海一条线」：市区看刘公岛和历史，东边成山头看日出，中间环海路自驾。三天能把海岸线走完。</p>
+  <h3>内容构成</h3>
+  <div class="bars">
+    <div class="bar"><span class="bl">美食探店</span><span class="bt"><span class="bf" style="width:61%"></span></span><span class="bn">61%</span></div>
+    <div class="bar"><span class="bl">景点盘点</span><span class="bt"><span class="bf" style="width:21%"></span></span><span class="bn">21%</span></div>
+    <div class="bar"><span class="bl">城市 Vlog</span><span class="bt"><span class="bf" style="width:14%"></span></span><span class="bn">14%</span></div>
+    <div class="bar"><span class="bl">亲子乐园</span><span class="bt"><span class="bf" style="width:4%"></span></span><span class="bn">4%</span></div>
+  </div>
+
+  <h3>收藏最高的三条</h3>
+  <ul class="rank">
+    <li>我始终觉得 威海应该两个人去才有意义. #看海#威海#去年冬天#氛围感<span class="why">收藏 19万 · 点赞 320.1万</span></li>
+    <li>有雪又有海的城市一定很浪漫吧#威海的冬天有多浪漫 #威海 #潮拍千里山海<span class="why">收藏 18.9万 · 点赞 328.9万</span></li>
+    <li>今年来威海之前，一定要看的一条视频！ 专为小白准备的威海旅游保姆级攻略，包含景点分布、交通和住宿！#威海 #威海旅游攻略 #威海网红打卡地 <span class="why">收藏 17.9万 · 点赞 25.2万</span></li>
+  </ul>
+
+  <div class="note">
+    <b>① 908.9 万赞，全省第一，是济南的两倍多。</b>一座海边小城能打到这个量级，靠的是传播力极强的「浪漫感」。<br>
+    <b>② 最高两条都是情绪主题。</b>320 万赞「我始终觉得威海应该两个人去才有意义」、328 万赞「有雪又有海的城市一定很浪漫」。<br>
+    <b>③ 冬天的威海是隐藏王牌。</b>有雪又有海，加上天鹅湖越冬的大天鹅，这个组合别处没有。<br>
+  </div>
+
+  <div class="grid g3" style="margin-top:26px;">
+    <div class="card">
+      <span class="tag">几天够</span>
+      <h4>2 天，3 天更完整</h4>
+      <p>一天市区（刘公岛＋环海路），一天成山头或乳山银滩。</p>
+    </div>
+    <div class="card">
+      <span class="tag">住哪儿</span>
+      <h4>环翠区 / 国际海水浴场</h4>
+      <p>市区方便；住海边能看海。</p>
+    </div>
+    <div class="card">
+      <span class="tag">什么时候来</span>
+      <h4>6–9 月</h4>
+      <p>夏天最好，能下海。冬天风大冷，但人少。</p>
+    </div>
+  </div>
+</section>
+
+<section id="s2">
+  <h2><span class="no">02</span> 行程</h2>
+  <p class="lede">威海沿海岸线东西向展开，建议自驾。市区在中间，成山头在东，乳山在西南。</p>
+
+  <div class="day">
+    <div class="day-head">
+      <span class="day-no">DAY 1</span>
+      <span class="day-title">刘公岛与环海路</span>
+      <span class="day-meta">轮渡＋自驾 · 全天 · 门票 138 元</span>
+    </div>
+    <ol class="stops">
+      <li>
+        <div class="stop-h">刘公岛<span class="stop-t">08:30</span></div>
+        <div class="stop-d">门票 138 元（含船）。北洋水师基地，甲午战争博物馆、丁汝昌寓所。岛上有鹿。</div>
+      </li>
+      <li>
+        <div class="stop-h">环海路<span class="stop-t">14:00</span></div>
+        <div class="stop-d">免费。从市区到成山头的一段沿海公路，一路都是海。适合自驾或骑行。</div>
+      </li>
+      <li>
+        <div class="stop-h">国际海水浴场<span class="stop-t">17:00</span></div>
+        <div class="stop-d">免费。威海的沙滩，沙细水清。夏天能下水。</div>
+      </li>
+    </ol>
+  </div>
+
+  <div class="day">
+    <div class="day-head">
+      <span class="day-no">DAY 2</span>
+      <span class="day-title">成山头：天尽头</span>
+      <span class="day-meta">自驾 1.5h · 全天 · 门票 170 元</span>
+    </div>
+    <ol class="stops">
+      <li>
+        <div class="stop-h">成山头<span class="stop-t">08:00</span></div>
+        <div class="stop-d">门票 170 元左右。中国陆地最东端，看日出的圣地。秦始皇两次东巡到此。</div>
+      </li>
+      <li>
+        <div class="stop-h">海驴岛<span class="stop-t">13:00</span></div>
+        <div class="stop-d">船票另收。海鸥繁殖地，夏天岛上全是海鸥。</div>
+      </li>
+      <li>
+        <div class="stop-h">天鹅湖（冬季）<span class="stop-t">15:00</span></div>
+        <div class="stop-d">免费。11 月到次年 3 月，大天鹅从西伯利亚飞来越冬。</div>
+      </li>
+    </ol>
+  </div>
+
+  <div class="day">
+    <div class="day-head">
+      <span class="day-no">DAY 3</span>
+      <span class="day-title">乳山银滩（可选）</span>
+      <span class="day-meta">自驾 1.5h · 半天</span>
+    </div>
+    <ol class="stops">
+      <li>
+        <div class="stop-h">乳山银滩<span class="stop-t">09:00</span></div>
+        <div class="stop-d">免费。沙滩绵延 20 公里，沙质细白。人比市区少。</div>
+      </li>
+      <li>
+        <div class="stop-h">回程：吃海鲜<span class="stop-t">13:00</span></div>
+        <div class="stop-d">威海的海鲜便宜，鲅鱼饺子、海肠、扇贝。</div>
+      </li>
+    </ol>
+  </div>
+
+  <div class="tip"><b>天鹅季：</b>11 月到次年 3 月，荣成天鹅湖有上千只大天鹅越冬，是全国最好的天鹅观赏地之一。冬天来威海的理由，就是这个。</div>
+</section>
+
+<section id="s3">
+  <h2><span class="no">03</span> 吃什么</h2>
+  <p class="lede">威海菜是胶东口味，海鲜为主。鲅鱼饺子、海肠、鱼锅饼子是特色。</p>
+
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>吃什么</th><th>去哪找</th><th>怎么点</th><th>人均</th></tr></thead>
+      <tbody>
+        <tr><td><b>鲅鱼饺子</b><br><span class="muted"></span></td><td>老字号饺子馆</td><td>鲅鱼馅，鲜嫩多汁；胶东代表</td><td>30–50</td></tr>
+        <tr><td><b>鱼锅饼子</b><br><span class="muted"></span></td><td>渔家餐馆</td><td>铁锅炖鱼，锅边贴玉米饼；胶东渔家菜</td><td>60–90</td></tr>
+        <tr><td><b>海肠</b><br><span class="muted"></span></td><td>海鲜馆</td><td>威海的海肠肥美，炒韭菜最经典</td><td>80–150</td></tr>
+        <tr><td><b>威海清汤</b><br><span class="muted"></span></td><td>本地菜馆</td><td>清汤海鲜，原味；考验食材新鲜度</td><td>50–80</td></tr>
+        <tr><td><b>荣成鲍鱼</b><br><span class="muted"></span></td><td>荣成、海鲜市场</td><td>荣成是鲍鱼之乡；按个头论价</td><td>按只</td></tr>
+        <tr><td><b>无花果</b><br><span class="muted"></span></td><td>秋季，威海</td><td>威海的无花果甜度高；当季必买</td><td>按斤</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="note"><b>海鲜市场：</b>威海水产市场可以买海鲜现场加工，价格比餐馆低一半。海肠要挑活的。</div>
+</section>
+
+<section id="s4">
+  <h2><span class="no">04</span> 实用与避坑</h2>
+  <div class="grid g2" style="margin-top:10px;">
+    <div class="card"><h4>怎么到</h4><p>高铁到威海站或威海北站；机场是大水泊机场。</p></div>
+    <div class="card"><h4>刘公岛</h4><p>船票含在门票里，班次固定。岛上步行或坐观光车。</p></div>
+    <div class="card"><h4>自驾</h4><p>环海路和成山头都适合自驾，公共交通班次少。</p></div>
+    <div class="card"><h4>带什么走</h4><p>海产干货、无花果（季节）、威海刺参。</p></div>
+  </div>
+</section>
+
+<footer>
+<p><b>数据说明。</b>本页基于抖音真实采集数据：关键词「威海旅游」「威海美食」，去重后 <b>28 条视频</b>，累计点赞 <b>908.9万</b>、收藏 <b>101.6万</b>，单条最高点赞 328.9万、最高收藏 19万。内容构成按视频标题归类统计。</p>
+  <p>门票、交通等硬信息按公开资料核对，价格与开放时间以景区当日公示为准；餐饮只写到「品类＋去哪找」，不写死门牌——老店变动比攻略更新快。</p>
+  <p class="src">采集时间 2026-10-25 · 工具 MediaCrawler（非商业学习许可）· 本页仅供个人出行参考</p>
+</footer>
+
+</div>
+</body>
+</html>

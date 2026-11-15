@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>济宁 · 从抖音真实数据整理出的攻略</title>
+<style>
+  :root{
+    --ink:#17251c; --ink-2:#3d4f42; --moss:#1f3d2b; --bamboo:#4a7c59;
+    --mint:#dfe9e0; --rice:#f7f5ef; --paper:#fffefb; --cinnabar:#b5432f;
+    --gold:#a8823c; --line:rgba(23,37,28,.12);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0; background:var(--rice); color:var(--ink);
+    font-family:"Songti SC","Noto Serif SC","Source Han Serif SC","Noto Serif CJK SC","SimSun","STSong",Georgia,"Microsoft YaHei",serif;
+    font-size:16px; line-height:1.85; -webkit-font-smoothing:antialiased;
+  }
+  .cover{
+    position:relative; padding:96px 24px 72px;
+    background:
+      radial-gradient(1200px 500px at 15% -10%, rgba(74,124,89,.22), transparent 60%),
+      radial-gradient(900px 420px at 90% 0%, rgba(168,130,60,.16), transparent 55%),
+      linear-gradient(180deg,#12241a 0%, #1b3527 58%, #23412f 100%);
+    color:#f2efe6; overflow:hidden;
+  }
+  .cover::after{
+    content:""; position:absolute; inset:0;
+    background-image:radial-gradient(rgba(255,255,255,.06) 1px, transparent 1px);
+    background-size:3px 3px; opacity:.5; pointer-events:none;
+  }
+  .cover-inner{max-width:900px;margin:0 auto;position:relative;z-index:1;}
+  .kicker{font-size:13px;letter-spacing:.32em;text-transform:uppercase;color:rgba(242,239,230,.62);margin:0 0 22px;}
+  h1{font-size:clamp(38px,6.4vw,74px);line-height:1.12;margin:0 0 8px;font-weight:700;letter-spacing:.01em;}
+  h1 .accent{color:#cfe3c8;}
+  .sub{font-size:clamp(15px,2vw,19px);color:rgba(242,239,230,.76);max-width:44em;margin:18px 0 0;line-height:1.9;}
+  .stats{display:flex;flex-wrap:wrap;gap:36px;margin-top:44px;padding-top:26px;border-top:1px solid rgba(242,239,230,.18);}
+  .stat .n{font-size:28px;font-weight:700;color:#e7f0e3;line-height:1.2;}
+  .stat .l{font-size:12.5px;letter-spacing:.12em;color:rgba(242,239,230,.55);margin-top:4px;}
+  .wrap{max-width:900px;margin:0 auto;padding:0 24px;}
+  section{padding:64px 0 8px;}
+  section + section{border-top:1px solid var(--line);}
+  h2{font-size:clamp(24px,3.4vw,32px);margin:0 0 6px;font-weight:700;letter-spacing:.01em;display:flex;align-items:baseline;gap:14px;}
+  h2 .no{font-size:12px;letter-spacing:.2em;color:var(--cinnabar);font-family:"PingFang SC",system-ui,sans-serif;font-weight:600;}
+  .lede{color:var(--ink-2);margin:6px 0 30px;max-width:46em;}
+  h3{font-size:19px;margin:34px 0 10px;font-weight:700;}
+  p{margin:0 0 14px;}
+  .grid{display:grid;gap:16px;}
+  .g3{grid-template-columns:repeat(auto-fit,minmax(230px,1fr));}
+  .g2{grid-template-columns:repeat(auto-fit,minmax(300px,1fr));}
+  .card{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:22px 22px 18px;}
+  .card h4{margin:0 0 8px;font-size:16.5px;}
+  .card p{font-size:14.5px;color:var(--ink-2);margin:0;line-height:1.8;}
+  .card .tag{display:inline-block;font-size:11.5px;letter-spacing:.08em;color:var(--bamboo);background:var(--mint);padding:2px 9px;border-radius:999px;margin-bottom:10px;font-family:"PingFang SC",system-ui,sans-serif;}
+  .day{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:26px 26px 12px;margin-bottom:20px;}
+  .day-head{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:6px;}
+  .day-no{font-family:"PingFang SC",system-ui,sans-serif;font-size:12px;letter-spacing:.18em;color:#fff;background:var(--moss);padding:3px 10px;border-radius:6px;}
+  .day-title{font-size:20px;font-weight:700;}
+  .day-meta{font-size:13px;color:var(--ink-2);font-family:"PingFang SC",system-ui,sans-serif;}
+  ol.stops{list-style:none;margin:18px 0 0;padding:0;}
+  ol.stops li{position:relative;padding:0 0 20px 30px;border-left:1px solid var(--line);margin-left:7px;}
+  ol.stops li:last-child{border-left-color:transparent;padding-bottom:6px;}
+  ol.stops li::before{content:"";position:absolute;left:-4.5px;top:9px;width:8px;height:8px;border-radius:50%;background:var(--bamboo);box-shadow:0 0 0 3px var(--paper);}
+  .stop-h{font-weight:700;font-size:15.5px;}
+  .stop-t{font-family:"PingFang SC",system-ui,sans-serif;font-size:12px;color:var(--cinnabar);letter-spacing:.06em;margin-left:8px;}
+  .stop-d{font-size:14.5px;color:var(--ink-2);margin-top:2px;}
+  .tbl-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:14px;background:var(--paper);}
+  table{border-collapse:collapse;width:100%;min-width:620px;font-size:14.5px;}
+  th,td{text-align:left;padding:13px 16px;border-bottom:1px solid var(--line);vertical-align:top;}
+  th{font-family:"PingFang SC",system-ui,sans-serif;font-size:12px;letter-spacing:.1em;color:var(--ink-2);background:rgba(74,124,89,.07);font-weight:600;white-space:nowrap;}
+  tr:last-child td{border-bottom:none;}
+  td b{color:var(--ink);}
+  .muted{color:var(--ink-2);font-size:13.5px;}
+  .rank{counter-reset:r;list-style:none;padding:0;margin:0;}
+  .rank li{counter-increment:r;position:relative;padding:13px 0 13px 46px;border-bottom:1px dashed var(--line);font-size:15px;}
+  .rank li:last-child{border-bottom:none;}
+  .rank li::before{content:counter(r);position:absolute;left:0;top:12px;width:26px;height:26px;border-radius:50%;display:grid;place-items:center;background:var(--mint);color:var(--moss);font-family:"PingFang SC",system-ui,sans-serif;font-size:12.5px;font-weight:700;}
+  .rank .why{display:block;font-size:13.5px;color:var(--ink-2);margin-top:2px;}
+  .note{border-left:3px solid var(--cinnabar);background:linear-gradient(90deg, rgba(181,67,47,.06), transparent 70%);padding:16px 20px;border-radius:0 10px 10px 0;margin:22px 0;font-size:14.5px;}
+  .note b{color:var(--cinnabar);}
+  .tip{border-left:3px solid var(--gold);background:linear-gradient(90deg, rgba(168,130,60,.09), transparent 70%);padding:16px 20px;border-radius:0 10px 10px 0;margin:22px 0;font-size:14.5px;}
+  .tip b{color:var(--gold);}
+  .bars{margin:8px 0 0;}
+  .bar{display:grid;grid-template-columns:110px 1fr 54px;gap:12px;align-items:center;margin-bottom:11px;font-size:14px;}
+  .bar .bl{color:var(--ink-2);}
+  .bar .bt{background:rgba(74,124,89,.12);border-radius:999px;height:9px;overflow:hidden;}
+  .bar .bf{height:100%;background:linear-gradient(90deg,var(--bamboo),#7fa889);border-radius:999px;}
+  .bar .bn{text-align:right;color:var(--ink-2);font-size:13px;font-family:"PingFang SC",system-ui,sans-serif;}
+  .src{font-size:12.5px;color:var(--ink-2);font-family:"PingFang SC",system-ui,sans-serif;}
+  footer{margin-top:40px;padding:44px 0 64px;border-top:1px solid var(--line);color:var(--ink-2);font-size:13px;}
+  footer p{max-width:62em;}
+  @media (max-width:600px){
+    .cover{padding:64px 20px 52px;}
+    section{padding:48px 0 8px;}
+    .stats{gap:24px;}
+    .day{padding:20px 18px 6px;}
+    .bar{grid-template-columns:88px 1fr 46px;gap:8px;font-size:13px;}
+  }
+  @media print{
+    .cover{background:#fff;color:#000;}
+    body{background:#fff;}
+    section{page-break-inside:avoid;}
+  }
+</style>
+</head>
+<body>
+
+<header class="cover">
+  <div class="cover-inner">
+    <p class="kicker">SHANDONG · JINING · 2 天</p>
+    <h1>济宁<span class="accent">，</span><br>孔孟之乡，半部中国思想史</h1>
+    <p class="sub">济宁是「孔孟之乡」：曲阜有孔子，邹城有孟子。三孔（孔庙、孔府、孔林）是世界文化遗产，规模和文化分量在全国都排前列。加上微山湖和京杭大运河，济宁的牌面很硬。</p>
+    <div class="stats">
+      <div class="stat"><div class="n">26</div><div class="l">条抖音视频</div></div>
+      <div class="stat"><div class="n">50.2万</div><div class="l">累计点赞</div></div>
+      <div class="stat"><div class="n">69%</div><div class="l">美食内容占比</div></div>
+      <div class="stat"><div class="n">21万</div><div class="l">单条最高点赞</div></div>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+<section id="s1">
+  <h2><span class="no">01</span> 数据说了什么</h2>
+  <p class="lede">济宁的核心是曲阜。三孔不是「看建筑」，是「看一套延续两千年的制度」——庙是祭祀空间，府是嫡系后裔的宅第，林是家族墓地。三样连起来才是完整的孔家。</p>
+  <h3>内容构成</h3>
+  <div class="bars">
+    <div class="bar"><span class="bl">美食探店</span><span class="bt"><span class="bf" style="width:69%"></span></span><span class="bn">69%</span></div>
+    <div class="bar"><span class="bl">景点盘点</span><span class="bt"><span class="bf" style="width:19%"></span></span><span class="bn">19%</span></div>
+    <div class="bar"><span class="bl">城市 Vlog</span><span class="bt"><span class="bf" style="width:12%"></span></span><span class="bn">12%</span></div>
+  </div>
+
+  <h3>收藏最高的三条</h3>
+  <ul class="rank">
+    <li>好客山东，孔孟之乡，济宁 #济宁 #曲阜 #好客山东 #随机旅行<span class="why">收藏 2.1万 · 点赞 21万</span></li>
+    <li>极限48小时逛吃山东济宁！两天打卡28家美食！ #不减肥一天吃什么#山东济宁#济宁美食#维他柠檬茶#真茶真柠檬本涩就现在<span class="why">收藏 2.1万 · 点赞 7.2万</span></li>
+    <li>一个人逛吃济宁特色美食！吃了好多济宁代表菜！济宁太惊喜了简直 #抖音美食创作者 #抖音美食推荐官 #济宁 #济宁美食 #济宁夹饼<span class="why">收藏 1.9万 · 点赞 8.9万</span></li>
+  </ul>
+
+  <div class="note">
+    <b>① 三孔是绝对核心。</b>世界遗产，规模和文化分量都罕见。孔庙的大成殿和故宫太和殿同级。<br>
+    <b>② 尼山圣境是新增量。</b>孔子诞生地，新建的大学堂视觉冲击强，夜景很好。<br>
+    <b>③ 微山湖是另一条线。</b>中国北方最大的淡水湖，荷花和铁道游击队的故事。<br>
+  </div>
+
+  <div class="grid g3" style="margin-top:26px;">
+    <div class="card">
+      <span class="tag">几天够</span>
+      <h4>2 天</h4>
+      <p>一天曲阜三孔＋尼山，一天微山湖或邹城孟庙。</p>
+    </div>
+    <div class="card">
+      <span class="tag">住哪儿</span>
+      <h4>曲阜 / 济宁市区</h4>
+      <p>玩三孔住曲阜，走路就到；逛市区住任城区。</p>
+    </div>
+    <div class="card">
+      <span class="tag">什么时候来</span>
+      <h4>4–5 月 / 9–10 月</h4>
+      <p>春秋最好。9 月 28 日有祭孔大典，场面大但人多。</p>
+    </div>
+  </div>
+</section>
+
+<section id="s2">
+  <h2><span class="no">02</span> 行程</h2>
+  <p class="lede">曲阜和济宁市区相距 40 分钟。三孔在曲阜城内，步行可达。</p>
+
+  <div class="day">
+    <div class="day-head">
+      <span class="day-no">DAY 1</span>
+      <span class="day-title">三孔：庙、府、林</span>
+      <span class="day-meta">步行＋电瓶车 · 全天 · 门票 140 元</span>
+    </div>
+    <ol class="stops">
+      <li>
+        <div class="stop-h">孔庙<span class="stop-t">08:30</span></div>
+        <div class="stop-d">联票 140 元（三孔）。祭祀孔子的庙宇，大成殿 28 根龙柱，规格极高。</div>
+      </li>
+      <li>
+        <div class="stop-h">孔府<span class="stop-t">11:30</span></div>
+        <div class="stop-d">联票含。孔子嫡系后裔的宅第，「天下第一家」。前衙后宅的格局。</div>
+      </li>
+      <li>
+        <div class="stop-h">孔林<span class="stop-t">14:00</span></div>
+        <div class="stop-d">联票含。孔子及后裔的家族墓地，10 万座墓，2 万多棵树。坐电瓶车逛。</div>
+      </li>
+      <li>
+        <div class="stop-h">尼山圣境<span class="stop-t">17:30</span></div>
+        <div class="stop-d">门票 120 元左右。孔子诞生地，72 米高的孔子像和大学堂。夜景灯光很好。</div>
+      </li>
+    </ol>
+  </div>
+
+  <div class="day">
+    <div class="day-head">
+      <span class="day-no">DAY 2</span>
+      <span class="day-title">微山湖 or 邹城</span>
+      <span class="day-meta">自驾 1h · 全天</span>
+    </div>
+    <ol class="stops">
+      <li>
+        <div class="stop-h">选项 A：微山湖<span class="stop-t">09:00</span></div>
+        <div class="stop-d">门票 60 元左右＋船票。北方最大淡水湖，夏天荷花连片。铁道游击队的故乡。</div>
+      </li>
+      <li>
+        <div class="stop-h">选项 B：邹城孟庙孟府<span class="stop-t">09:00</span></div>
+        <div class="stop-d">门票 40 元左右。孟子的祭祀庙和宅第，古树参天，人比三孔少得多。</div>
+      </li>
+      <li>
+        <div class="stop-h">回程：运河记忆<span class="stop-t">16:00</span></div>
+        <div class="stop-d">免费。济宁市区的运河文化街区，看京杭大运河的旧河道。</div>
+      </li>
+    </ol>
+  </div>
+
+  <div class="tip"><b>三孔怎么请讲解：</b>三孔的信息量极大，没有讲解等于看房子。景区有官方讲解（100–200 元），或者租语音导览。这笔钱值得花。</div>
+</section>
+
+<section id="s3">
+  <h2><span class="no">03</span> 吃什么</h2>
+  <p class="lede">济宁菜是鲁菜体系，孔府菜是它的高端分支。日常吃的是甏肉干饭和糁汤。</p>
+
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>吃什么</th><th>去哪找</th><th>怎么点</th><th>人均</th></tr></thead>
+      <tbody>
+        <tr><td><b>甏肉干饭</b><br><span class="muted"></span></td><td>街头快餐店</td><td>瓦罐炖的肉，浇在米饭上；济宁人的快餐</td><td>12–20</td></tr>
+        <tr><td><b>糁汤（sa汤）</b><br><span class="muted"></span></td><td>早餐铺</td><td>鸡肉或牛肉熬的浓汤，冲鸡蛋；配油条</td><td>8–15</td></tr>
+        <tr><td><b>孔府菜</b><br><span class="muted"></span></td><td>曲阜的孔府菜馆</td><td>讲究排场和寓意，一道菜一个典故；价格高</td><td>150–300</td></tr>
+        <tr><td><b>微山湖荷花宴</b><br><span class="muted"></span></td><td>微山湖周边</td><td>荷花、莲藕、湖鲜做的菜；夏季</td><td>60–120</td></tr>
+        <tr><td><b>曲阜熏豆腐</b><br><span class="muted"></span></td><td>曲阜街头</td><td>熏制的豆腐，切片炒或凉拌；当地特色</td><td>10–15</td></tr>
+        <tr><td><b>玉堂酱菜</b><br><span class="muted"></span></td><td>老字号</td><td>济宁的老字号酱园，酱菜有名；能带走</td><td>按袋</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="note"><b>孔府菜：</b>价格高（人均 150–300），吃的是文化和仪式。预算有限就在曲阜街头吃熏豆腐和甏肉，更实在。</div>
+</section>
+
+<section id="s4">
+  <h2><span class="no">04</span> 实用与避坑</h2>
+  <div class="grid g2" style="margin-top:10px;">
+    <div class="card"><h4>怎么到</h4><p>高铁到曲阜东站（三孔近）或济宁北站。曲阜东站离三孔 20 分钟。</p></div>
+    <div class="card"><h4>三孔联票</h4><p>140 元，三日有效。孔庙、孔府、孔林按顺序走，中间可坐电瓶车。</p></div>
+    <div class="card"><h4>祭孔大典</h4><p>每年 9 月 28 日，规模大，人多。想安静看三孔就避开这天。</p></div>
+    <div class="card"><h4>带什么走</h4><p>玉堂酱菜、曲阜楷雕、尼山砚。</p></div>
+  </div>
+</section>
+
+<footer>
+<p><b>数据说明。</b>本页基于抖音真实采集数据：关键词「济宁旅游」「济宁美食」，去重后 <b>26 条视频</b>，累计点赞 <b>50.2万</b>、收藏 <b>9.5万</b>，单条最高点赞 21万、最高收藏 2.1万。内容构成按视频标题归类统计。</p>
+  <p>门票、交通等硬信息按公开资料核对，价格与开放时间以景区当日公示为准；餐饮只写到「品类＋去哪找」，不写死门牌——老店变动比攻略更新快。</p>
+  <p class="src">采集时间 2026-10-25 · 工具 MediaCrawler（非商业学习许可）· 本页仅供个人出行参考</p>
+</footer>
+
+</div>
+</body>
+</html>
