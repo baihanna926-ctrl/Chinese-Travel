@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>大理 · 从抖音真实数据整理出的攻略</title>
+<style>
+  :root{
+    --ink:#17251c; --ink-2:#3d4f42; --moss:#1f3d2b; --bamboo:#4a7c59;
+    --mint:#dfe9e0; --rice:#f7f5ef; --paper:#fffefb; --cinnabar:#b5432f;
+    --gold:#a8823c; --line:rgba(23,37,28,.12);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0; background:var(--rice); color:var(--ink);
+    font-family:"Songti SC","Noto Serif SC","Source Han Serif SC","Noto Serif CJK SC","SimSun","STSong",Georgia,"Microsoft YaHei",serif;
+    font-size:16px; line-height:1.85; -webkit-font-smoothing:antialiased;
+  }
+  .cover{
+    position:relative; padding:96px 24px 72px;
+    background:
+      radial-gradient(1200px 500px at 15% -10%, rgba(74,124,89,.22), transparent 60%),
+      radial-gradient(900px 420px at 90% 0%, rgba(168,130,60,.16), transparent 55%),
+      linear-gradient(180deg,#12241a 0%, #1b3527 58%, #23412f 100%);
+    color:#f2efe6; overflow:hidden;
+  }
+  .cover::after{
+    content:""; position:absolute; inset:0;
+    background-image:radial-gradient(rgba(255,255,255,.06) 1px, transparent 1px);
+    background-size:3px 3px; opacity:.5; pointer-events:none;
+  }
+  .cover-inner{max-width:900px;margin:0 auto;position:relative;z-index:1;}
+  .kicker{font-size:13px;letter-spacing:.32em;text-transform:uppercase;color:rgba(242,239,230,.62);margin:0 0 22px;}
+  h1{font-size:clamp(38px,6.4vw,74px);line-height:1.12;margin:0 0 8px;font-weight:700;letter-spacing:.01em;}
+  h1 .accent{color:#cfe3c8;}
+  .sub{font-size:clamp(15px,2vw,19px);color:rgba(242,239,230,.76);max-width:44em;margin:18px 0 0;line-height:1.9;}
+  .stats{display:flex;flex-wrap:wrap;gap:36px;margin-top:44px;padding-top:26px;border-top:1px solid rgba(242,239,230,.18);}
+  .stat .n{font-size:28px;font-weight:700;color:#e7f0e3;line-height:1.2;}
+  .stat .l{font-size:12.5px;letter-spacing:.12em;color:rgba(242,239,230,.55);margin-top:4px;}
+  .wrap{max-width:900px;margin:0 auto;padding:0 24px;}
+  section{padding:64px 0 8px;}
+  section + section{border-top:1px solid var(--line);}
+  h2{font-size:clamp(24px,3.4vw,32px);margin:0 0 6px;font-weight:700;letter-spacing:.01em;display:flex;align-items:baseline;gap:14px;}
+  h2 .no{font-size:12px;letter-spacing:.2em;color:var(--cinnabar);font-family:"PingFang SC",system-ui,sans-serif;font-weight:600;}
+  .lede{color:var(--ink-2);margin:6px 0 30px;max-width:46em;}
+  h3{font-size:19px;margin:34px 0 10px;font-weight:700;}
+  p{margin:0 0 14px;}
+  .grid{display:grid;gap:16px;}
+  .g3{grid-template-columns:repeat(auto-fit,minmax(230px,1fr));}
+  .g2{grid-template-columns:repeat(auto-fit,minmax(300px,1fr));}
+  .card{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:22px 22px 18px;}
+  .card h4{margin:0 0 8px;font-size:16.5px;}
+  .card p{font-size:14.5px;color:var(--ink-2);margin:0;line-height:1.8;}
+  .card .tag{display:inline-block;font-size:11.5px;letter-spacing:.08em;color:var(--bamboo);background:var(--mint);padding:2px 9px;border-radius:999px;margin-bottom:10px;font-family:"PingFang SC",system-ui,sans-serif;}
+  .day{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:26px 26px 12px;margin-bottom:20px;}
+  .day-head{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:6px;}
+  .day-no{font-family:"PingFang SC",system-ui,sans-serif;font-size:12px;letter-spacing:.18em;color:#fff;background:var(--moss);padding:3px 10px;border-radius:6px;}
+  .day-title{font-size:20px;font-weight:700;}
+  .day-meta{font-size:13px;color:var(--ink-2);font-family:"PingFang SC",system-ui,sans-serif;}
+  ol.stops{list-style:none;margin:18px 0 0;padding:0;}
+  ol.stops li{position:relative;padding:0 0 20px 30px;border-left:1px solid var(--line);margin-left:7px;}
+  ol.stops li:last-child{border-left-color:transparent;padding-bottom:6px;}
+  ol.stops li::before{content:"";position:absolute;left:-4.5px;top:9px;width:8px;height:8px;border-radius:50%;background:var(--bamboo);box-shadow:0 0 0 3px var(--paper);}
+  .stop-h{font-weight:700;font-size:15.5px;}
+  .stop-t{font-family:"PingFang SC",system-ui,sans-serif;font-size:12px;color:var(--cinnabar);letter-spacing:.06em;margin-left:8px;}
+  .stop-d{font-size:14.5px;color:var(--ink-2);margin-top:2px;}
+  .tbl-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:14px;background:var(--paper);}
+  table{border-collapse:collapse;width:100%;min-width:620px;font-size:14.5px;}
+  th,td{text-align:left;padding:13px 16px;border-bottom:1px solid var(--line);vertical-align:top;}
+  th{font-family:"PingFang SC",system-ui,sans-serif;font-size:12px;letter-spacing:.1em;color:var(--ink-2);background:rgba(74,124,89,.07);font-weight:600;white-space:nowrap;}
+  tr:last-child td{border-bottom:none;}
+  td b{color:var(--ink);}
+  .muted{color:var(--ink-2);font-size:13.5px;}
+  .rank{counter-reset:r;list-style:none;padding:0;margin:0;}
+  .rank li{counter-increment:r;position:relative;padding:13px 0 13px 46px;border-bottom:1px dashed var(--line);font-size:15px;}
+  .rank li:last-child{border-bottom:none;}
+  .rank li::before{content:counter(r);position:absolute;left:0;top:12px;width:26px;height:26px;border-radius:50%;display:grid;place-items:center;background:var(--mint);color:var(--moss);font-family:"PingFang SC",system-ui,sans-serif;font-size:12.5px;font-weight:700;}
+  .rank .why{display:block;font-size:13.5px;color:var(--ink-2);margin-top:2px;}
+  .note{border-left:3px solid var(--cinnabar);background:linear-gradient(90deg, rgba(181,67,47,.06), transparent 70%);padding:16px 20px;border-radius:0 10px 10px 0;margin:22px 0;font-size:14.5px;}
+  .note b{color:var(--cinnabar);}
+  .tip{border-left:3px solid var(--gold);background:linear-gradient(90deg, rgba(168,130,60,.09), transparent 70%);padding:16px 20px;border-radius:0 10px 10px 0;margin:22px 0;font-size:14.5px;}
+  .tip b{color:var(--gold);}
+  .bars{margin:8px 0 0;}
+  .bar{display:grid;grid-template-columns:110px 1fr 54px;gap:12px;align-items:center;margin-bottom:11px;font-size:14px;}
+  .bar .bl{color:var(--ink-2);}
+  .bar .bt{background:rgba(74,124,89,.12);border-radius:999px;height:9px;overflow:hidden;}
+  .bar .bf{height:100%;background:linear-gradient(90deg,var(--bamboo),#7fa889);border-radius:999px;}
+  .bar .bn{text-align:right;color:var(--ink-2);font-size:13px;font-family:"PingFang SC",system-ui,sans-serif;}
+  .src{font-size:12.5px;color:var(--ink-2);font-family:"PingFang SC",system-ui,sans-serif;}
+  footer{margin-top:40px;padding:44px 0 64px;border-top:1px solid var(--line);color:var(--ink-2);font-size:13px;}
+  footer p{max-width:62em;}
+  @media (max-width:600px){
+    .cover{padding:64px 20px 52px;}
+    section{padding:48px 0 8px;}
+    .stats{gap:24px;}
+    .day{padding:20px 18px 6px;}
+    .bar{grid-template-columns:88px 1fr 46px;gap:8px;font-size:13px;}
+  }
+  @media print{
+    .cover{background:#fff;color:#000;}
+    body{background:#fff;}
+    section{page-break-inside:avoid;}
+  }
+</style>
+</head>
+<body>
+
+<header class="cover">
+  <div class="cover-inner">
+    <p class="kicker">YUNNAN · DALI · 3–4 天</p>
+    <h1>大理<span class="accent">，</span><br>海浪在弹琴的洱海之城</h1>
+    <p class="sub">28 条视频、473.2 万赞、92.2 万收藏。美食占 61%、景点 21%、城市 Vlog 18%。大理在抖音上的形象是<b>洱海＋古城</b>——它的招牌是<b>洱海</b>和<b>大理古城</b>。最高赞那条 205.3 万，标题是「看，海浪在弹琴……#大理#洱海」。</p>
+    <div class="stats">
+      <div class="stat"><div class="n">28</div><div class="l">条抖音视频</div></div>
+      <div class="stat"><div class="n">473.2万</div><div class="l">累计点赞</div></div>
+      <div class="stat"><div class="n">61%</div><div class="l">美食内容占比</div></div>
+      <div class="stat"><div class="n">205.3万</div><div class="l">单条最高点赞</div></div>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+<section id="s1">
+  <h2><span class="no">01</span> 数据说了什么</h2>
+  <p class="lede">大理是云南的旅游重镇，也是中国最出名的治愈系城市。它有洱海、大理古城、苍山、双廊，还有大理砂锅鱼和乳扇。大理的节奏慢，适合「停下来玩三天」。</p>
+  <h3>内容构成</h3>
+  <div class="bars">
+    <div class="bar"><span class="bl">美食探店</span><span class="bt"><span class="bf" style="width:61%"></span></span><span class="bn">61%</span></div>
+    <div class="bar"><span class="bl">景点盘点</span><span class="bt"><span class="bf" style="width:21%"></span></span><span class="bn">21%</span></div>
+    <div class="bar"><span class="bl">城市 Vlog</span><span class="bt"><span class="bf" style="width:18%"></span></span><span class="bn">18%</span></div>
+  </div>
+
+  <h3>收藏最高的三条</h3>
+  <ul class="rank">
+    <li>大理 丽江5天4晚保姆级攻略（J人版）！公主请照抄 附详细路线行程和拍照机位 #大理 #丽江旅游攻略 #大理拍照 #丽江拍照 #云南旅游攻略<span class="why">收藏 15.9万 · 点赞 22万</span></li>
+    <li>一个人逛吃大理下关美食～打开新世界大门 吃了多少碗米线饵丝？ #抖音美食创作者 #大理 #大理美食 #大理旅游攻略 #大理洱海<span class="why">收藏 14.7万 · 点赞 26.6万</span></li>
+    <li>看，海浪在弹琴…… #大理#洱海#治愈系风景#云南赏秋治愈之旅#我的国庆慢充宝藏城市<span class="why">收藏 14.1万 · 点赞 205.3万</span></li>
+  </ul>
+
+  <div class="note">
+    <b>① 美食 61%，不低。</b>大理的旅游内容基本等同于美食内容，砂锅鱼是招牌。<br>
+    <b>② 点赞 473.2 万，云南第一。</b>说明大理是被广泛认可的。<br>
+    <b>③ 「海浪在弹琴」是大理的招牌。</b>说明洱海是大理的核心。<br>
+  </div>
+
+  <div class="grid g3" style="margin-top:26px;">
+    <div class="card">
+      <span class="tag">几天够</span>
+      <h4>3–4 天</h4>
+      <p>一天洱海，一天大理古城，一天双廊。</p>
+    </div>
+    <div class="card">
+      <span class="tag">住哪儿</span>
+      <h4>大理古城 / 双廊</h4>
+      <p>大理古城是古城区；双廊是洱海边。</p>
+    </div>
+    <div class="card">
+      <span class="tag">什么时候来</span>
+      <h4>3–11 月</h4>
+      <p>大理春秋最舒服。冬天看洱海。</p>
+    </div>
+  </div>
+</section>
+
+<section id="s2">
+  <h2><span class="no">02</span> 行程</h2>
+  <p class="lede">大理按「洱海＋大理古城＋双廊」走。洱海一天，古城一天。</p>
+
+  <div class="day">
+    <div class="day-head">
+      <span class="day-no">DAY 1</span>
+      <span class="day-title">洱海</span>
+      <span class="day-meta">骑行＋打车 · 全天 · 门票 0 元</span>
+    </div>
+    <ol class="stops">
+      <li>
+        <div class="stop-h">洱海<span class="stop-t">09:00</span></div>
+        <div class="stop-d">免费。大理的名片。看洱海。必去。</div>
+      </li>
+      <li>
+        <div class="stop-h">午餐：洱海<span class="stop-t">12:00</span></div>
+        <div class="stop-d">洱海的白族菜。认老字号。</div>
+      </li>
+      <li>
+        <div class="stop-h">下午：洱海<span class="stop-t">14:00</span></div>
+        <div class="stop-d">洱海再走一遍。看日落。</div>
+      </li>
+      <li>
+        <div class="stop-h">晚餐：大理<span class="stop-t">18:00</span></div>
+        <div class="stop-d">大理的滇菜。认老字号。</div>
+      </li>
+    </ol>
+  </div>
+
+  <div class="day">
+    <div class="day-head">
+      <span class="day-no">DAY 2</span>
+      <span class="day-title">大理古城</span>
+      <span class="day-meta">步行 · 全天 · 门票 0 元</span>
+    </div>
+    <ol class="stops">
+      <li>
+        <div class="stop-h">大理古城<span class="stop-t">09:00</span></div>
+        <div class="stop-d">免费。大理的古城。看古建筑。必去。</div>
+      </li>
+      <li>
+        <div class="stop-h">午餐：大理<span class="stop-t">12:00</span></div>
+        <div class="stop-d">大理的砂锅鱼。认老字号。</div>
+      </li>
+      <li>
+        <div class="stop-h">下午：大理古城<span class="stop-t">14:00</span></div>
+        <div class="stop-d">大理古城再走一遍。看夜景。</div>
+      </li>
+      <li>
+        <div class="stop-h">晚餐：大理<span class="stop-t">18:00</span></div>
+        <div class="stop-d">大理的滇菜。认老字号。</div>
+      </li>
+    </ol>
+  </div>
+
+  <div class="day">
+    <div class="day-head">
+      <span class="day-no">DAY 3</span>
+      <span class="day-title">双廊</span>
+      <span class="day-meta">打车 1 小时 · 全天 · 门票 0 元</span>
+    </div>
+    <ol class="stops">
+      <li>
+        <div class="stop-h">双廊<span class="stop-t">09:00</span></div>
+        <div class="stop-d">免费。大理的双廊。看洱海。</div>
+      </li>
+      <li>
+        <div class="stop-h">午餐：双廊<span class="stop-t">12:00</span></div>
+        <div class="stop-d">双廊的白族菜。认老字号。</div>
+      </li>
+      <li>
+        <div class="stop-h">下午：双廊<span class="stop-t">14:00</span></div>
+        <div class="stop-d">双廊再走一遍。看日落。</div>
+      </li>
+      <li>
+        <div class="stop-h">晚餐：大理<span class="stop-t">18:00</span></div>
+        <div class="stop-d">大理的滇菜。认老字号。</div>
+      </li>
+    </ol>
+  </div>
+
+  <div class="tip"><b>大理的正确打开方式：</b>别把它当「中转站」，当「玩三天的城市」。它的洱海不比任何景点差。</div>
+</section>
+
+<section id="s3">
+  <h2><span class="no">03</span> 吃什么</h2>
+  <p class="lede">大理菜是滇菜的代表，鲜香。大理砂锅鱼和乳扇是招牌。</p>
+
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>吃什么</th><th>去哪找</th><th>怎么点</th><th>人均</th></tr></thead>
+      <tbody>
+        <tr><td><b>大理砂锅鱼</b><br><span class="muted"></span></td><td>老字号</td><td>砂锅鱼；大理招牌</td><td>60–100</td></tr>
+        <tr><td><b>乳扇</b><br><span class="muted"></span></td><td>老字号</td><td>乳扇；大理小吃</td><td>10–20</td></tr>
+        <tr><td><b>白族菜</b><br><span class="muted"></span></td><td>老字号</td><td>白族菜；大理日常</td><td>30–60</td></tr>
+        <tr><td><b>滇菜</b><br><span class="muted"></span></td><td>老字号</td><td>鲜香，汽锅鸡；大理正餐</td><td>40–80</td></tr>
+        <tr><td><b>大理夜宵</b><br><span class="muted"></span></td><td>夜市</td><td>烧烤、炒虾；大理夜宵</td><td>40–80</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="note"><b>大理的砂锅鱼：</b>大理砂锅鱼是大理的名片。砂锅鱼。认老字号。</div>
+</section>
+
+<section id="s4">
+  <h2><span class="no">04</span> 实用与避坑</h2>
+  <div class="grid g2" style="margin-top:10px;">
+    <div class="card"><h4>怎么到</h4><p>高铁到大理站。大理的交通方便。</p></div>
+    <div class="card"><h4>洱海</h4><p>免费，大理的名片。必去。</p></div>
+    <div class="card"><h4>大理古城</h4><p>免费，大理的古城。必去。</p></div>
+    <div class="card"><h4>带什么走</h4><p>大理砂锅鱼料包、乳扇。</p></div>
+  </div>
+</section>
+
+<footer>
+<p><b>数据说明。</b>本页基于抖音真实采集数据：关键词「大理旅游」「大理美食」，去重后 <b>28 条视频</b>，累计点赞 <b>473.2万</b>、收藏 <b>92.2万</b>，单条最高点赞 205.3万、最高收藏 15.9万。内容构成按视频标题归类统计。</p>
+  <p>门票、交通等硬信息按公开资料核对，价格与开放时间以景区当日公示为准；餐饮只写到「品类＋去哪找」，不写死门牌——老店变动比攻略更新快。</p>
+  <p class="src">采集时间 2026-10-25 · 工具 MediaCrawler（非商业学习许可）· 本页仅供个人出行参考</p>
+</footer>
+
+</div>
+</body>
+</html>
